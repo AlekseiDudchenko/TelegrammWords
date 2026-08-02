@@ -10,7 +10,6 @@ HAUS = WordCard(
     ipa="haʊ̯s",
     niveau="A2",
     bedeutungen=["Gebäude, in dem Menschen wohnen."],
-    etymologie="Von mittelhochdeutsch hūs, althochdeutsch hūs.",
     beispiele=["Wir wohnen in einem alten Haus."],
     synonyme=["Gebäude", "Wohnhaus"],
     antonyme=[],

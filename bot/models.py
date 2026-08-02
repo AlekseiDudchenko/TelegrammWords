@@ -44,14 +44,6 @@ class WordCard(BaseModel):
             "monolingual and without numbering."
         ),
     )
-    etymologie: str = Field(
-        description=(
-            "Origin of the word in German, 2 to 4 sentences: Old High German, "
-            "Middle High German, Latin or Greek roots, and shifts in meaning. "
-            "Do not invent anything — if the origin is disputed or unclear, say "
-            "so explicitly."
-        ),
-    )
     beispiele: list[str] = Field(
         description="2 to 3 complete German example sentences containing the headword.",
     )

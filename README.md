@@ -1,7 +1,7 @@
 # Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
-A Telegram bot that posts one German word card per day: meanings, etymology,
-example sentences, synonyms, antonyms and common collocations. The card itself
+A Telegram bot that posts one German word card per day: meanings, example
+sentences, synonyms, antonyms and common collocations. The card itself
 is monolingual — everything the reader sees is in German.
 
 Design notes and the reasoning behind the architecture: [PLAN.md](PLAN.md).

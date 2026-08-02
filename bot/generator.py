@@ -24,8 +24,6 @@ language, and never mix languages inside a field.
 Rules:
 - Keep definitions simple: explain the headword using vocabulary below its own
   level.
-- Etymology: attested origins only. If the origin is disputed or unclear, say so
-  explicitly rather than inventing an explanation.
 - Synonyms and antonyms: only real, current words. Prefer fewer over
   constructed ones. If there is no meaningful antonym, return an empty list.
 - Example sentences: natural contemporary German, each containing the headword.

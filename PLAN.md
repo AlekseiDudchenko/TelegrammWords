@@ -1,7 +1,7 @@
 # TelegrammWords — "Wort des Tages"
 
-A Telegram bot that posts one German word card per day: meanings, etymology,
-examples, synonyms and antonyms. All explanations are in German (monolingual) —
+A Telegram bot that posts one German word card per day: meanings, examples,
+synonyms and antonyms. All explanations are in German (monolingual) —
 a deliberate choice, since the card itself then doubles as reading practice.
 
 ## Decisions
@@ -33,8 +33,8 @@ GitHub Actions (cron)
 ```
 
 The store exists for two reasons. The channel's first month is its shop
-window, and hand-written cards are simply better than generated ones — checked
-etymology, examples chosen for the word rather than for the schema. And it
+window, and hand-written cards are simply better than generated ones —
+definitions and examples chosen for the word rather than for the schema. And it
 decouples going live from having an API key: the bot can start posting with
 nothing but a Telegram token.
 
@@ -82,7 +82,6 @@ class WordCard(BaseModel):
     ipa: str                       # haʊ̯s
     niveau: str                    # A2 | B1 | B2 | C1
     bedeutungen: list[str]         # 1–3 definitions, in German
-    etymologie: str                # 2–4 sentences: ahd./mhd./Latin roots
     beispiele: list[str]           # 2–3 sentences
     synonyme: list[str]            # 3–5
     antonyme: list[str]            # 0–4 (many words simply have none)
@@ -108,9 +107,6 @@ Substantiv
 📖 Bedeutung
 1. Gebäude, in dem Menschen wohnen …
 2. …
-
-🌱 Herkunft
-Von mhd. hūs, ahd. hūs …
 
 ✍️ Beispiele
 • …
