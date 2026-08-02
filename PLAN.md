@@ -8,7 +8,7 @@ a deliberate choice, since the card itself then doubles as reading practice.
 
 | Question | Decision |
 |---|---|
-| Content | Claude API generates the card on the fly from a word in the list |
+| Content | 30 cards written by hand in the repository; the Claude API takes over from day 31 |
 | Card language | German, monolingual |
 | Scheduling | GitHub Actions cron, one run per day |
 | Stack | Python 3.12 |
@@ -22,13 +22,25 @@ and anything else would be infrastructure for its own sake.
 ```
 GitHub Actions (cron)
   └─ python -m bot.main
-       ├─ state.py     → pick the next word (no repeats)
-       ├─ generator.py → Claude API, structured output → WordCard
+       ├─ cards.py     → load the pre-written cards
+       ├─ state.py     → pick the next word (stored cards first, no repeats)
+       ├─ cards.yml    → use the stored card …
+       │   └─ generator.py → … or, if there is none, Claude API → WordCard
        ├─ formatter.py → HTML message for Telegram
        ├─ telegram.py  → sendMessage to the channel
        └─ state.py     → record word + date in data/state.json
   └─ commit & push data/state.json
 ```
+
+The store exists for two reasons. The channel's first month is its shop
+window, and hand-written cards are simply better than generated ones — checked
+etymology, examples chosen for the word rather than for the schema. And it
+decouples going live from having an API key: the bot can start posting with
+nothing but a Telegram token.
+
+Both paths end in the same `WordCard`, so `cards.yml` is validated against the
+same schema the API is constrained by. A card that would break the format
+fails in CI, not in the channel.
 
 ## Repository layout
 
@@ -38,16 +50,18 @@ bot/
   config.py      # environment variables, validated on startup
   models.py      # pydantic WordCard schema
   wordlist.py    # loads data/words.yml
+  cards.py       # loads data/cards.yml, validated against WordCard
   state.py       # data/state.json: word selection, double-post guard
   formatter.py   # WordCard → HTML
   telegram.py    # Bot API sendMessage
   main.py        # CLI: --dry-run, --word WORD, --force
 data/
   words.yml      # word list tagged by level (A2/B1/B2/C1)
+  cards.yml      # 30 pre-written cards, posted in file order
   state.json     # {"last_post_date": "2026-08-02", "cycle": 0, "posted": [...]}
 tests/
   test_formatter.py, test_state.py, test_models.py, test_wordlist.py,
-  test_generator.py
+  test_cards.py, test_generator.py
 .github/workflows/
   daily.yml      # cron + manual dispatch
   tests.yml      # pytest on every push
@@ -113,14 +127,18 @@ Von mhd. hūs, ahd. hūs …
   same day sends nothing — this covers double cron firings and manual
   "Run workflow" clicks. `--force` overrides it.
 - **No repeated words.** Words are drawn from those not yet used; when the list
-  is exhausted the cycle restarts with a new deterministic shuffle.
+  is exhausted the cycle restarts with a new deterministic shuffle. Words with
+  a stored card come first, in the order of `cards.yml` — including in later
+  cycles, which is deliberate: a hand-written card is the better post and it
+  costs nothing.
 - **Response validation.** A schema violation triggers one retry, then fails the
   workflow. A silently malformed post cannot go out.
 - **Order of operations.** Send first, then commit state with `pull --rebase`.
   If the commit fails, the next run sees the old date and posts a duplicate —
   hence the retry loop on push, and a failing job as the notification.
 - **Secrets** live only in GitHub Secrets: `TELEGRAM_BOT_TOKEN`,
-  `TELEGRAM_CHAT_ID`, `ANTHROPIC_API_KEY`.
+  `TELEGRAM_CHAT_ID`, `ANTHROPIC_API_KEY`. Only the first is needed while the
+  stored cards last.
 - **Dry run.** `python -m bot.main --dry-run --word Fernweh` prints the finished
   post and sends nothing. This is the main way to debug the format.
 
@@ -136,7 +154,8 @@ that does not matter.
 
 ## Cost
 
-One request per day, ~1500 output tokens. Cents per month, in round numbers.
+Nothing for the first 30 days — those cards are in the repository. After that
+one request per day, ~1500 output tokens: cents per month, in round numbers.
 
 ## Deliberately out of scope for v1
 

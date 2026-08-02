@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
@@ -43,19 +44,23 @@ class State:
     def already_posted_today(self, today: date) -> bool:
         return self.last_post_date == today.isoformat()
 
-    def next_word(self, entries: list[Entry]) -> Entry:
+    def next_word(
+        self, entries: list[Entry], preferred: Sequence[str] = ()
+    ) -> Entry:
         """Return the next unused word of the current cycle.
 
-        The order is shuffled deterministically per cycle so it can be
-        reproduced from `cycle` alone, and so that words added to the list
-        mid-rotation don't disturb the current round.
+        `preferred` (the words with a stored card) goes first, in the order it
+        was given, so no API key is needed until the store is used up. The rest
+        follows a shuffle that is deterministic per cycle: it can be reproduced
+        from `cycle` alone, and words added to the list mid-rotation don't
+        disturb the current round.
         """
         if not entries:
             raise ValueError("word list is empty.")
 
         done = set(self.posted)
         for _ in range(2):
-            for entry in self._shuffled(entries):
+            for entry in self._ordered(entries, preferred):
                 if entry.word not in done:
                     return entry
             # Round complete: new cycle, new order.
@@ -64,6 +69,12 @@ class State:
             done = set()
 
         raise AssertionError("unreachable: after a cycle reset every word is free")
+
+    def _ordered(self, entries: list[Entry], preferred: Sequence[str]) -> list[Entry]:
+        by_word = {entry.word: entry for entry in entries}
+        head = [by_word[word] for word in preferred if word in by_word]
+        chosen = {entry.word for entry in head}
+        return head + [e for e in self._shuffled(entries) if e.word not in chosen]
 
     def _shuffled(self, entries: list[Entry]) -> list[Entry]:
         ordered = sorted(entries, key=lambda e: e.word)

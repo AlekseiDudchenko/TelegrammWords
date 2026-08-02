@@ -9,15 +9,23 @@ Design notes and the reasoning behind the architecture: [PLAN.md](PLAN.md).
 ## How it works
 
 GitHub Actions runs `python -m bot.main` on a schedule. The bot takes the next
-unused word from `data/words.yml`, asks Claude for a card constrained by a
-strict JSON schema, renders it as an HTML message, sends it to the channel, and
-commits `data/state.json` back to the repository.
+unused word from `data/words.yml`, renders a card as an HTML message, sends it
+to the channel, and commits `data/state.json` back to the repository.
+
+The card comes from one of two places:
+
+- **`data/cards.yml`** — 30 cards written by hand and checked into the
+  repository. These are used first, in file order, so the first 30 days run
+  without an API key and cost nothing.
+- **The Claude API** — for every word that has no stored card. The reply is
+  constrained by a strict JSON schema and validated before anything is sent.
 
 ```
 bot/
   config.py     environment variables and paths
   models.py     WordCard schema + JSON Schema for structured outputs
   wordlist.py   loads data/words.yml
+  cards.py      loads the pre-written cards from data/cards.yml
   state.py      picks a word without repeats, guards against double posting
   generator.py  Claude API call + response validation
   formatter.py  WordCard -> HTML for Telegram
@@ -31,9 +39,13 @@ bot/
 pip install -r requirements-dev.txt
 python -m pytest -q
 
-# Print the finished message without sending it (only ANTHROPIC_API_KEY needed)
-export ANTHROPIC_API_KEY=sk-ant-...
+# Print the finished message without sending it. No key needed for a word
+# that has a stored card.
 python -m bot.main --dry-run --word Fernweh
+
+# A word outside data/cards.yml goes to the API
+export ANTHROPIC_API_KEY=sk-ant-...
+python -m bot.main --dry-run --word Trugschluss
 ```
 
 Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
@@ -44,14 +56,17 @@ Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
 2. Add the bot as an administrator of `@wunderwordsde` with permission to post.
 3. Add the secrets under `Settings → Secrets and variables → Actions`:
 
-   | Secret | Value |
-   |---|---|
-   | `ANTHROPIC_API_KEY` | key from console.anthropic.com |
-   | `TELEGRAM_BOT_TOKEN` | token from BotFather |
-   | `TELEGRAM_CHAT_ID` | `@wunderwordsde` |
+   | Secret | Value | Required |
+   |---|---|---|
+   | `TELEGRAM_BOT_TOKEN` | token from BotFather | yes |
+   | `TELEGRAM_CHAT_ID` | `@wunderwordsde` | no |
+   | `ANTHROPIC_API_KEY` | key from console.anthropic.com | not for the first 30 days |
 
-`TELEGRAM_CHAT_ID` is optional — it defaults to `@wunderwordsde`
-(see `bot/config.py`). A numeric ID is only needed for a private channel.
+`TELEGRAM_CHAT_ID` defaults to `@wunderwordsde` (see `bot/config.py`); a numeric
+ID is only needed for a private channel. `ANTHROPIC_API_KEY` is only read once
+the stored cards in `data/cards.yml` are used up — until then the run does not
+touch the API at all. Without the key, the first run past the store fails with
+exit code 2 and posts nothing.
 
 To verify everything before the first scheduled run: `Actions → Wort des Tages →
 Run workflow` with `dry_run` ticked. The card is written to the job log and
@@ -68,6 +83,17 @@ minute.
 Append to the appropriate section of `data/words.yml`. Order within the file
 does not matter: the bot shuffles the list deterministically per cycle, so
 adding words neither disturbs the current rotation nor causes repeats.
+
+## Adding a pre-written card
+
+Append an entry to `data/cards.yml`, keyed by the exact word from
+`data/words.yml`. The card must fill every field of `WordCard`
+(`bot/models.py`); `python -m pytest tests/test_cards.py` validates the whole
+file, checks that each word exists in the word list at the same level, and
+renders every card to catch broken markup. Order here *does* matter — stored
+cards are posted top to bottom before anything is generated.
+
+Then check the result: `python -m bot.main --dry-run --word <word>`.
 
 ## Language conventions
 

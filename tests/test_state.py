@@ -58,3 +58,21 @@ def test_already_posted_today():
 def test_empty_wordlist_is_an_error():
     with pytest.raises(ValueError):
         State().next_word([])
+
+
+def test_preferred_words_come_first_in_their_own_order():
+    state = State()
+    assert state.next_word(ENTRIES, preferred=["gamma", "alpha"]).word == "gamma"
+
+    state.record("gamma", date(2026, 8, 2))
+    assert state.next_word(ENTRIES, preferred=["gamma", "alpha"]).word == "alpha"
+
+
+def test_shuffle_takes_over_once_preferred_words_are_used():
+    state = State(posted=["gamma", "alpha"])
+    assert state.next_word(ENTRIES, preferred=["gamma", "alpha"]).word == "beta"
+
+
+def test_unknown_preferred_words_are_ignored():
+    state = State()
+    assert state.next_word(ENTRIES, preferred=["not-in-the-list"]) in ENTRIES

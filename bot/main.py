@@ -9,8 +9,9 @@ from datetime import datetime, timezone
 
 import anthropic
 
-from . import formatter, generator, telegram, wordlist
+from . import cards, formatter, generator, telegram, wordlist
 from .config import Config, ConfigError
+from .models import WordCard
 from .state import State
 from .wordlist import Entry
 
@@ -56,6 +57,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         config = Config.from_env()
         entries = wordlist.load(config.words_file)
+        stored = cards.load(config.cards_file)
         state = State.load(config.state_file)
         today = datetime.now(timezone.utc).date()
 
@@ -63,11 +65,10 @@ def main(argv: list[str] | None = None) -> int:
             log.info("Already posted for %s — nothing to do.", today)
             return 0
 
-        entry = _pick_entry(args, entries, state)
+        entry = _pick_entry(args, entries, state, stored)
         log.info("Word: %s (%s)", entry.word, entry.level)
 
-        client = anthropic.Anthropic(api_key=config.require_anthropic())
-        card = generator.generate(client, config.model, entry)
+        card = _card_for(entry, stored, config)
         message = formatter.render(card)
 
         if args.dry_run:
@@ -82,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
         state.save(config.state_file)
         return 0
 
-    except (ConfigError, wordlist.WordlistError) as exc:
+    except (ConfigError, wordlist.WordlistError, cards.CardStoreError) as exc:
         log.error("%s", exc)
         return 2
     except (generator.GenerationError, telegram.TelegramError) as exc:
@@ -90,13 +91,30 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
 
-def _pick_entry(args: argparse.Namespace, entries: list[Entry], state: State) -> Entry:
+def _pick_entry(
+    args: argparse.Namespace,
+    entries: list[Entry],
+    state: State,
+    stored: dict[str, WordCard],
+) -> Entry:
     if not args.word:
-        return state.next_word(entries)
+        return state.next_word(entries, preferred=list(stored))
     for entry in entries:
         if entry.word.lower() == args.word.lower():
             return entry
     return Entry(word=args.word, level=args.level)
+
+
+def _card_for(entry: Entry, stored: dict[str, WordCard], config: Config) -> WordCard:
+    """Prefer the card written by hand; ask Claude only for the rest."""
+    card = stored.get(entry.word)
+    if card is not None:
+        log.info("Using the stored card from %s.", config.cards_file.name)
+        return card
+
+    log.info("No stored card — generating one with %s.", config.model)
+    client = anthropic.Anthropic(api_key=config.require_anthropic())
+    return generator.generate(client, config.model, entry)
 
 
 if __name__ == "__main__":

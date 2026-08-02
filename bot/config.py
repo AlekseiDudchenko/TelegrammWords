@@ -33,6 +33,10 @@ class Config:
         return self.data_dir / "words.yml"
 
     @property
+    def cards_file(self) -> Path:
+        return self.data_dir / "cards.yml"
+
+    @property
     def state_file(self) -> Path:
         return self.data_dir / "state.json"
 
@@ -49,7 +53,8 @@ class Config:
     def require_anthropic(self) -> str:
         if not self.anthropic_api_key:
             raise ConfigError(
-                "ANTHROPIC_API_KEY is not set — no card can be generated without it."
+                "ANTHROPIC_API_KEY is not set — it is only needed for words "
+                "without a stored card in data/cards.yml."
             )
         return self.anthropic_api_key
 

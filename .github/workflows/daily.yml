@@ -42,7 +42,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Generate and post the card
+      # ANTHROPIC_API_KEY may be empty: words with a card in data/cards.yml are
+      # posted straight from the repository and never reach the API.
+      - name: Post the card of the day
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

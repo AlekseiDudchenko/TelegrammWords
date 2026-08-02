@@ -1,0 +1,978 @@
+# Pre-written word cards, written by hand and checked into the repository.
+#
+# A word that has a card here is posted from this file — no API call, no key
+# needed. The bot works through these first, in the order they appear below,
+# and only falls back to the Claude API once they are used up.
+#
+# The keys must match the words in words.yml exactly, and every card must
+# satisfy the WordCard schema in bot/models.py (tests/test_cards.py checks it).
+
+Fernweh:
+  wort: "Fernweh"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfɛʁnveː"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Sehnsucht danach, in die Ferne zu reisen und fremde Orte zu sehen."
+  etymologie: >-
+    Gebildet aus „fern“ und „Weh“, wörtlich also der Schmerz über die fehlende
+    Ferne. Das Wort entstand im 19. Jahrhundert als bewusstes Gegenstück zum
+    viel älteren „Heimweh“ und wird oft dem Fürsten Hermann von Pückler-Muskau
+    zugeschrieben. Wie beim Heimweh ist das Gefühl als körperliches Leiden
+    gedacht.
+  beispiele:
+    - "Jedes Mal, wenn ein Flugzeug über das Haus fliegt, bekomme ich Fernweh."
+    - "Sein Fernweh war am Ende stärker als die Angst vor dem Alleinsein."
+    - "Im November packt mich regelmäßig das Fernweh."
+  synonyme:
+    - "Reiselust"
+    - "Wanderlust"
+    - "Reisefieber"
+    - "Abenteuerlust"
+  antonyme:
+    - "Heimweh"
+    - "Bodenständigkeit"
+  kollokationen:
+    - "Fernweh haben"
+    - "das Fernweh packt jemanden"
+    - "von Fernweh getrieben sein"
+
+Zeitgeist:
+  wort: "Zeitgeist"
+  artikel: "der"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈtsaɪ̯tɡaɪ̯st"
+  niveau: "B2"
+  bedeutungen:
+    - "Die Denkweise, die Stimmung und die Werte, die für eine bestimmte Epoche typisch sind."
+  etymologie: >-
+    Zusammengesetzt aus „Zeit“ und „Geist“. Herder gebraucht den Ausdruck im
+    späten 18. Jahrhundert, Hegel macht daraus einen festen Begriff der
+    Philosophie. Das deutsche Wort wurde unverändert ins Englische und in
+    andere Sprachen übernommen.
+  beispiele:
+    - "Der Film trifft den Zeitgeist der frühen Neunziger erstaunlich genau."
+    - "Wer nur dem Zeitgeist folgt, wirkt schon nach wenigen Jahren altmodisch."
+    - "Solche Debatten sagen mehr über den Zeitgeist als über die Sache selbst."
+  synonyme:
+    - "Zeitströmung"
+    - "Zeitstimmung"
+    - "Zeitgefühl"
+    - "Geist der Epoche"
+  antonyme: []
+  kollokationen:
+    - "den Zeitgeist treffen"
+    - "dem Zeitgeist hinterherlaufen"
+    - "im Zeitgeist liegen"
+
+Traum:
+  wort: "Traum"
+  artikel: "der"
+  plural: "die Träume"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "tʁaʊ̯m"
+  niveau: "A2"
+  bedeutungen:
+    - "Die Bilder und Geschichten, die man im Schlaf erlebt."
+    - "Ein großer Wunsch, den man sich für sein Leben vorstellt."
+  etymologie: >-
+    Ahd. troum, mhd. troum; das Wort ist in allen germanischen Sprachen
+    verbreitet (engl. dream, niederl. droom). Die weitere Herkunft ist
+    umstritten: Manche verbinden es mit einer Wurzel für „Trug, Täuschung“,
+    andere mit altsächsisch drōm „fröhliches Treiben, Jubel“. Sicher geklärt
+    ist die Frage nicht.
+  beispiele:
+    - "Ich hatte heute Nacht einen seltsamen Traum von unserem alten Haus."
+    - "Ein eigenes Café zu eröffnen war schon immer ihr Traum."
+    - "Der Abend war so schön, dass er ihr später wie ein Traum vorkam."
+  synonyme:
+    - "Wunschtraum"
+    - "Vision"
+    - "Wunschbild"
+    - "Illusion"
+  antonyme:
+    - "Wirklichkeit"
+    - "Albtraum"
+  kollokationen:
+    - "sich einen Traum erfüllen"
+    - "ein Traum geht in Erfüllung"
+    - "wie im Traum"
+
+Sehnsucht:
+  wort: "Sehnsucht"
+  artikel: "die"
+  plural: "die Sehnsüchte"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈzeːnzʊxt"
+  niveau: "B1"
+  bedeutungen:
+    - "Ein starkes, schmerzliches Verlangen nach jemandem oder etwas, das gerade fehlt."
+  etymologie: >-
+    Mhd. sensuht bedeutete wörtlich „Krankheit des schmerzlichen Verlangens“.
+    Der zweite Teil gehört nicht zu „suchen“, sondern zu „siech“ (krank) —
+    dieselbe Wurzel steckt in „Schwindsucht“ und „Eifersucht“. Das Wort trägt
+    die Vorstellung eines Leidens also von Anfang an in sich.
+  beispiele:
+    - "Nach zwei Jahren im Ausland wuchs seine Sehnsucht nach der eigenen Sprache."
+    - "Sie sah dem Zug mit einer Sehnsucht nach, die sie sich selbst nicht erklären konnte."
+    - "In seinen Briefen steht mehr Sehnsucht als Nachricht."
+  synonyme:
+    - "Verlangen"
+    - "Sehnen"
+    - "Begehren"
+    - "Drang"
+  antonyme:
+    - "Gleichgültigkeit"
+    - "Zufriedenheit"
+  kollokationen:
+    - "Sehnsucht nach jemandem haben"
+    - "voller Sehnsucht"
+    - "eine Sehnsucht stillen"
+
+Schadenfreude:
+  wort: "Schadenfreude"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʃaːdn̩ˌfʁɔɪ̯də"
+  niveau: "B2"
+  bedeutungen:
+    - "Die heimliche Freude über das Missgeschick oder das Unglück eines anderen."
+  etymologie: >-
+    Aus „Schaden“ und „Freude“, seit dem 16. Jahrhundert belegt. Weil in vielen
+    Sprachen ein eigenes Wort dafür fehlt, wurde das deutsche als Ganzes
+    entlehnt. Das Sprichwort „Schadenfreude ist die schönste Freude“ spielt mit
+    der Doppelbödigkeit des Gefühls.
+  beispiele:
+    - "Er konnte seine Schadenfreude kaum verbergen, als der Nachbar im Regen stand."
+    - "In ihrem Lachen lag eine leise Schadenfreude."
+    - "Aus reiner Schadenfreude erzählte sie die Geschichte gleich weiter."
+  synonyme:
+    - "Häme"
+    - "Hohn"
+    - "Spott"
+    - "Genugtuung"
+  antonyme:
+    - "Mitgefühl"
+    - "Mitleid"
+    - "Anteilnahme"
+  kollokationen:
+    - "klammheimliche Schadenfreude"
+    - "Schadenfreude empfinden"
+    - "aus reiner Schadenfreude"
+
+Mut:
+  wort: "Mut"
+  artikel: "der"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "muːt"
+  niveau: "A2"
+  bedeutungen:
+    - "Die Fähigkeit, etwas zu tun, obwohl man Angst hat oder ein Risiko eingeht."
+  etymologie: >-
+    Ahd. muot bedeutete zunächst allgemein „Sinn, Gemüt, seelische Kraft“ und
+    erst später die Tapferkeit. Die alte, weitere Bedeutung steckt noch in
+    Demut, Anmut, Wehmut, Schwermut und Übermut, wo es nirgends um Tapferkeit
+    geht. Auch „zumute sein“ bewahrt sie.
+  beispiele:
+    - "Es kostet Mut, vor so vielen Menschen zu sprechen."
+    - "Sie fasste Mut und stellte die Frage trotzdem."
+    - "Nach der dritten Absage verlor er langsam den Mut."
+  synonyme:
+    - "Tapferkeit"
+    - "Courage"
+    - "Beherztheit"
+    - "Kühnheit"
+  antonyme:
+    - "Angst"
+    - "Feigheit"
+  kollokationen:
+    - "Mut fassen"
+    - "jemandem Mut machen"
+    - "den Mut verlieren"
+
+Zwiespalt:
+  wort: "Zwiespalt"
+  artikel: "der"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈtsviːʃpalt"
+  niveau: "C1"
+  bedeutungen:
+    - "Ein innerer Widerstreit, bei dem zwei Gefühle oder Überzeugungen gleichzeitig gegeneinander ziehen."
+    - "Eine tiefe Uneinigkeit zwischen zwei Seiten."
+  etymologie: >-
+    Zu „zwie-“ (zwei) und „spalten“: gemeint war ursprünglich ganz konkret die
+    Spaltung in zwei Teile, etwa eine Kirchenspaltung. Seit der frühen Neuzeit
+    wird das Bild vor allem nach innen gewendet — gespalten ist nun der Mensch
+    selbst.
+  beispiele:
+    - "Sie geriet in einen Zwiespalt zwischen Loyalität und eigener Überzeugung."
+    - "Der Zwiespalt zwischen den beiden Lagern war nicht mehr zu überbrücken."
+    - "Er steckte tagelang in diesem Zwiespalt und konnte sich nicht entscheiden."
+  synonyme:
+    - "Zerrissenheit"
+    - "Dilemma"
+    - "innerer Konflikt"
+    - "Ambivalenz"
+  antonyme:
+    - "Einigkeit"
+    - "Klarheit"
+    - "Entschlossenheit"
+  kollokationen:
+    - "in einen Zwiespalt geraten"
+    - "sich in einem Zwiespalt befinden"
+    - "einen inneren Zwiespalt austragen"
+
+Vorurteil:
+  wort: "Vorurteil"
+  artikel: "das"
+  plural: "die Vorurteile"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfoːɐ̯ʔʊʁtaɪ̯l"
+  niveau: "B1"
+  bedeutungen:
+    - "Eine feste Meinung über jemanden oder etwas, die man sich ohne eigene Prüfung gebildet hat."
+  etymologie: >-
+    Lehnübersetzung des lateinischen praeiudicium, wörtlich „Vor-Urteil“: ein
+    Urteil, das vor der eigentlichen Prüfung gefällt wird. Im 17. und 18.
+    Jahrhundert wurde das Wort zu einem Kampfbegriff der Aufklärung, die dem
+    Vorurteil die eigene Vernunft entgegenstellte.
+  beispiele:
+    - "Gegen dieses Vorurteil hilft nur, die Leute persönlich kennenzulernen."
+    - "Sie ging ohne Vorurteil in das Gespräch."
+    - "Viele Vorurteile halten sich hartnäckig, obwohl jeder sie widerlegen könnte."
+  synonyme:
+    - "Voreingenommenheit"
+    - "Klischee"
+    - "Ressentiment"
+    - "Befangenheit"
+  antonyme:
+    - "Unvoreingenommenheit"
+    - "Offenheit"
+    - "Sachlichkeit"
+  kollokationen:
+    - "ein Vorurteil abbauen"
+    - "Vorurteile gegenüber jemandem haben"
+    - "mit Vorurteilen aufräumen"
+
+Gemütlichkeit:
+  wort: "Gemütlichkeit"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɡəˈmyːtlɪçkaɪ̯t"
+  niveau: "B2"
+  bedeutungen:
+    - "Eine warme, entspannte Behaglichkeit, in der man sich sicher und wohl fühlt."
+  etymologie: >-
+    Abgeleitet von „Gemüt“, mhd. gemüete, der Gesamtheit der inneren
+    Empfindungen — im Kern also wieder das alte „Mut“. „Gemütlich“ hieß
+    zunächst „dem Gemüt entsprechend“ und erst im 19. Jahrhundert „behaglich“.
+    In derselben Zeit wurde die Gemütlichkeit zum Sinnbild bürgerlicher
+    Wohnkultur.
+  beispiele:
+    - "Zwei Kerzen, und schon stellte sich eine gewisse Gemütlichkeit ein."
+    - "Wir haben den Abend in aller Gemütlichkeit ausklingen lassen."
+    - "Bei diesem Thema hört die Gemütlichkeit allerdings auf."
+  synonyme:
+    - "Behaglichkeit"
+    - "Geborgenheit"
+    - "Wohlbehagen"
+    - "Beschaulichkeit"
+  antonyme:
+    - "Ungemütlichkeit"
+    - "Hektik"
+  kollokationen:
+    - "in aller Gemütlichkeit"
+    - "für Gemütlichkeit sorgen"
+    - "da hört die Gemütlichkeit auf"
+
+Ruhe:
+  wort: "Ruhe"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʁuːə"
+  niveau: "A2"
+  bedeutungen:
+    - "Ein Zustand ohne Lärm und ohne Bewegung."
+    - "Die innere Gelassenheit, mit der man sich nicht aus der Fassung bringen lässt."
+  etymologie: >-
+    Ahd. ruowa, mhd. ruowe, ein altes germanisches Wort, zu dem auch das Verb
+    „ruhen“ gehört. Die weitere Herkunft ist nicht sicher geklärt; oft wird
+    eine indogermanische Wurzel mit der Bedeutung „aufhören, rasten“
+    angenommen. Von „Rast“ ist „Ruhe“ trotz der ähnlichen Bedeutung getrennt zu
+    halten.
+  beispiele:
+    - "Nach acht Uhr kehrt in diesem Haus endlich Ruhe ein."
+    - "Er bewahrte die Ruhe, obwohl alle anderen durcheinanderredeten."
+    - "Lass mich bitte einen Moment in Ruhe."
+  synonyme:
+    - "Stille"
+    - "Gelassenheit"
+    - "Frieden"
+    - "Erholung"
+  antonyme:
+    - "Lärm"
+    - "Unruhe"
+    - "Hektik"
+  kollokationen:
+    - "die Ruhe bewahren"
+    - "jemanden in Ruhe lassen"
+    - "sich zur Ruhe setzen"
+
+Sprachgefühl:
+  wort: "Sprachgefühl"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʃpraːxɡəˌfyːl"
+  niveau: "C1"
+  bedeutungen:
+    - "Das sichere Gespür dafür, was in einer Sprache natürlich klingt — auch ohne die Regel nennen zu können."
+  etymologie: >-
+    Zusammensetzung aus „Sprache“ und „Gefühl“, geprägt im 19. Jahrhundert im
+    Umfeld der Sprachwissenschaft. Der zweite Teil ist bewusst gewählt: Gemeint
+    ist ausdrücklich kein Wissen, sondern ein Empfinden, das aus vielen
+    gehörten und gelesenen Sätzen entsteht.
+  beispiele:
+    - "Welcher Fall hier stehen muss, sagt mir mein Sprachgefühl, nicht die Grammatik."
+    - "Viel zu lesen ist der beste Weg, das Sprachgefühl zu schulen."
+    - "Ihr Sprachgefühl ist nach zehn Jahren in Wien fast das einer Muttersprachlerin."
+  synonyme:
+    - "Sprachgespür"
+    - "Sprachempfinden"
+    - "Sprachinstinkt"
+  antonyme: []
+  kollokationen:
+    - "ein feines Sprachgefühl haben"
+    - "das Sprachgefühl schulen"
+    - "gegen das Sprachgefühl verstoßen"
+
+Erfahrung:
+  wort: "Erfahrung"
+  artikel: "die"
+  plural: "die Erfahrungen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɛɐ̯ˈfaːʁʊŋ"
+  niveau: "B1"
+  bedeutungen:
+    - "Das Wissen und Können, das man durch eigenes Erleben gewonnen hat."
+    - "Ein einzelnes Erlebnis, aus dem man etwas gelernt hat."
+  etymologie: >-
+    Zu „erfahren“, das ursprünglich ganz wörtlich gemeint war: Mhd. ervarn hieß
+    „durchreisen, durchfahren“ und daraus „auf Reisen kennenlernen“. Die alte
+    Vorstellung klingt noch in „Erfahrungen sammeln“ nach und im Adjektiv
+    „erfahren“ für jemanden, der viel gesehen hat.
+  beispiele:
+    - "Für die Stelle braucht man mehrere Jahre Erfahrung im Ausland."
+    - "Ich spreche aus Erfahrung: Das dauert länger, als du denkst."
+    - "Es war eine bittere Erfahrung, aber sie hat mir viel beigebracht."
+  synonyme:
+    - "Praxis"
+    - "Routine"
+    - "Kenntnis"
+    - "Erlebnis"
+  antonyme:
+    - "Unerfahrenheit"
+    - "Theorie"
+  kollokationen:
+    - "Erfahrungen sammeln"
+    - "aus Erfahrung sprechen"
+    - "eine bittere Erfahrung machen"
+
+Weltschmerz:
+  wort: "Weltschmerz"
+  artikel: "der"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈvɛltʃmɛʁts"
+  niveau: "B2"
+  bedeutungen:
+    - "Die trübe Traurigkeit darüber, dass die Welt hinter dem zurückbleibt, was man von ihr erhofft."
+  etymologie: >-
+    Geprägt von Jean Paul um 1827. Das Wort fasst ein Lebensgefühl der
+    Romantik zusammen, das sich ebenso bei Byron wie bei Heine findet. Heute
+    wird es meist mit einem ironischen Unterton gebraucht.
+  beispiele:
+    - "Mit siebzehn und einem Band Rilke unterm Arm hatte er ordentlich Weltschmerz."
+    - "Aus dem Roman spricht der Weltschmerz seiner ganzen Generation."
+    - "Sonntagabends überkommt mich ein leiser Weltschmerz."
+  synonyme:
+    - "Melancholie"
+    - "Schwermut"
+    - "Lebensüberdruss"
+    - "Trübsinn"
+  antonyme:
+    - "Lebensfreude"
+    - "Zuversicht"
+  kollokationen:
+    - "von Weltschmerz erfüllt sein"
+    - "ein Anfall von Weltschmerz"
+
+Gefühl:
+  wort: "Gefühl"
+  artikel: "das"
+  plural: "die Gefühle"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɡəˈfyːl"
+  niveau: "A2"
+  bedeutungen:
+    - "Eine innere Regung wie Freude, Angst oder Trauer."
+    - "Ein Eindruck, den man nicht begründen kann, aber deutlich spürt."
+    - "Die Fähigkeit, mit der Haut etwas wahrzunehmen."
+  etymologie: >-
+    Substantivierung von „fühlen“, ahd. fuolen, womit ursprünglich das Tasten
+    mit der Hand gemeint war. Erst im 18. Jahrhundert, in der Zeit der
+    Empfindsamkeit, rückt die seelische Bedeutung in den Vordergrund. Der
+    Tastsinn ist in „kein Gefühl mehr in den Fingern haben“ erhalten geblieben.
+  beispiele:
+    - "Ich hatte gleich ein gutes Gefühl bei der Sache."
+    - "Vor Kälte hatte sie kein Gefühl mehr in den Zehen."
+    - "Er zeigt seine Gefühle selten, aber sie sind da."
+  synonyme:
+    - "Empfindung"
+    - "Emotion"
+    - "Regung"
+    - "Ahnung"
+  antonyme:
+    - "Verstand"
+    - "Gleichgültigkeit"
+  kollokationen:
+    - "ein gutes Gefühl haben"
+    - "seinen Gefühlen freien Lauf lassen"
+    - "kein Gefühl für Zeit haben"
+
+Kehrseite:
+  wort: "Kehrseite"
+  artikel: "die"
+  plural: "die Kehrseiten"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈkeːɐ̯ˌzaɪ̯tə"
+  niveau: "C1"
+  bedeutungen:
+    - "Die Rückseite von etwas."
+    - "Der ungünstige Teil einer an sich guten Sache."
+  etymologie: >-
+    Zu „kehren“ im Sinne von „wenden“: gemeint war ursprünglich die abgewandte
+    Seite einer Münze, also das, was man sieht, wenn man sie umdreht. Aus
+    diesem Bild stammt die feste Wendung „die Kehrseite der Medaille“, die
+    heute fast nur noch übertragen gebraucht wird.
+  beispiele:
+    - "Die Kehrseite der Freiheit ist, dass niemand dir sagt, was richtig ist."
+    - "Jeder Erfolg hat eine Kehrseite, über die selten gesprochen wird."
+    - "Auf der Kehrseite der Karte stand eine Adresse."
+  synonyme:
+    - "Rückseite"
+    - "Schattenseite"
+    - "Nachteil"
+    - "Revers"
+  antonyme:
+    - "Vorderseite"
+    - "Vorzug"
+  kollokationen:
+    - "die Kehrseite der Medaille"
+    - "die Kehrseite von etwas sein"
+
+Zufall:
+  wort: "Zufall"
+  artikel: "der"
+  plural: "die Zufälle"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈtsuːfal"
+  niveau: "B1"
+  bedeutungen:
+    - "Ein Ereignis, das ohne erkennbare Absicht oder Ursache eintritt."
+  etymologie: >-
+    Mhd. zuoval, wörtlich „das, was einem zufällt“. Das Wort ist eine
+    Lehnübersetzung des lateinischen accidens und meinte zunächst das, was
+    einer Sache nur nebenbei zustößt. Das Bild des Fallens steckt auch noch im
+    Verb „zufallen“.
+  beispiele:
+    - "Wir haben uns durch reinen Zufall am Bahnhof getroffen."
+    - "Dass beide denselben Namen tragen, ist kein Zufall."
+    - "Bei der Prüfung wollte sie nichts dem Zufall überlassen."
+  synonyme:
+    - "Fügung"
+    - "Glücksfall"
+    - "Koinzidenz"
+    - "Zusammentreffen"
+  antonyme:
+    - "Absicht"
+    - "Notwendigkeit"
+    - "Plan"
+  kollokationen:
+    - "durch Zufall"
+    - "der Zufall wollte es, dass …"
+    - "nichts dem Zufall überlassen"
+
+Wehmut:
+  wort: "Wehmut"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈveːmuːt"
+  niveau: "B2"
+  bedeutungen:
+    - "Eine leise Traurigkeit, die mit Zuneigung auf etwas Vergangenes zurückblickt."
+  etymologie: >-
+    Aus „weh“ und „Mut“ in der alten Bedeutung „Sinn, Gemüt“ — dieselbe Bildung
+    wie in Sanftmut, Anmut und Schwermut. Das Wort ist seit dem 17. Jahrhundert
+    geläufig und beschreibt eine Trauer, die nicht wirklich wehtut, sondern
+    eher süß schmeckt.
+  beispiele:
+    - "Mit einer gewissen Wehmut schloss er die Tür der alten Wohnung ab."
+    - "Sie denkt ohne Wehmut an diese Jahre zurück."
+    - "In seiner Stimme lag Wehmut, aber kein Vorwurf."
+  synonyme:
+    - "Melancholie"
+    - "Schwermut"
+    - "Trauer"
+    - "Rührung"
+  antonyme:
+    - "Ausgelassenheit"
+    - "Heiterkeit"
+  kollokationen:
+    - "mit Wehmut zurückblicken"
+    - "von Wehmut ergriffen sein"
+
+Nachbar:
+  wort: "Nachbar"
+  artikel: "der"
+  plural: "die Nachbarn"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈnaxbaːɐ̯"
+  niveau: "A2"
+  bedeutungen:
+    - "Jemand, der nebenan oder ganz in der Nähe wohnt."
+  etymologie: >-
+    Ahd. nāhgibūr, zusammengesetzt aus nāh „nahe“ und gibūr „Bewohner, Bauer“ —
+    also der, der in der Nähe wohnt. Genau derselbe Bau steckt im englischen
+    neighbour. Der zweite Teil gehört zu „bauen“ in der alten Bedeutung
+    „wohnen“, die auch im „Bauern“ steckt.
+  beispiele:
+    - "Unser neuer Nachbar hat sich gestern kurz vorgestellt."
+    - "Die Nachbarn gießen die Blumen, wenn wir im Urlaub sind."
+    - "Der Nachbar von gegenüber grüßt grundsätzlich nicht."
+  synonyme:
+    - "Anwohner"
+    - "Anrainer"
+    - "Hausgenosse"
+  antonyme: []
+  kollokationen:
+    - "gute Nachbarn sein"
+    - "der Nachbar von gegenüber"
+    - "sich mit den Nachbarn verstehen"
+
+Fingerspitzengefühl:
+  wort: "Fingerspitzengefühl"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfɪŋɐˌʃpɪtsn̩ɡəˌfyːl"
+  niveau: "C1"
+  bedeutungen:
+    - "Ein feines Gespür dafür, wie man in einer heiklen Lage vorgehen muss, ohne jemanden zu verletzen."
+  etymologie: >-
+    Wörtlich das Gefühl in den Fingerspitzen, wo der Tastsinn am feinsten ist.
+    Seit dem späten 19. Jahrhundert wird das Bild auf den Umgang mit Menschen
+    und schwierigen Themen übertragen. Es gehört zu einer ganzen Reihe von
+    Wörtern, die geistige Feinheit als Tastsinn beschreiben.
+  beispiele:
+    - "Diese Verhandlung verlangt Fingerspitzengefühl, keine Lautstärke."
+    - "Sie hat das Thema mit viel Fingerspitzengefühl angesprochen."
+    - "Ihm fehlt jedes Fingerspitzengefühl für den richtigen Moment."
+  synonyme:
+    - "Feingefühl"
+    - "Takt"
+    - "Einfühlungsvermögen"
+    - "Sensibilität"
+  antonyme:
+    - "Taktlosigkeit"
+    - "Grobheit"
+  kollokationen:
+    - "Fingerspitzengefühl beweisen"
+    - "etwas mit Fingerspitzengefühl behandeln"
+
+Vertrauen:
+  wort: "Vertrauen"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "fɛɐ̯ˈtʁaʊ̯ən"
+  niveau: "B1"
+  bedeutungen:
+    - "Die feste Überzeugung, dass man sich auf jemanden oder etwas verlassen kann."
+  etymologie: >-
+    Substantiviertes „vertrauen“, zu ahd. trūēn. Die Wortfamilie um „treu“,
+    „trauen“ und „Trost“ gehört zu einer Wurzel mit der Bedeutung „fest, hart“,
+    aus der auch „Baum“ (engl. tree) stammt. Vertrauen war ursprünglich also
+    das Bild von etwas, das fest steht.
+  beispiele:
+    - "Vertrauen aufzubauen dauert Jahre und lässt sich in einem Satz zerstören."
+    - "Sie hat volles Vertrauen in ihre Kollegin."
+    - "Das sage ich dir im Vertrauen."
+  synonyme:
+    - "Zutrauen"
+    - "Zuversicht"
+    - "Verlass"
+    - "Glaube"
+  antonyme:
+    - "Misstrauen"
+    - "Argwohn"
+    - "Zweifel"
+  kollokationen:
+    - "Vertrauen fassen"
+    - "jemandes Vertrauen missbrauchen"
+    - "im Vertrauen gesagt"
+
+Zuversicht:
+  wort: "Zuversicht"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈtsuːfɛɐ̯ˌzɪçt"
+  niveau: "B2"
+  bedeutungen:
+    - "Das ruhige Vertrauen darauf, dass etwas gut ausgehen wird."
+  etymologie: >-
+    Mhd. zuoversiht, wörtlich „das Hinsehen auf etwas“. Das Bild ist der Blick,
+    der sich auf das richtet, worauf man sich verlässt. Verwandt gebaut sind
+    „Vorsicht“, „Nachsicht“ und „Rücksicht“, die alle ein Sehen in eine
+    bestimmte Richtung meinen.
+  beispiele:
+    - "Trotz der schlechten Zahlen blickt sie mit Zuversicht ins nächste Jahr."
+    - "Seine Zuversicht steckte alle anderen an."
+    - "Nach der dritten Absage verlor er die Zuversicht."
+  synonyme:
+    - "Optimismus"
+    - "Hoffnung"
+    - "Vertrauen"
+    - "Hoffnungsfreude"
+  antonyme:
+    - "Verzweiflung"
+    - "Pessimismus"
+    - "Mutlosigkeit"
+  kollokationen:
+    - "voller Zuversicht sein"
+    - "die Zuversicht verlieren"
+    - "mit Zuversicht in die Zukunft blicken"
+
+Erinnerung:
+  wort: "Erinnerung"
+  artikel: "die"
+  plural: "die Erinnerungen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɛɐ̯ˈʔɪnəʁʊŋ"
+  niveau: "A2"
+  bedeutungen:
+    - "Das Bild eines Erlebnisses, das im Gedächtnis geblieben ist."
+    - "Ein Hinweis, der jemanden an etwas Vergessenes denken lässt."
+  etymologie: >-
+    Zu „erinnern“, einer Bildung zu „inner“. Wörtlich geht es darum, etwas nach
+    innen zu holen oder ins Innere zurückzurufen. Das Wort ist seit dem 15.
+    Jahrhundert belegt und verdrängte allmählich ältere Ausdrücke wie
+    „gedenken“.
+  beispiele:
+    - "An den Umzug habe ich nur noch eine vage Erinnerung."
+    - "Der Geruch von nassem Laub weckt bei mir sofort Erinnerungen."
+    - "Zur Erinnerung an den Abend haben wir ein Foto gemacht."
+  synonyme:
+    - "Andenken"
+    - "Gedächtnis"
+    - "Rückblick"
+    - "Reminiszenz"
+  antonyme:
+    - "Vergessen"
+    - "Vergessenheit"
+  kollokationen:
+    - "eine Erinnerung wachrufen"
+    - "zur Erinnerung an etwas"
+    - "in guter Erinnerung bleiben"
+
+Verantwortung:
+  wort: "Verantwortung"
+  artikel: "die"
+  plural: "die Verantwortungen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "fɛɐ̯ˈʔantvɔʁtʊŋ"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Pflicht, für das eigene Handeln und dessen Folgen einzustehen."
+    - "Die Aufgabe, für jemanden oder etwas zu sorgen."
+  etymologie: >-
+    Zu „verantworten“, einem Wort aus der Rechtssprache: Wer sich verantwortet,
+    gibt vor Gericht Antwort auf eine Anklage. Im Kern steckt „Antwort“, ahd.
+    antwurti „Entgegnung“. Aus der gerichtlichen wurde erst später die
+    allgemeine moralische Bedeutung.
+  beispiele:
+    - "Für diesen Fehler übernehme ich die Verantwortung."
+    - "Mit dem Hund kam eine Verantwortung ins Haus, die er unterschätzt hatte."
+    - "Am Ende trägt die Verantwortung immer die Leitung."
+  synonyme:
+    - "Pflicht"
+    - "Haftung"
+    - "Zuständigkeit"
+    - "Obhut"
+  antonyme:
+    - "Verantwortungslosigkeit"
+    - "Gleichgültigkeit"
+  kollokationen:
+    - "Verantwortung übernehmen"
+    - "jemanden zur Verantwortung ziehen"
+    - "die Verantwortung tragen"
+
+Übermut:
+  wort: "Übermut"
+  artikel: "der"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈyːbɐmuːt"
+  niveau: "B2"
+  bedeutungen:
+    - "Eine ausgelassene Stimmung, in der man leichtsinnig wird."
+    - "Eine Überheblichkeit, die die eigenen Grenzen nicht mehr sieht."
+  etymologie: >-
+    Mhd. übermuot meinte vor allem Hochmut und Anmaßung: einen Sinn, der „über“
+    das rechte Maß hinausgeht. Heute klingt das Wort milder und meint eher
+    fröhlichen Leichtsinn. Das Sprichwort „Übermut tut selten gut“ bewahrt den
+    alten warnenden Ton.
+  beispiele:
+    - "Im Übermut sprangen sie noch im Oktober in den See."
+    - "Sein Übermut hat ihn diesmal teuer zu stehen kommen lassen."
+    - "Aus lauter Übermut haben die Kinder das halbe Zimmer umgeräumt."
+  synonyme:
+    - "Ausgelassenheit"
+    - "Leichtsinn"
+    - "Hochmut"
+    - "Vermessenheit"
+  antonyme:
+    - "Vorsicht"
+    - "Bescheidenheit"
+    - "Zurückhaltung"
+  kollokationen:
+    - "aus lauter Übermut"
+    - "Übermut tut selten gut"
+    - "im Übermut handeln"
+
+neugierig:
+  wort: "neugierig"
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: "Adjektiv"
+  ipa: "ˈnɔɪ̯ɡiːʁɪç"
+  niveau: "A2"
+  bedeutungen:
+    - "So, dass man unbedingt wissen möchte, was es Neues gibt."
+    - "So, dass man sich zu sehr für die Angelegenheiten anderer interessiert."
+  etymologie: >-
+    Aus „neu“ und „gierig“. Ursprünglich war das Wort deutlich abwertend: Wer
+    neugierig war, war „gierig nach Neuem“. Erst allmählich bekam es den
+    freundlichen Klang von Wissensdurst; der alte Vorwurf klingt noch mit,
+    sobald es um fremde Angelegenheiten geht.
+  beispiele:
+    - "Ich bin neugierig, wie das Buch ausgeht."
+    - "Sei nicht so neugierig, das geht dich nichts an."
+    - "Ihre Fragen haben mich erst richtig neugierig gemacht."
+  synonyme:
+    - "wissbegierig"
+    - "interessiert"
+    - "gespannt"
+    - "schaulustig"
+  antonyme:
+    - "gleichgültig"
+    - "desinteressiert"
+    - "teilnahmslos"
+  kollokationen:
+    - "neugierig auf etwas sein"
+    - "jemanden neugierig machen"
+
+Rücksicht:
+  wort: "Rücksicht"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʁʏkˌzɪçt"
+  niveau: "B1"
+  bedeutungen:
+    - "Das Verhalten, bei dem man die Bedürfnisse und Gefühle anderer beachtet."
+  etymologie: >-
+    Wörtlich „das Zurückblicken“ — eine Lehnübersetzung des lateinischen
+    respectus, aus re- „zurück“ und spicere „sehen“. Dasselbe Bild steckt im
+    englischen respect. Wer Rücksicht nimmt, sieht im Weitergehen also noch
+    einmal nach den anderen zurück.
+  beispiele:
+    - "Nimm bitte Rücksicht auf die Nachbarn, es ist nach zehn."
+    - "Aus Rücksicht auf ihre Mutter hat sie nichts gesagt."
+    - "Er setzt seine Pläne ohne Rücksicht auf Verluste durch."
+  synonyme:
+    - "Nachsicht"
+    - "Takt"
+    - "Verständnis"
+    - "Schonung"
+  antonyme:
+    - "Rücksichtslosigkeit"
+    - "Egoismus"
+  kollokationen:
+    - "Rücksicht auf jemanden nehmen"
+    - "ohne Rücksicht auf Verluste"
+    - "aus Rücksicht schweigen"
+
+Vielfalt:
+  wort: "Vielfalt"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfiːlfalt"
+  niveau: "B2"
+  bedeutungen:
+    - "Das Vorhandensein vieler verschiedener Formen, Arten oder Möglichkeiten."
+  etymologie: >-
+    Gebildet zu „vielfältig“, dessen zweiter Teil zu „falten“ gehört: Etwas
+    Vielfältiges ist wörtlich etwas vielfach Gefaltetes. Dieselbe Bildung
+    steckt in „einfältig“ und „mannigfaltig“. Das Substantiv „Vielfalt“ selbst
+    ist jünger und wurde erst im 19. Jahrhundert geläufig.
+  beispiele:
+    - "Auf dem Markt gibt es eine erstaunliche Vielfalt an altem Gemüse."
+    - "Die Vielfalt der Dialekte geht langsam verloren."
+    - "Vielfalt macht eine Stadt interessant."
+  synonyme:
+    - "Mannigfaltigkeit"
+    - "Bandbreite"
+    - "Fülle"
+    - "Diversität"
+  antonyme:
+    - "Einheitlichkeit"
+    - "Eintönigkeit"
+    - "Einförmigkeit"
+  kollokationen:
+    - "eine große Vielfalt an etwas"
+    - "kulturelle Vielfalt"
+    - "die Vielfalt bewahren"
+
+Geduld:
+  wort: "Geduld"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɡəˈdʊlt"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Fähigkeit, ruhig zu warten oder etwas Unangenehmes ohne Ärger auszuhalten."
+  etymologie: >-
+    Zu „dulden“, ahd. gidult. Die Wortfamilie gehört zu einer alten Wurzel mit
+    der Bedeutung „tragen, ertragen“, aus der auch das lateinische tolerare
+    stammt. Geduld ist damit von Haus aus keine Untätigkeit, sondern das Tragen
+    einer Last über eine Zeit hinweg.
+  beispiele:
+    - "Für dieses Rezept braucht man vor allem Geduld."
+    - "Mit den Kindern hat sie eine Geduld, die ich nur bewundern kann."
+    - "Nach einer Stunde am Telefon riss ihm der Geduldsfaden."
+  synonyme:
+    - "Ausdauer"
+    - "Langmut"
+    - "Gelassenheit"
+    - "Nachsicht"
+  antonyme:
+    - "Ungeduld"
+    - "Hast"
+  kollokationen:
+    - "Geduld haben"
+    - "jemandes Geduld auf die Probe stellen"
+    - "sich in Geduld üben"
+
+Gelegenheit:
+  wort: "Gelegenheit"
+  artikel: "die"
+  plural: "die Gelegenheiten"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ɡəˈleːɡn̩haɪ̯t"
+  niveau: "B1"
+  bedeutungen:
+    - "Ein günstiger Zeitpunkt oder Umstand, um etwas zu tun."
+    - "Ein besonderer Anlass."
+  etymologie: >-
+    Zu „gelegen“, dem Partizip von „liegen“: Gelegen ist, was zeitlich oder
+    räumlich gut passt. Die Gelegenheit ist also die günstige Lage der Dinge.
+    Das Sprichwort „Gelegenheit macht Diebe“ ist seit dem 16. Jahrhundert
+    bezeugt.
+  beispiele:
+    - "Ich hatte noch keine Gelegenheit, mit ihr darüber zu sprechen."
+    - "Diese Gelegenheit kommt so schnell nicht wieder — ergreif sie."
+    - "Das Kleid trägt sie nur zu besonderen Gelegenheiten."
+  synonyme:
+    - "Chance"
+    - "Anlass"
+    - "Möglichkeit"
+    - "Augenblick"
+  antonyme: []
+  kollokationen:
+    - "die Gelegenheit ergreifen"
+    - "bei Gelegenheit"
+    - "Gelegenheit macht Diebe"
+
+Haus:
+  wort: "Haus"
+  artikel: "das"
+  plural: "die Häuser"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "haʊ̯s"
+  niveau: "A2"
+  bedeutungen:
+    - "Ein Gebäude, in dem Menschen wohnen."
+    - "Die Familie oder Gemeinschaft, die darin lebt."
+  etymologie: >-
+    Ahd. und mhd. hūs, ein altes germanisches Wort (engl. house, niederl.
+    huis). Die weitere Herkunft ist nicht sicher geklärt; häufig wird eine
+    Wurzel mit der Bedeutung „bedecken, verbergen“ angenommen. Im übertragenen
+    Sinn steht „Haus“ seit alter Zeit für die Familie, etwa im „Haus
+    Habsburg“.
+  beispiele:
+    - "Das Haus am Ende der Straße steht seit Jahren leer."
+    - "Wir sind gestern Abend spät nach Hause gekommen."
+    - "Im ganzen Haus roch es nach frischem Brot."
+  synonyme:
+    - "Gebäude"
+    - "Wohnhaus"
+    - "Anwesen"
+    - "Heim"
+  antonyme: []
+  kollokationen:
+    - "nach Hause gehen"
+    - "zu Hause sein"
+    - "das Haus hüten"
