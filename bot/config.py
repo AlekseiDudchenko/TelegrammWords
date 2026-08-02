@@ -20,6 +20,17 @@ class ConfigError(RuntimeError):
     """A required environment variable is missing."""
 
 
+def _env(name: str) -> str | None:
+    """Read a variable, treating blank as unset.
+
+    GitHub Actions substitutes an undefined secret with an empty string, so
+    `${{ secrets.TELEGRAM_CHAT_ID }}` sets the variable rather than leaving it
+    out. Without this, a default would never apply in a workflow.
+    """
+    value = os.environ.get(name, "").strip()
+    return value or None
+
+
 @dataclass(frozen=True)
 class Config:
     anthropic_api_key: str | None
@@ -43,11 +54,11 @@ class Config:
     @classmethod
     def from_env(cls) -> "Config":
         return cls(
-            anthropic_api_key=os.environ.get("ANTHROPIC_API_KEY"),
-            telegram_bot_token=os.environ.get("TELEGRAM_BOT_TOKEN"),
-            telegram_chat_id=os.environ.get("TELEGRAM_CHAT_ID", DEFAULT_CHAT_ID),
-            model=os.environ.get("ANTHROPIC_MODEL", DEFAULT_MODEL),
-            data_dir=Path(os.environ.get("WORDS_DATA_DIR", DEFAULT_DATA_DIR)),
+            anthropic_api_key=_env("ANTHROPIC_API_KEY"),
+            telegram_bot_token=_env("TELEGRAM_BOT_TOKEN"),
+            telegram_chat_id=_env("TELEGRAM_CHAT_ID") or DEFAULT_CHAT_ID,
+            model=_env("ANTHROPIC_MODEL") or DEFAULT_MODEL,
+            data_dir=Path(_env("WORDS_DATA_DIR") or DEFAULT_DATA_DIR),
         )
 
     def require_anthropic(self) -> str:
