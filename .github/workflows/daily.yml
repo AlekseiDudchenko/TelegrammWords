@@ -2,22 +2,22 @@ name: Wort des Tages
 
 on:
   schedule:
-    # UTC — 08:00 in Berlin im Sommer, 07:00 im Winter.
-    # GitHub-Cron ist nicht minutengenau; Verzögerungen sind normal.
+    # UTC — 08:00 Berlin time in summer, 07:00 in winter.
+    # GitHub cron is not minute-accurate; delays are normal.
     - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       word:
-        description: "Bestimmtes Wort statt des nächsten aus der Liste"
+        description: "Specific word instead of the next one from the list"
         required: false
         type: string
       force:
-        description: "Auch posten, wenn heute schon gepostet wurde"
+        description: "Post even if something was already posted today"
         required: false
         type: boolean
         default: false
       dry_run:
-        description: "Nur die Karte ins Log schreiben, nichts senden"
+        description: "Only write the card to the log, send nothing"
         required: false
         type: boolean
         default: false
@@ -42,7 +42,7 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Karte erzeugen und posten
+      - name: Generate and post the card
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -53,25 +53,25 @@ jobs:
             ${{ inputs.force && '--force' || '' }} \
             ${{ inputs.dry_run && '--dry-run' || '' }}
 
-      # Der Zustand wird nach dem Senden festgeschrieben. Schlägt der Push fehl,
-      # sieht der nächste Lauf das alte Datum und würde doppelt posten — daher
-      # der Rebase-Versuch in der Schleife und ein fehlschlagender Job als Signal.
-      - name: Zustand festschreiben
+      # State is committed after sending. If the push fails, the next run sees
+      # the old date and would post twice — hence the rebase-retry loop and a
+      # failing job as the signal.
+      - name: Commit state
         if: success() && !inputs.dry_run
         run: |
           if git diff --quiet -- data/state.json; then
-            echo "Zustand unverändert."
+            echo "State unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/state.json
-          git commit -m "Wort des Tages: Zustand aktualisiert"
+          git commit -m "Wort des Tages: update state"
           for delay in 0 2 4 8; do
             sleep "$delay"
             git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && \
               git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
-            echo "Push fehlgeschlagen, neuer Versuch …"
+            echo "Push failed, retrying …"
           done
-          echo "::error::Zustand konnte nicht gepusht werden — nächster Lauf könnte doppelt posten."
+          echo "::error::Could not push state — the next run may post twice."
           exit 1

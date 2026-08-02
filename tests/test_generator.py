@@ -1,4 +1,4 @@
-"""Der Generator wird gegen einen Fake-Client getestet — keine echten API-Aufrufe."""
+"""The generator is tested against a fake client — no real API calls."""
 
 import json
 from types import SimpleNamespace
@@ -8,7 +8,7 @@ import pytest
 from bot import generator
 from bot.wordlist import Entry
 
-ENTRY = Entry(wort="Haus", niveau="A2")
+ENTRY = Entry(word="Haus", level="A2")
 
 VALID = {
     "wort": "Haus",
@@ -28,7 +28,7 @@ VALID = {
 
 
 class FakeClient:
-    """Liefert die vorgegebenen Antworten der Reihe nach."""
+    """Returns the given replies in order."""
 
     def __init__(self, *responses):
         self._responses = list(responses)
@@ -56,7 +56,7 @@ def test_valid_response_is_parsed():
 
 
 def test_invalid_response_is_retried_once():
-    client = FakeClient(reply("{nicht json"), reply(json.dumps(VALID)))
+    client = FakeClient(reply("{not json"), reply(json.dumps(VALID)))
     card = generator.generate(client, "claude-opus-5", ENTRY)
     assert card.wort == "Haus"
     assert client.calls == 2
@@ -64,19 +64,19 @@ def test_invalid_response_is_retried_once():
 
 def test_two_invalid_responses_fail_loudly():
     missing_field = {k: v for k, v in VALID.items() if k != "etymologie"}
-    client = FakeClient(reply("{nicht json"), reply(json.dumps(missing_field)))
-    with pytest.raises(generator.GenerationError, match="zwei Versuchen"):
+    client = FakeClient(reply("{not json"), reply(json.dumps(missing_field)))
+    with pytest.raises(generator.GenerationError, match="two attempts"):
         generator.generate(client, "claude-opus-5", ENTRY)
 
 
 def test_refusal_is_not_retried():
     client = FakeClient(reply("", stop_reason="refusal"))
-    with pytest.raises(generator.GenerationError, match="abgelehnt"):
+    with pytest.raises(generator.GenerationError, match="refused"):
         generator.generate(client, "claude-opus-5", ENTRY)
     assert client.calls == 1
 
 
 def test_truncated_response_fails_instead_of_posting_half_a_card():
     client = FakeClient(reply('{"wort": "Ha', stop_reason="max_tokens"))
-    with pytest.raises(generator.GenerationError, match="abgeschnitten"):
+    with pytest.raises(generator.GenerationError, match="truncated"):
         generator.generate(client, "claude-opus-5", ENTRY)

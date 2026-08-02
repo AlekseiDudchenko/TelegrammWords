@@ -1,4 +1,4 @@
-"""Zustand: welches Wort war schon dran, und wann wurde zuletzt gepostet."""
+"""State: which words have been used, and when we last posted."""
 
 from __future__ import annotations
 
@@ -44,33 +44,33 @@ class State:
         return self.last_post_date == today.isoformat()
 
     def next_word(self, entries: list[Entry]) -> Entry:
-        """Nächstes noch nicht benutztes Wort des aktuellen Zyklus.
+        """Return the next unused word of the current cycle.
 
-        Die Reihenfolge wird pro Zyklus deterministisch gemischt, damit sie sich
-        aus `cycle` reproduzieren lässt und neue Wörter in der Liste keine
-        laufende Runde durcheinanderbringen.
+        The order is shuffled deterministically per cycle so it can be
+        reproduced from `cycle` alone, and so that words added to the list
+        mid-rotation don't disturb the current round.
         """
         if not entries:
-            raise ValueError("Wortliste ist leer.")
+            raise ValueError("word list is empty.")
 
         done = set(self.posted)
         for _ in range(2):
             for entry in self._shuffled(entries):
-                if entry.wort not in done:
+                if entry.word not in done:
                     return entry
-            # Runde durch: neuer Zyklus, neue Reihenfolge.
+            # Round complete: new cycle, new order.
             self.cycle += 1
             self.posted = []
             done = set()
 
-        raise AssertionError("unerreichbar: nach einem Zyklus-Reset ist alles frei")
+        raise AssertionError("unreachable: after a cycle reset every word is free")
 
     def _shuffled(self, entries: list[Entry]) -> list[Entry]:
-        ordered = sorted(entries, key=lambda e: e.wort)
+        ordered = sorted(entries, key=lambda e: e.word)
         Random(self.cycle).shuffle(ordered)
         return ordered
 
-    def record(self, wort: str, today: date) -> None:
-        if wort not in self.posted:
-            self.posted.append(wort)
+    def record(self, word: str, today: date) -> None:
+        if word not in self.posted:
+            self.posted.append(word)
         self.last_post_date = today.isoformat()

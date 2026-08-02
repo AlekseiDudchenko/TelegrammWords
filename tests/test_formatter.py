@@ -45,7 +45,7 @@ def test_model_text_is_html_escaped():
     card = HAUS.model_copy(update={"bedeutungen": ["Zeichen < und > und &"]})
     out = render(card)
     assert "Zeichen &lt; und &gt; und &amp;" in out
-    # Die eigenen Tags des Templates bleiben erhalten.
+    # The template's own tags survive.
     assert "<b>Wort des Tages</b>" in out
 
 

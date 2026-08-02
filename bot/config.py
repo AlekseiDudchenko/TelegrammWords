@@ -1,4 +1,4 @@
-"""Konfiguration aus Umgebungsvariablen."""
+"""Configuration read from environment variables."""
 
 from __future__ import annotations
 
@@ -9,15 +9,15 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA_DIR = REPO_ROOT / "data"
 
-# Der Kanal, in den gepostet wird. Telegram akzeptiert @name direkt als chat_id,
-# eine numerische ID wird nur für private Kanäle gebraucht.
+# The channel we post to. Telegram accepts @name directly as a chat_id; a
+# numeric ID is only required for private channels.
 DEFAULT_CHAT_ID = "@wunderwordsde"
 
 DEFAULT_MODEL = "claude-opus-5"
 
 
 class ConfigError(RuntimeError):
-    """Eine benötigte Umgebungsvariable fehlt."""
+    """A required environment variable is missing."""
 
 
 @dataclass(frozen=True)
@@ -49,17 +49,16 @@ class Config:
     def require_anthropic(self) -> str:
         if not self.anthropic_api_key:
             raise ConfigError(
-                "ANTHROPIC_API_KEY ist nicht gesetzt — ohne Schlüssel kann keine "
-                "Wortkarte erzeugt werden."
+                "ANTHROPIC_API_KEY is not set — no card can be generated without it."
             )
         return self.anthropic_api_key
 
     def require_telegram(self) -> tuple[str, str]:
         if not self.telegram_bot_token:
             raise ConfigError(
-                "TELEGRAM_BOT_TOKEN ist nicht gesetzt — zum Testen des Formats "
-                "--dry-run benutzen."
+                "TELEGRAM_BOT_TOKEN is not set — use --dry-run to check the "
+                "message format without sending."
             )
         if not self.telegram_chat_id:
-            raise ConfigError("TELEGRAM_CHAT_ID ist leer.")
+            raise ConfigError("TELEGRAM_CHAT_ID is empty.")
         return self.telegram_bot_token, self.telegram_chat_id

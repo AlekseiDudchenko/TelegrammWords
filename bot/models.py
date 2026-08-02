@@ -1,4 +1,9 @@
-"""Schema der Wortkarte — zugleich das JSON-Schema für die Claude-Antwort."""
+"""The word card schema, which doubles as the JSON schema for Claude's reply.
+
+Field names stay German because they mirror German grammatical categories and
+are part of the data the bot renders. Everything the model writes into them is
+German too — the field descriptions below say so explicitly.
+"""
 
 from __future__ import annotations
 
@@ -6,67 +11,70 @@ from typing import Any
 
 from pydantic import BaseModel, Field
 
-NIVEAUS = ("A1", "A2", "B1", "B2", "C1", "C2")
+LEVELS = ("A1", "A2", "B1", "B2", "C1", "C2")
 
 
 class WordCard(BaseModel):
-    """Eine einsprachige Wortkarte. Alle Texte sind auf Deutsch."""
+    """A monolingual German word card. All values are written in German."""
 
-    wort: str = Field(description="Das Stichwort in Grundform, ohne Artikel.")
+    wort: str = Field(description="The headword in its base form, without article.")
     artikel: str | None = Field(
-        description="der/die/das bei Substantiven, sonst null.",
+        description="der/die/das for nouns, null otherwise.",
     )
     plural: str | None = Field(
-        description="Pluralform bei Substantiven (z. B. 'die Häuser'), sonst null.",
+        description="Plural form for nouns (e.g. 'die Häuser'), null otherwise.",
     )
     stammformen: str | None = Field(
         description=(
-            "Bei Verben die Stammformen, z. B. 'gehen – ging – ist gegangen'. "
-            "Sonst null."
+            "For verbs, the principal parts, e.g. 'gehen – ging – ist gegangen'. "
+            "Null otherwise."
         ),
     )
     wortart: str = Field(
-        description="Substantiv, Verb, Adjektiv, Adverb, Präposition, Konjunktion …",
+        description=(
+            "Part of speech, named in German: Substantiv, Verb, Adjektiv, "
+            "Adverb, Präposition, Konjunktion …"
+        ),
     )
-    ipa: str = Field(description="Lautschrift in IPA, ohne eckige Klammern.")
-    niveau: str = Field(description=f"GER-Niveau, eines von: {', '.join(NIVEAUS)}.")
+    ipa: str = Field(description="IPA transcription, without square brackets.")
+    niveau: str = Field(description=f"CEFR level, one of: {', '.join(LEVELS)}.")
     bedeutungen: list[str] = Field(
         description=(
-            "1 bis 3 Bedeutungen, einsprachig auf Deutsch erklärt, je ein kurzer "
-            "Satz ohne Nummerierung."
+            "1 to 3 meanings, each explained in German in one short sentence, "
+            "monolingual and without numbering."
         ),
     )
     etymologie: str = Field(
         description=(
-            "Herkunft des Wortes in 2 bis 4 Sätzen: althochdeutsche, "
-            "mittelhochdeutsche, lateinische oder griechische Wurzeln, "
-            "Bedeutungswandel. Keine erfundenen Angaben — bei unsicherer "
-            "Herkunft das ausdrücklich sagen."
+            "Origin of the word in German, 2 to 4 sentences: Old High German, "
+            "Middle High German, Latin or Greek roots, and shifts in meaning. "
+            "Do not invent anything — if the origin is disputed or unclear, say "
+            "so explicitly."
         ),
     )
     beispiele: list[str] = Field(
-        description="2 bis 3 vollständige Beispielsätze, die das Wort enthalten.",
+        description="2 to 3 complete German example sentences containing the headword.",
     )
     synonyme: list[str] = Field(
-        description="3 bis 5 Synonyme, nur einzelne Wörter oder kurze Wendungen.",
+        description="3 to 5 German synonyms — single words or short phrases only.",
     )
     antonyme: list[str] = Field(
         description=(
-            "0 bis 4 Antonyme. Leere Liste, wenn es keine echten Gegenwörter "
-            "gibt — nichts erfinden."
+            "0 to 4 German antonyms. Return an empty list when the word has no "
+            "genuine opposite — do not invent one."
         ),
     )
     kollokationen: list[str] = Field(
-        description="2 bis 3 feste Wendungen oder typische Kollokationen.",
+        description="2 to 3 German set phrases or typical collocations.",
     )
 
 
 def card_json_schema() -> dict[str, Any]:
-    """Pydantic-Schema für Structured Outputs aufbereiten.
+    """Prepare the pydantic schema for structured outputs.
 
-    Die API verlangt `additionalProperties: false` und dass jedes Feld in
-    `required` steht. Optionale Felder sind über `str | None` abgedeckt: das
-    Modell muss sie liefern, darf aber null einsetzen.
+    The API requires `additionalProperties: false` and every field listed in
+    `required`. Optional fields are covered by `str | None`: the model must
+    return them but may set null.
     """
     schema = WordCard.model_json_schema()
     _tighten(schema)
@@ -78,7 +86,7 @@ def _tighten(node: Any) -> None:
         if node.get("type") == "object" and "properties" in node:
             node["additionalProperties"] = False
             node["required"] = list(node["properties"])
-        # Titles blähen das Schema nur auf.
+        # Titles only bloat the schema.
         node.pop("title", None)
         for value in node.values():
             _tighten(value)

@@ -1,87 +1,89 @@
-# TelegrammWords — «Wort des Tages»
+# TelegrammWords — "Wort des Tages"
 
-Телеграм-бот, который раз в день публикует карточку немецкого слова: значение,
-этимология, примеры, синонимы и антонимы. Все пояснения — на немецком
-(einsprachig), это осознанное решение: карточка сама по себе тренирует
-Leseverstehen.
+A Telegram bot that posts one German word card per day: meanings, etymology,
+examples, synonyms and antonyms. All explanations are in German (monolingual) —
+a deliberate choice, since the card itself then doubles as reading practice.
 
-## Принятые решения
+## Decisions
 
-| Вопрос | Решение |
+| Question | Decision |
 |---|---|
-| Контент | Claude API генерирует карточку на лету по слову из списка |
-| Язык карточки | Немецкий, einsprachig |
-| Запуск | GitHub Actions cron, один прогон в сутки |
-| Стек | Python 3.12 |
-| Хранилище | Файлы в репозитории (`data/`), состояние коммитится обратно |
+| Content | Claude API generates the card on the fly from a word in the list |
+| Card language | German, monolingual |
+| Scheduling | GitHub Actions cron, one run per day |
+| Stack | Python 3.12 |
+| Storage | Files in the repository (`data/`); state is committed back |
 
-Отдельной БД и сервера нет намеренно: нагрузка — одно сообщение в сутки,
-всё остальное было бы лишней инфраструктурой.
+There is deliberately no database and no server: the load is one message a day,
+and anything else would be infrastructure for its own sake.
 
-## Как это работает
+## How it works
 
 ```
 GitHub Actions (cron)
   └─ python -m bot.main
-       ├─ state.py     → выбрать следующее слово (без повторов)
+       ├─ state.py     → pick the next word (no repeats)
        ├─ generator.py → Claude API, structured output → WordCard
-       ├─ formatter.py → HTML-сообщение для Telegram
-       ├─ telegram.py  → sendMessage в канал
-       └─ state.py     → записать слово + дату в data/state.json
+       ├─ formatter.py → HTML message for Telegram
+       ├─ telegram.py  → sendMessage to the channel
+       └─ state.py     → record word + date in data/state.json
   └─ commit & push data/state.json
 ```
 
-## Структура репозитория
+## Repository layout
 
 ```
 bot/
   __init__.py
-  config.py      # чтение env, валидация на старте
-  models.py      # pydantic-схема WordCard
-  wordlist.py    # загрузка data/words.yml
-  state.py       # data/state.json: выбор слова, защита от дублей
-  generator.py   # вызов Claude API
+  config.py      # environment variables, validated on startup
+  models.py      # pydantic WordCard schema
+  wordlist.py    # loads data/words.yml
+  state.py       # data/state.json: word selection, double-post guard
   formatter.py   # WordCard → HTML
   telegram.py    # Bot API sendMessage
-  main.py        # CLI: --dry-run, --word WORT, --force
+  main.py        # CLI: --dry-run, --word WORD, --force
 data/
-  words.yml      # список слов с уровнем (A2/B1/B2/C1)
-  state.json     # {"posted": [...], "last_post_date": "2026-08-02"}
+  words.yml      # word list tagged by level (A2/B1/B2/C1)
+  state.json     # {"last_post_date": "2026-08-02", "cycle": 0, "posted": [...]}
 tests/
-  test_formatter.py, test_state.py, test_models.py
+  test_formatter.py, test_state.py, test_models.py, test_wordlist.py,
+  test_generator.py
 .github/workflows/
-  daily.yml      # cron + ручной запуск
+  daily.yml      # cron + manual dispatch
+  tests.yml      # pytest on every push
 ```
 
-## Схема карточки
+## Card schema
 
-Claude вызывается с `tools` и жёстким `input_schema`, ответ парсится в pydantic —
-свободного текста от модели мы не принимаем.
+Claude is called with a strict JSON schema and the reply is parsed into a
+pydantic model — free-form text from the model is not accepted.
 
 ```python
 class WordCard(BaseModel):
     wort: str                      # Haus
-    artikel: str | None            # das — для существительных
-    plural: str | None             # Häuser
-    stammformen: str | None        # для глаголов: geht – ging – ist gegangen
+    artikel: str | None            # das — nouns only
+    plural: str | None             # die Häuser
+    stammformen: str | None        # verbs: gehen – ging – ist gegangen
     wortart: str                   # Substantiv / Verb / Adjektiv ...
-    ipa: str                       # [haʊ̯s]
+    ipa: str                       # haʊ̯s
     niveau: str                    # A2 | B1 | B2 | C1
-    bedeutungen: list[str]         # 1–3 определения на немецком
-    etymologie: str                # 2–4 предложения: ahd./mhd./lat. корни
-    beispiele: list[str]           # 2–3 предложения
+    bedeutungen: list[str]         # 1–3 definitions, in German
+    etymologie: str                # 2–4 sentences: ahd./mhd./Latin roots
+    beispiele: list[str]           # 2–3 sentences
     synonyme: list[str]            # 3–5
-    antonyme: list[str]            # 0–4 (у многих слов их просто нет)
-    kollokationen: list[str]       # 2–3 устойчивых сочетания
+    antonyme: list[str]            # 0–4 (many words simply have none)
+    kollokationen: list[str]       # 2–3 set phrases
 ```
 
-`antonyme` намеренно допускает пустой список: заставлять модель выдумывать
-антоним к «Haus» — верный способ получить мусор.
+Field names are German on purpose: they mirror German grammatical categories
+and are part of the rendered card. `antonyme` deliberately allows an empty
+list — forcing the model to produce an antonym for "Haus" is a reliable way to
+get nonsense.
 
-## Формат поста
+## Message format
 
-`parse_mode=HTML` (не MarkdownV2 — там экранирование `.`, `-`, `!` превращается
-в источник багов).
+`parse_mode=HTML`, not MarkdownV2 — escaping `.`, `-` and `!` there is a
+standing source of bugs.
 
 ```
 🇩🇪 Wort des Tages · B1
@@ -105,56 +107,45 @@ Von mhd. hūs, ahd. hūs …
 💬 Wendungen: nach Hause gehen; das Haus hüten
 ```
 
-## Надёжность
+## Reliability
 
-- **Идемпотентность.** `state.json` хранит `last_post_date`. Повторный прогон в
-  тот же день ничего не отправляет — защита от двойного срабатывания cron и от
-  ручного «Run workflow». Обходится флагом `--force`.
-- **Без повторов слов.** Слово берётся из ещё не использованных; когда список
-  исчерпан — цикл начинается заново с новым перемешиванием.
-- **Валидация ответа модели.** Ошибка схемы → один повторный запрос → падение
-  workflow. Молча кривой пост не выйдет.
-- **Порядок операций.** Сначала отправка, потом коммит состояния с
-  `pull --rebase`. Если коммит не прошёл, следующий прогон увидит старую дату и
-  отправит дубль — поэтому push состояния идёт с ретраями, а падение workflow
-  приходит уведомлением на почту.
-- **Секреты** — только GitHub Secrets: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`,
-  `ANTHROPIC_API_KEY`.
-- **Dry-run.** `python -m bot.main --dry-run --word Fernweh` печатает готовый
-  пост в консоль, ничего не отправляя. Основной способ отладки формата.
+- **Idempotence.** `state.json` stores `last_post_date`. A second run on the
+  same day sends nothing — this covers double cron firings and manual
+  "Run workflow" clicks. `--force` overrides it.
+- **No repeated words.** Words are drawn from those not yet used; when the list
+  is exhausted the cycle restarts with a new deterministic shuffle.
+- **Response validation.** A schema violation triggers one retry, then fails the
+  workflow. A silently malformed post cannot go out.
+- **Order of operations.** Send first, then commit state with `pull --rebase`.
+  If the commit fails, the next run sees the old date and posts a duplicate —
+  hence the retry loop on push, and a failing job as the notification.
+- **Secrets** live only in GitHub Secrets: `TELEGRAM_BOT_TOKEN`,
+  `TELEGRAM_CHAT_ID`, `ANTHROPIC_API_KEY`.
+- **Dry run.** `python -m bot.main --dry-run --word Fernweh` prints the finished
+  post and sends nothing. This is the main way to debug the format.
 
-## Расписание
+## Schedule
 
-Cron в GitHub Actions работает по UTC, летнего времени не знает. `0 6 * * *` —
-это 08:00 CEST летом и 07:00 CET зимой. Плюс `workflow_dispatch` для ручного
-запуска.
+GitHub Actions cron runs in UTC and has no notion of daylight saving time.
+`0 6 * * *` is 08:00 CEST in summer and 07:00 CET in winter, plus
+`workflow_dispatch` for manual runs.
 
-Важная особенность платформы: cron в Actions не гарантирует точное время,
-задержка до 10–15 минут при высокой нагрузке — норма. Для «слова дня» это
-неважно.
+One platform quirk worth knowing: Actions cron does not guarantee the exact
+minute — delays of 10–15 minutes under load are normal. For a word of the day
+that does not matter.
 
-## Стоимость
+## Cost
 
-Один запрос в сутки, ~1500 выходных токенов. Порядок величины — центы в месяц.
+One request per day, ~1500 output tokens. Cents per month, in round numbers.
 
-## Что делаем не сейчас
+## Deliberately out of scope for v1
 
-Осознанно вне первой версии, чтобы не тащить сервер и вебхуки:
+Left out to avoid needing a server and webhooks:
 
-- интерактивные команды `/wort`, `/quiz` (требуют постоянно работающий процесс);
-- озвучка слова через TTS;
-- еженедельная сводка-повторение из 7 слов;
-- реакции/опросы для самопроверки.
+- interactive commands `/wort`, `/quiz` (require a long-running process);
+- text-to-speech pronunciation;
+- a weekly recap of the last seven words;
+- reactions/polls for self-testing.
 
-Первые две «дешевеют» только при переезде на VPS — если дойдём до них, это
-отдельный этап.
-
-## План работ
-
-1. Каркас пакета, `config.py`, `models.py` + тесты схемы.
-2. `data/words.yml` — стартовые ~200 слов с разметкой по уровням.
-3. `generator.py`: Claude API со structured output, ретрай на невалидный ответ.
-4. `formatter.py` + `telegram.py`, экранирование HTML, тесты рендера.
-5. `state.py`: выбор слова, дедупликация, защита от повторной публикации.
-6. `main.py` с `--dry-run` / `--word` / `--force`.
-7. `.github/workflows/daily.yml` + README с инструкцией по секретам.
+The first two only become cheap on a VPS — if we get to them, that is a
+separate stage.

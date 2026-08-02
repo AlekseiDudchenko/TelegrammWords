@@ -1,6 +1,6 @@
-# Wortliste für «Wort des Tages», gruppiert nach GER-Niveau.
-# Die Reihenfolge hier spielt keine Rolle — der Bot mischt pro Zyklus
-# deterministisch (siehe bot/state.py). Neue Wörter einfach anhängen.
+# Word list for "Wort des Tages", grouped by CEFR level.
+# Order here does not matter — the bot shuffles deterministically per cycle
+# (see bot/state.py). Just append new words to the right section.
 
 A2:
   - Haus

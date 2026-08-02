@@ -1,4 +1,7 @@
-"""WordCard -> Telegram-Nachricht (parse_mode=HTML)."""
+"""WordCard -> Telegram message (parse_mode=HTML).
+
+The visible labels stay German: the card is meant to be read monolingually.
+"""
 
 from __future__ import annotations
 
@@ -8,7 +11,7 @@ from .models import WordCard
 
 
 def render(card: WordCard) -> str:
-    """Baut die Nachricht. Alle Modellinhalte werden HTML-escaped."""
+    """Build the message. Everything the model produced is HTML-escaped."""
     lines: list[str] = [f"🇩🇪 <b>Wort des Tages</b> · {e(card.niveau)}", ""]
 
     lines.append(f"<b>{e(_headword(card))}</b>  <code>[{e(card.ipa)}]</code>")
@@ -18,16 +21,16 @@ def render(card: WordCard) -> str:
 
     lines.append("")
     lines.append("📖 <b>Bedeutung</b>")
-    for i, bedeutung in enumerate(card.bedeutungen, start=1):
+    for i, meaning in enumerate(card.bedeutungen, start=1):
         prefix = f"{i}. " if len(card.bedeutungen) > 1 else ""
-        lines.append(f"{prefix}{e(bedeutung)}")
+        lines.append(f"{prefix}{e(meaning)}")
 
     if card.etymologie:
         lines += ["", "🌱 <b>Herkunft</b>", e(card.etymologie)]
 
     if card.beispiele:
         lines += ["", "✍️ <b>Beispiele</b>"]
-        lines += [f"• <i>{e(satz)}</i>" for satz in card.beispiele]
+        lines += [f"• <i>{e(sentence)}</i>" for sentence in card.beispiele]
 
     lines.append("")
     if card.synonyme:
@@ -42,7 +45,7 @@ def render(card: WordCard) -> str:
 
 
 def _headword(card: WordCard) -> str:
-    """'das Haus, die Häuser' bzw. schlicht das Wort."""
+    """'das Haus, die Häuser', or just the word when there is no article."""
     parts = [f"{card.artikel} {card.wort}" if card.artikel else card.wort]
     if card.plural:
         parts.append(card.plural)

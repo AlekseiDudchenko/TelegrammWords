@@ -5,7 +5,7 @@ import pytest
 from bot.state import State
 from bot.wordlist import Entry
 
-ENTRIES = [Entry(wort=w, niveau="B1") for w in ("alpha", "beta", "gamma")]
+ENTRIES = [Entry(word=w, level="B1") for w in ("alpha", "beta", "gamma")]
 
 
 def test_roundtrip(tmp_path):
@@ -31,14 +31,14 @@ def test_no_repeats_within_a_cycle():
     seen = []
     for _ in range(len(ENTRIES)):
         entry = state.next_word(ENTRIES)
-        seen.append(entry.wort)
-        state.record(entry.wort, date(2026, 8, 2))
+        seen.append(entry.word)
+        state.record(entry.word, date(2026, 8, 2))
     assert sorted(seen) == ["alpha", "beta", "gamma"]
     assert state.cycle == 0
 
 
 def test_exhausted_list_starts_a_new_cycle():
-    state = State(cycle=0, posted=[e.wort for e in ENTRIES])
+    state = State(cycle=0, posted=[e.word for e in ENTRIES])
     entry = state.next_word(ENTRIES)
     assert state.cycle == 1
     assert state.posted == []

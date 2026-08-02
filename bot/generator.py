@@ -1,4 +1,4 @@
-"""Wortkarte über die Claude API erzeugen (Structured Outputs)."""
+"""Generate a word card through the Claude API (structured outputs)."""
 
 from __future__ import annotations
 
@@ -16,17 +16,19 @@ log = logging.getLogger(__name__)
 MAX_TOKENS = 8000
 
 SYSTEM_PROMPT = """\
-Du bist Lexikograf und schreibst einsprachige Wortkarten für Deutschlernende.
+You are a lexicographer writing monolingual word cards for learners of German.
 
-Regeln:
-- Alles ausschließlich auf Deutsch. Keine Übersetzungen in andere Sprachen.
-- Definitionen einfach halten: erkläre das Wort mit Wortschatz, der unter dem \
-Niveau des Stichworts liegt.
-- Etymologie: nur belegte Herkunft. Wenn die Herkunft umstritten oder unklar \
-ist, sage das ausdrücklich, statt eine Erklärung zu erfinden.
-- Synonyme und Antonyme: nur echte, gebräuchliche Wörter. Lieber weniger als \
-konstruierte. Gibt es keine sinnvollen Antonyme, gib eine leere Liste zurück.
-- Beispielsätze: natürliches Gegenwartsdeutsch, jeder Satz enthält das Stichwort.
+Every value you produce is written in German. Never translate into another
+language, and never mix languages inside a field.
+
+Rules:
+- Keep definitions simple: explain the headword using vocabulary below its own
+  level.
+- Etymology: attested origins only. If the origin is disputed or unclear, say so
+  explicitly rather than inventing an explanation.
+- Synonyms and antonyms: only real, current words. Prefer fewer over
+  constructed ones. If there is no meaningful antonym, return an empty list.
+- Example sentences: natural contemporary German, each containing the headword.
 """
 
 
@@ -35,16 +37,16 @@ class GenerationError(RuntimeError):
 
 
 def generate(client: anthropic.Anthropic, model: str, entry: Entry) -> WordCard:
-    """Fragt Claude nach einer Wortkarte und validiert die Antwort.
+    """Ask Claude for a word card and validate the reply.
 
-    Ein ungültiges Ergebnis wird genau einmal wiederholt; danach schlägt der
-    Lauf fehl, statt eine kaputte Karte zu posten.
+    An invalid result is retried exactly once; after that the run fails rather
+    than posting a broken card.
     """
     schema = card_json_schema()
     prompt = (
-        f"Erstelle die Wortkarte für das Wort «{entry.wort}».\n"
-        f"Erwartetes Niveau: {entry.niveau}. Weicht dein eigenes Urteil davon ab, "
-        f"trage im Feld 'niveau' das ein, das du für richtig hältst."
+        f"Write the word card for the German word '{entry.word}'.\n"
+        f"Expected level: {entry.level}. If your own judgement differs, put the "
+        f"level you consider correct in the 'niveau' field."
     )
 
     last_error: Exception | None = None
@@ -62,13 +64,12 @@ def generate(client: anthropic.Anthropic, model: str, entry: Entry) -> WordCard:
 
         if response.stop_reason == "refusal":
             raise GenerationError(
-                f"Anfrage für «{entry.wort}» wurde abgelehnt "
-                f"(stop_reason=refusal)."
+                f"the request for '{entry.word}' was refused (stop_reason=refusal)."
             )
         if response.stop_reason == "max_tokens":
             raise GenerationError(
-                f"Antwort für «{entry.wort}» wurde bei max_tokens={MAX_TOKENS} "
-                f"abgeschnitten."
+                f"the reply for '{entry.word}' was truncated at "
+                f"max_tokens={MAX_TOKENS}."
             )
 
         text = _first_text(response)
@@ -76,10 +77,10 @@ def generate(client: anthropic.Anthropic, model: str, entry: Entry) -> WordCard:
             return WordCard.model_validate(json.loads(text))
         except (json.JSONDecodeError, ValidationError) as exc:
             last_error = exc
-            log.warning("Versuch %d für «%s» ungültig: %s", attempt, entry.wort, exc)
+            log.warning("attempt %d for '%s' was invalid: %s", attempt, entry.word, exc)
 
     raise GenerationError(
-        f"Keine gültige Wortkarte für «{entry.wort}» nach zwei Versuchen: {last_error}"
+        f"no valid card for '{entry.word}' after two attempts: {last_error}"
     )
 
 
@@ -87,4 +88,4 @@ def _first_text(response: anthropic.types.Message) -> str:
     for block in response.content:
         if block.type == "text":
             return block.text
-    raise GenerationError("Antwort enthält keinen Textblock.")
+    raise GenerationError("the reply contains no text block.")

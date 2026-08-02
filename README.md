@@ -1,69 +1,77 @@
 # Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
-Телеграм-бот, который раз в день публикует карточку немецкого слова: значение,
-этимология, примеры, синонимы, антонимы и устойчивые сочетания. Всё —
-einsprachig, на немецком.
+A Telegram bot that posts one German word card per day: meanings, etymology,
+example sentences, synonyms, antonyms and common collocations. The card itself
+is monolingual — everything the reader sees is in German.
 
-План и обоснование архитектурных решений: [PLAN.md](PLAN.md).
+Design notes and the reasoning behind the architecture: [PLAN.md](PLAN.md).
 
-## Как это работает
+## How it works
 
-GitHub Actions по крону запускает `python -m bot.main`. Бот берёт следующее
-неиспользованное слово из `data/words.yml`, просит Claude сгенерировать карточку
-по жёсткой JSON-схеме, рендерит её в HTML-сообщение, отправляет в канал и
-коммитит `data/state.json` обратно в репозиторий.
+GitHub Actions runs `python -m bot.main` on a schedule. The bot takes the next
+unused word from `data/words.yml`, asks Claude for a card constrained by a
+strict JSON schema, renders it as an HTML message, sends it to the channel, and
+commits `data/state.json` back to the repository.
 
 ```
 bot/
-  config.py     env-переменные и пути
-  models.py     схема WordCard + JSON Schema для structured outputs
-  wordlist.py   загрузка data/words.yml
-  state.py      выбор слова без повторов, защита от двойной публикации
-  generator.py  вызов Claude API + валидация ответа
-  formatter.py  WordCard -> HTML для Telegram
-  telegram.py   sendMessage с ретраями
+  config.py     environment variables and paths
+  models.py     WordCard schema + JSON Schema for structured outputs
+  wordlist.py   loads data/words.yml
+  state.py      picks a word without repeats, guards against double posting
+  generator.py  Claude API call + response validation
+  formatter.py  WordCard -> HTML for Telegram
+  telegram.py   sendMessage with retries
   main.py       CLI
 ```
 
-## Локальный запуск
+## Running locally
 
 ```bash
 pip install -r requirements-dev.txt
 python -m pytest -q
 
-# Посмотреть готовое сообщение, ничего не отправляя (нужен только ANTHROPIC_API_KEY)
+# Print the finished message without sending it (only ANTHROPIC_API_KEY needed)
 export ANTHROPIC_API_KEY=sk-ant-...
 python -m bot.main --dry-run --word Fernweh
 ```
 
-Флаги: `--dry-run`, `--word WORT`, `--niveau B2`, `--force`, `--verbose`.
+Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
 
-## Что нужно настроить для боевого запуска
+## Setting up the live bot
 
-1. Создать бота через [@BotFather](https://t.me/BotFather) → `TELEGRAM_BOT_TOKEN`.
-2. Добавить бота администратором канала `@wunderwordsde` с правом публикации.
-3. В `Settings → Secrets and variables → Actions` репозитория добавить секреты:
+1. Create a bot via [@BotFather](https://t.me/BotFather) → `TELEGRAM_BOT_TOKEN`.
+2. Add the bot as an administrator of `@wunderwordsde` with permission to post.
+3. Add the secrets under `Settings → Secrets and variables → Actions`:
 
-   | Секрет | Значение |
+   | Secret | Value |
    |---|---|
-   | `ANTHROPIC_API_KEY` | ключ из console.anthropic.com |
-   | `TELEGRAM_BOT_TOKEN` | токен от BotFather |
+   | `ANTHROPIC_API_KEY` | key from console.anthropic.com |
+   | `TELEGRAM_BOT_TOKEN` | token from BotFather |
    | `TELEGRAM_CHAT_ID` | `@wunderwordsde` |
 
-`TELEGRAM_CHAT_ID` можно не задавать — по умолчанию используется
-`@wunderwordsde` (см. `bot/config.py`). Числовой ID нужен только для приватного
-канала.
+`TELEGRAM_CHAT_ID` is optional — it defaults to `@wunderwordsde`
+(see `bot/config.py`). A numeric ID is only needed for a private channel.
 
-Проверить всё до первого крона: `Actions → Wort des Tages → Run workflow`,
-поставив галочку `dry_run` — карточка появится в логе, ничего не отправится.
+To verify everything before the first scheduled run: `Actions → Wort des Tages →
+Run workflow` with `dry_run` ticked. The card is written to the job log and
+nothing is sent.
 
-## Расписание
+## Schedule
 
-`0 6 * * *` UTC — 08:00 по Берлину летом, 07:00 зимой. Cron в GitHub Actions не
-знает про переход на летнее время и не гарантирует точную минуту запуска.
+`0 6 * * *` UTC — 08:00 Berlin time in summer, 07:00 in winter. GitHub Actions
+cron has no notion of daylight saving time and does not guarantee the exact
+minute.
 
-## Добавить слова
+## Adding words
 
-Дописать в нужную секцию `data/words.yml`. Порядок внутри файла не важен: бот
-перемешивает список детерминированно по номеру цикла, так что добавление слов
-не ломает текущую очередь и не приводит к повторам.
+Append to the appropriate section of `data/words.yml`. Order within the file
+does not matter: the bot shuffles the list deterministically per cycle, so
+adding words neither disturbs the current rotation nor causes repeats.
+
+## Language conventions
+
+Code, comments, commit messages and documentation are English. German is used
+only where it is the product itself: the words in `data/words.yml`, the labels
+in the rendered card, and the `WordCard` field names, which mirror German
+grammatical categories (`artikel`, `plural`, `stammformen`).
