@@ -6,6 +6,11 @@
 #
 # The keys must match the words in words.yml exactly, and every card must
 # satisfy the WordCard schema in bot/models.py (tests/test_cards.py checks it).
+#
+# The etymologies follow the Etymologisches Wörterbuch des Deutschen (Pfeifer)
+# as published on dwds.de. Where DWDS has no etymology entry — Sprachgefühl,
+# Fingerspitzengefühl, Weltschmerz, Fernweh — the text stays with what the
+# other DWDS dictionaries (¹DWB, WDG) support and avoids dating the word.
 
 Fernweh:
   wort: "Fernweh"
@@ -19,10 +24,10 @@ Fernweh:
     - "Die Sehnsucht danach, in die Ferne zu reisen und fremde Orte zu sehen."
   etymologie: >-
     Gebildet aus „fern“ und „Weh“, wörtlich also der Schmerz über die fehlende
-    Ferne. Das Wort entstand im 19. Jahrhundert als bewusstes Gegenstück zum
-    viel älteren „Heimweh“ und wird oft dem Fürsten Hermann von Pückler-Muskau
-    zugeschrieben. Wie beim Heimweh ist das Gefühl als körperliches Leiden
-    gedacht.
+    Ferne — eine Analogiebildung zum viel älteren „Heimweh“, das schon im 17.
+    Jahrhundert belegt ist. Geprägt hat es der Fürst Hermann von
+    Pückler-Muskau, der es ab 1835 in seinen vielgelesenen Reiseberichten
+    gebraucht. Wie beim Heimweh ist das Gefühl als körperliches Leiden gedacht.
   beispiele:
     - "Jedes Mal, wenn ein Flugzeug über das Haus fliegt, bekomme ich Fernweh."
     - "Sein Fernweh war am Ende stärker als die Angst vor dem Alleinsein."
@@ -51,10 +56,10 @@ Zeitgeist:
   bedeutungen:
     - "Die Denkweise, die Stimmung und die Werte, die für eine bestimmte Epoche typisch sind."
   etymologie: >-
-    Zusammengesetzt aus „Zeit“ und „Geist“. Herder gebraucht den Ausdruck im
-    späten 18. Jahrhundert, Hegel macht daraus einen festen Begriff der
-    Philosophie. Das deutsche Wort wurde unverändert ins Englische und in
-    andere Sprachen übernommen.
+    Zusammengesetzt aus „Zeit“ und „Geist“, geprägt von Herder im Jahr 1769.
+    Hegel macht daraus später einen festen Begriff der Philosophie. Das
+    deutsche Wort wurde unverändert ins Englische und in andere Sprachen
+    übernommen.
   beispiele:
     - "Der Film trifft den Zeitgeist der frühen Neunziger erstaunlich genau."
     - "Wer nur dem Zeitgeist folgt, wirkt schon nach wenigen Jahren altmodisch."
@@ -82,11 +87,12 @@ Traum:
     - "Die Bilder und Geschichten, die man im Schlaf erlebt."
     - "Ein großer Wunsch, den man sich für sein Leben vorstellt."
   etymologie: >-
-    Ahd. troum, mhd. troum; das Wort ist in allen germanischen Sprachen
-    verbreitet (engl. dream, niederl. droom). Die weitere Herkunft ist
-    umstritten: Manche verbinden es mit einer Wurzel für „Trug, Täuschung“,
-    andere mit altsächsisch drōm „fröhliches Treiben, Jubel“. Sicher geklärt
-    ist die Frage nicht.
+    Ahd. troum (9. Jh.), mhd. troum; das Wort ist in allen germanischen
+    Sprachen verbreitet (engl. dream, niederl. droom). Zugrunde liegt wohl
+    germ. *drauma- aus *draugma- „nicht wirkliches Bild, Trugbild“, zu einer
+    Wurzel für „trügen“. Ganz sicher ist das nicht: Genaue lautliche
+    Entsprechungen fehlen, und die Deutung als bloßes Trugbild passt schlecht
+    dazu, dass Träume früher als wahr und bedeutungsvoll galten.
   beispiele:
     - "Ich hatte heute Nacht einen seltsamen Traum von unserem alten Haus."
     - "Ein eigenes Café zu eröffnen war schon immer ihr Traum."
@@ -180,10 +186,11 @@ Mut:
   bedeutungen:
     - "Die Fähigkeit, etwas zu tun, obwohl man Angst hat oder ein Risiko eingeht."
   etymologie: >-
-    Ahd. muot bedeutete zunächst allgemein „Sinn, Gemüt, seelische Kraft“ und
-    erst später die Tapferkeit. Die alte, weitere Bedeutung steckt noch in
-    Demut, Anmut, Wehmut, Schwermut und Übermut, wo es nirgends um Tapferkeit
-    geht. Auch „zumute sein“ bewahrt sie.
+    Ahd. muot (8. Jh.) bedeutete „Kraft des Denkens, Seele, Herz, Gesinnung,
+    Gefühl, Absicht“. Die Tapferkeit ist eine Verengung, die sich erst seit dem
+    16. Jahrhundert durchsetzt. Die alte, weitere Bedeutung steckt noch in
+    Demut, Anmut, Schwermut und Übermut, wo es nirgends um Tapferkeit geht;
+    auch „zumute sein“ bewahrt sie.
   beispiele:
     - "Es kostet Mut, vor so vielen Menschen zu sprechen."
     - "Sie fasste Mut und stellte die Frage trotzdem."
@@ -213,8 +220,9 @@ Zwiespalt:
     - "Ein innerer Widerstreit, bei dem zwei Gefühle oder Überzeugungen gleichzeitig gegeneinander ziehen."
     - "Eine tiefe Uneinigkeit zwischen zwei Seiten."
   etymologie: >-
-    Zu „zwie-“ (zwei) und „spalten“: gemeint war ursprünglich ganz konkret die
-    Spaltung in zwei Teile, etwa eine Kirchenspaltung. Seit der frühen Neuzeit
+    Zu „zwie-“ „doppelt, zweifach“ und „spalten“; das Adjektiv „zwiespältig“
+    geht auf ahd. zwispaltīg (11. Jh.) zurück. Gemeint war zunächst ganz
+    konkret die Spaltung in zwei Teile, etwa die Spaltung der Kirche. Später
     wird das Bild vor allem nach innen gewendet — gespalten ist nun der Mensch
     selbst.
   beispiele:
@@ -279,10 +287,11 @@ Gemütlichkeit:
   bedeutungen:
     - "Eine warme, entspannte Behaglichkeit, in der man sich sicher und wohl fühlt."
   etymologie: >-
-    Abgeleitet von „Gemüt“, mhd. gemüete, der Gesamtheit der inneren
-    Empfindungen — im Kern also wieder das alte „Mut“. „Gemütlich“ hieß
-    zunächst „dem Gemüt entsprechend“ und erst im 19. Jahrhundert „behaglich“.
-    In derselben Zeit wurde die Gemütlichkeit zum Sinnbild bürgerlicher
+    Abgeleitet von „Gemüt“, ahd. gimuoti (9. Jh.), mhd. gemüete — im Kern also
+    wieder das alte „Mut“ als „Gesinnung“. „Gemütlich“ hieß zunächst „dem
+    Gemüt entsprechend, angenehm“, dann „das Gemüt betreffend“ (16. Jh.), und
+    ist seit dem 18. Jahrhundert im heutigen Sinn „behaglich“ geläufig. Erst
+    das 19. Jahrhundert machte die Gemütlichkeit zum Sinnbild bürgerlicher
     Wohnkultur.
   beispiele:
     - "Zwei Kerzen, und schon stellte sich eine gewisse Gemütlichkeit ein."
@@ -313,11 +322,10 @@ Ruhe:
     - "Ein Zustand ohne Lärm und ohne Bewegung."
     - "Die innere Gelassenheit, mit der man sich nicht aus der Fassung bringen lässt."
   etymologie: >-
-    Ahd. ruowa, mhd. ruowe, ein altes germanisches Wort, zu dem auch das Verb
-    „ruhen“ gehört. Die weitere Herkunft ist nicht sicher geklärt; oft wird
-    eine indogermanische Wurzel mit der Bedeutung „aufhören, rasten“
-    angenommen. Von „Rast“ ist „Ruhe“ trotz der ähnlichen Bedeutung getrennt zu
-    halten.
+    Ahd. ruowa (um 800), mhd. ruowe, aus germ. *rōwō — vgl. aengl. rōw, anord.
+    rō, schwed. ro. Dahinter steht eine indogermanische Wurzel mit der
+    Bedeutung „ruhen“, zu der auch griech. erōḗ „das Aufhören, Ruhe, Rast“ und
+    kymr. araf „ruhig, langsam“ gehören. Dieselbe Wurzel steckt in „Rast“.
   beispiele:
     - "Nach acht Uhr kehrt in diesem Haus endlich Ruhe ein."
     - "Er bewahrte die Ruhe, obwohl alle anderen durcheinanderredeten."
@@ -347,10 +355,11 @@ Sprachgefühl:
   bedeutungen:
     - "Das sichere Gespür dafür, was in einer Sprache natürlich klingt — auch ohne die Regel nennen zu können."
   etymologie: >-
-    Zusammensetzung aus „Sprache“ und „Gefühl“, geprägt im 19. Jahrhundert im
-    Umfeld der Sprachwissenschaft. Der zweite Teil ist bewusst gewählt: Gemeint
-    ist ausdrücklich kein Wissen, sondern ein Empfinden, das aus vielen
-    gehörten und gelesenen Sätzen entsteht.
+    Durchsichtige Zusammensetzung aus „Sprache“ und „Gefühl“. Der zweite Teil
+    ist der entscheidende: Gemeint ist ausdrücklich kein Wissen, sondern ein
+    Empfinden, das aus vielen gehörten und gelesenen Sätzen entsteht. Das Wort
+    gehört zu einer Reihe von Bildungen auf -gefühl, die eine sichere
+    Urteilskraft als Sinneswahrnehmung beschreiben.
   beispiele:
     - "Welcher Fall hier stehen muss, sagt mir mein Sprachgefühl, nicht die Grammatik."
     - "Viel zu lesen ist der beste Weg, das Sprachgefühl zu schulen."
@@ -377,10 +386,11 @@ Erfahrung:
     - "Das Wissen und Können, das man durch eigenes Erleben gewonnen hat."
     - "Ein einzelnes Erlebnis, aus dem man etwas gelernt hat."
   etymologie: >-
-    Zu „erfahren“, das ursprünglich ganz wörtlich gemeint war: Mhd. ervarn hieß
-    „durchreisen, durchfahren“ und daraus „auf Reisen kennenlernen“. Die alte
-    Vorstellung klingt noch in „Erfahrungen sammeln“ nach und im Adjektiv
-    „erfahren“ für jemanden, der viel gesehen hat.
+    Zu „erfahren“, ahd. irfaran (um 800), mhd. ervarn — das hieß ganz wörtlich
+    „reisen, durchfahren“ und daraus „kennenlernen, erkunden“. Mhd. ervarunge
+    war entsprechend die „Durchwanderung, Erforschung“. Die alte Vorstellung
+    klingt noch in „Erfahrungen sammeln“ nach und im Adjektiv „erfahren“ für
+    jemanden, der viel gesehen hat.
   beispiele:
     - "Für die Stelle braucht man mehrere Jahre Erfahrung im Ausland."
     - "Ich spreche aus Erfahrung: Das dauert länger, als du denkst."
@@ -409,9 +419,10 @@ Weltschmerz:
   bedeutungen:
     - "Die trübe Traurigkeit darüber, dass die Welt hinter dem zurückbleibt, was man von ihr erhofft."
   etymologie: >-
-    Geprägt von Jean Paul um 1827. Das Wort fasst ein Lebensgefühl der
-    Romantik zusammen, das sich ebenso bei Byron wie bei Heine findet. Heute
-    wird es meist mit einem ironischen Unterton gebraucht.
+    Geprägt von Jean Paul in den 1820er Jahren, zunächst als „Schmerz über die
+    Vergänglichkeit irdischer Herrlichkeit“. Heine nahm den Ausdruck 1831 auf,
+    danach wurde er zum Modewort des Jungen Deutschland. Weil er rasch zur
+    leeren Formel verkam, findet man ihn schon früh in ironischem Gebrauch.
   beispiele:
     - "Mit siebzehn und einem Band Rilke unterm Arm hatte er ordentlich Weltschmerz."
     - "Aus dem Roman spricht der Weltschmerz seiner ganzen Generation."
@@ -441,9 +452,10 @@ Gefühl:
     - "Ein Eindruck, den man nicht begründen kann, aber deutlich spürt."
     - "Die Fähigkeit, mit der Haut etwas wahrzunehmen."
   etymologie: >-
-    Substantivierung von „fühlen“, ahd. fuolen, womit ursprünglich das Tasten
-    mit der Hand gemeint war. Erst im 18. Jahrhundert, in der Zeit der
-    Empfindsamkeit, rückt die seelische Bedeutung in den Vordergrund. Der
+    Zu „fühlen“, ahd. fuolen „befühlen, betasten“ (um 800); auf seelisches
+    Erleben ausgeweitet wurde das Verb schon im Mittelhochdeutschen. Das
+    Substantiv „Gefühl“ entstand im 17. Jahrhundert nach dem Muster von
+    „Gehör“, „Geschmack“ und „Gesicht“, also als Name eines Sinnes. Der
     Tastsinn ist in „kein Gefühl mehr in den Fingern haben“ erhalten geblieben.
   beispiele:
     - "Ich hatte gleich ein gutes Gefühl bei der Sache."
@@ -474,10 +486,11 @@ Kehrseite:
     - "Die Rückseite von etwas."
     - "Der ungünstige Teil einer an sich guten Sache."
   etymologie: >-
-    Zu „kehren“ im Sinne von „wenden“: gemeint war ursprünglich die abgewandte
-    Seite einer Münze, also das, was man sieht, wenn man sie umdreht. Aus
-    diesem Bild stammt die feste Wendung „die Kehrseite der Medaille“, die
-    heute fast nur noch übertragen gebraucht wird.
+    Zu „kehren“ im Sinne von „wenden“: die Kehrseite ist die abgewandte Seite,
+    das, was man sieht, wenn man etwas umdreht. Übertragen meint das Wort das
+    Unangenehme, das einer zunächst günstig erscheinenden Sache anhaftet. Für
+    die Rückseite von Münzen und Medaillen steht daneben „Revers“, Anfang des
+    17. Jahrhunderts aus dem Französischen entlehnt.
   beispiele:
     - "Die Kehrseite der Freiheit ist, dass niemand dir sagt, was richtig ist."
     - "Jeder Erfolg hat eine Kehrseite, über die selten gesprochen wird."
@@ -505,10 +518,11 @@ Zufall:
   bedeutungen:
     - "Ein Ereignis, das ohne erkennbare Absicht oder Ursache eintritt."
   etymologie: >-
-    Mhd. zuoval, wörtlich „das, was einem zufällt“. Das Wort ist eine
-    Lehnübersetzung des lateinischen accidens und meinte zunächst das, was
-    einer Sache nur nebenbei zustößt. Das Bild des Fallens steckt auch noch im
-    Verb „zufallen“.
+    Mhd. zuoval „Anfall, was jemandem zufällt“, ein Verbalabstraktum zu
+    „zufallen“. Früh diente es als Entsprechung des lateinischen accidens, also
+    für das Nebensächliche, das einer Sache nur zustößt; bei den Mystikern
+    Seuse und Tauler ist es ein philosophischer Begriff. Die heutige Bedeutung
+    „unerwartetes Ereignis“ setzt sich seit dem 17. Jahrhundert durch.
   beispiele:
     - "Wir haben uns durch reinen Zufall am Bahnhof getroffen."
     - "Dass beide denselben Namen tragen, ist kein Zufall."
@@ -538,10 +552,12 @@ Wehmut:
   bedeutungen:
     - "Eine leise Traurigkeit, die mit Zuneigung auf etwas Vergangenes zurückblickt."
   etymologie: >-
-    Aus „weh“ und „Mut“ in der alten Bedeutung „Sinn, Gemüt“ — dieselbe Bildung
-    wie in Sanftmut, Anmut und Schwermut. Das Wort ist seit dem 17. Jahrhundert
-    geläufig und beschreibt eine Trauer, die nicht wirklich wehtut, sondern
-    eher süß schmeckt.
+    Nur scheinbar aus „weh“ und „Mut“ zusammengesetzt: Das Wort ist eine
+    Rückbildung zum älteren Adjektiv „wehmütig“ und geht auf mnd. wēmōt „Zorn,
+    Schmerz, tiefe Traurigkeit“ zurück. Belegt ist es seit dem 15.
+    Jahrhundert, zuerst schlesisch, später bei Luther; die weiche,
+    melancholische Färbung bekam es im 18. Jahrhundert. Dass es heute feminin
+    ist, verdankt es wohl dem Einfluss von „Demut“.
   beispiele:
     - "Mit einer gewissen Wehmut schloss er die Tür der alten Wohnung ab."
     - "Sie denkt ohne Wehmut an diese Jahre zurück."
@@ -569,10 +585,11 @@ Nachbar:
   bedeutungen:
     - "Jemand, der nebenan oder ganz in der Nähe wohnt."
   etymologie: >-
-    Ahd. nāhgibūr, zusammengesetzt aus nāh „nahe“ und gibūr „Bewohner, Bauer“ —
-    also der, der in der Nähe wohnt. Genau derselbe Bau steckt im englischen
-    neighbour. Der zweite Teil gehört zu „bauen“ in der alten Bedeutung
-    „wohnen“, die auch im „Bauern“ steckt.
+    Ahd. nāhgibūr (8. Jh.), zusammengesetzt aus nāh „nahe“ und gibūro
+    „Bewohner, Bauer“ — also der Nahewohnende. Genau derselbe Bau steckt im
+    englischen neighbour. Der zweite Teil gehört zu „bauen“ in der alten
+    Bedeutung „wohnen“; im Neuhochdeutschen ist er zum unscheinbaren -bar
+    abgeschwächt.
   beispiele:
     - "Unser neuer Nachbar hat sich gestern kurz vorgestellt."
     - "Die Nachbarn gießen die Blumen, wenn wir im Urlaub sind."
@@ -599,9 +616,9 @@ Fingerspitzengefühl:
     - "Ein feines Gespür dafür, wie man in einer heiklen Lage vorgehen muss, ohne jemanden zu verletzen."
   etymologie: >-
     Wörtlich das Gefühl in den Fingerspitzen, wo der Tastsinn am feinsten ist.
-    Seit dem späten 19. Jahrhundert wird das Bild auf den Umgang mit Menschen
-    und schwierigen Themen übertragen. Es gehört zu einer ganzen Reihe von
-    Wörtern, die geistige Feinheit als Tastsinn beschreiben.
+    Gebraucht wird das Wort fast nur übertragen, für den sicheren Umgang mit
+    Menschen und heiklen Themen. Es gehört zu derselben Reihe wie „Feingefühl“
+    und „Zartgefühl“: Wörter, die geistige Feinheit als Tastsinn beschreiben.
   beispiele:
     - "Diese Verhandlung verlangt Fingerspitzengefühl, keine Lautstärke."
     - "Sie hat das Thema mit viel Fingerspitzengefühl angesprochen."
@@ -662,10 +679,10 @@ Zuversicht:
   bedeutungen:
     - "Das ruhige Vertrauen darauf, dass etwas gut ausgehen wird."
   etymologie: >-
-    Mhd. zuoversiht, wörtlich „das Hinsehen auf etwas“. Das Bild ist der Blick,
-    der sich auf das richtet, worauf man sich verlässt. Verwandt gebaut sind
-    „Vorsicht“, „Nachsicht“ und „Rücksicht“, die alle ein Sehen in eine
-    bestimmte Richtung meinen.
+    Ahd. zuofirsiht „ehrfurchtsvolles Aufschauen, Hoffen“ (um 1000), mhd.
+    zuoversiht. Das Bild ist der Blick, der sich auf das richtet, worauf man
+    sich verlässt. Gleich gebaut sind „Vorsicht“, „Nachsicht“ und „Rücksicht“,
+    die alle ein Sehen in eine bestimmte Richtung meinen.
   beispiele:
     - "Trotz der schlechten Zahlen blickt sie mit Zuversicht ins nächste Jahr."
     - "Seine Zuversicht steckte alle anderen an."
@@ -696,10 +713,11 @@ Erinnerung:
     - "Das Bild eines Erlebnisses, das im Gedächtnis geblieben ist."
     - "Ein Hinweis, der jemanden an etwas Vergessenes denken lässt."
   etymologie: >-
-    Zu „erinnern“, einer Bildung zu „inner“. Wörtlich geht es darum, etwas nach
-    innen zu holen oder ins Innere zurückzurufen. Das Wort ist seit dem 15.
-    Jahrhundert belegt und verdrängte allmählich ältere Ausdrücke wie
-    „gedenken“.
+    Zu „erinnern“, das im 14. Jahrhundert aufkommt und über mhd. innern auf
+    ahd. innaro „innerer, tiefer“ zurückgeht — wörtlich geht es also darum,
+    etwas ins Innere zu holen. Das Substantiv „Erinnerung“ ist seit dem 15.
+    Jahrhundert belegt, zunächst als „im Gedächtnis behaltener Eindruck,
+    Andenken“.
   beispiele:
     - "An den Umzug habe ich nur noch eine vage Erinnerung."
     - "Der Geruch von nassem Laub weckt bei mir sofort Erinnerungen."
@@ -729,10 +747,11 @@ Verantwortung:
     - "Die Pflicht, für das eigene Handeln und dessen Folgen einzustehen."
     - "Die Aufgabe, für jemanden oder etwas zu sorgen."
   etymologie: >-
-    Zu „verantworten“, einem Wort aus der Rechtssprache: Wer sich verantwortet,
-    gibt vor Gericht Antwort auf eine Anklage. Im Kern steckt „Antwort“, ahd.
-    antwurti „Entgegnung“. Aus der gerichtlichen wurde erst später die
-    allgemeine moralische Bedeutung.
+    Zu „verantworten“, einem Wort der Rechtssprache: Mhd. verantwürten heißt
+    „sich vor Gericht rechtfertigen, verteidigen“. Im Kern steckt „Antwort“,
+    gebildet mit der Vorsilbe ant- „entgegen“, ursprünglich also „Gegenrede“.
+    Dass „verantwortlich“ zuerst „was sich verteidigen lässt“ meinte, hört man
+    noch in „unverantwortlich“.
   beispiele:
     - "Für diesen Fehler übernehme ich die Verantwortung."
     - "Mit dem Hund kam eine Verantwortung ins Haus, die er unterschätzt hatte."
@@ -762,10 +781,10 @@ Verantwortung:
     - "Eine ausgelassene Stimmung, in der man leichtsinnig wird."
     - "Eine Überheblichkeit, die die eigenen Grenzen nicht mehr sieht."
   etymologie: >-
-    Mhd. übermuot meinte vor allem Hochmut und Anmaßung: einen Sinn, der „über“
-    das rechte Maß hinausgeht. Heute klingt das Wort milder und meint eher
-    fröhlichen Leichtsinn. Das Sprichwort „Übermut tut selten gut“ bewahrt den
-    alten warnenden Ton.
+    Ahd. ubarmuot (um 1000), mhd. übermuot „stolzer, hochfahrender Sinn“: ein
+    Sinn, der „über“ das rechte Maß hinausgeht. Heute klingt das Wort milder
+    und meint eher fröhlichen Leichtsinn. Das Sprichwort „Übermut tut selten
+    gut“ bewahrt den alten warnenden Ton.
   beispiele:
     - "Im Übermut sprangen sie noch im Oktober in den See."
     - "Sein Übermut hat ihn diesmal teuer zu stehen kommen lassen."
@@ -796,10 +815,11 @@ neugierig:
     - "So, dass man unbedingt wissen möchte, was es Neues gibt."
     - "So, dass man sich zu sehr für die Angelegenheiten anderer interessiert."
   etymologie: >-
-    Aus „neu“ und „gierig“. Ursprünglich war das Wort deutlich abwertend: Wer
-    neugierig war, war „gierig nach Neuem“. Erst allmählich bekam es den
-    freundlichen Klang von Wissensdurst; der alte Vorwurf klingt noch mit,
-    sobald es um fremde Angelegenheiten geht.
+    Aus „neu“ und „gierig“, belegt seit der Mitte des 16. Jahrhunderts. Erst
+    aus dem Adjektiv wurden im 17. Jahrhundert die Substantive „Neugier“ und
+    „Neugierde“ gebildet — die Gier, Neuigkeiten oder die Angelegenheiten
+    anderer zu erfahren. Der leicht anrüchige Beiklang gehört also von Anfang
+    an dazu und schwingt bis heute mit.
   beispiele:
     - "Ich bin neugierig, wie das Buch ausgeht."
     - "Sei nicht so neugierig, das geht dich nichts an."
@@ -828,10 +848,10 @@ Rücksicht:
   bedeutungen:
     - "Das Verhalten, bei dem man die Bedürfnisse und Gefühle anderer beachtet."
   etymologie: >-
-    Wörtlich „das Zurückblicken“ — eine Lehnübersetzung des lateinischen
-    respectus, aus re- „zurück“ und spicere „sehen“. Dasselbe Bild steckt im
-    englischen respect. Wer Rücksicht nimmt, sieht im Weitergehen also noch
-    einmal nach den anderen zurück.
+    Wörtlich „das Zurückblicken“ — im 18. Jahrhundert als Lehnübersetzung des
+    lateinischen respectus gebildet, aus re- „zurück“ und specere „sehen“.
+    Dasselbe Bild steckt im englischen respect. Wer Rücksicht nimmt, sieht im
+    Weitergehen also noch einmal nach den anderen zurück.
   beispiele:
     - "Nimm bitte Rücksicht auf die Nachbarn, es ist nach zehn."
     - "Aus Rücksicht auf ihre Mutter hat sie nichts gesagt."
@@ -860,10 +880,10 @@ Vielfalt:
   bedeutungen:
     - "Das Vorhandensein vieler verschiedener Formen, Arten oder Möglichkeiten."
   etymologie: >-
-    Gebildet zu „vielfältig“, dessen zweiter Teil zu „falten“ gehört: Etwas
-    Vielfältiges ist wörtlich etwas vielfach Gefaltetes. Dieselbe Bildung
-    steckt in „einfältig“ und „mannigfaltig“. Das Substantiv „Vielfalt“ selbst
-    ist jünger und wurde erst im 19. Jahrhundert geläufig.
+    Rückbildung des späten 18. Jahrhunderts zum viel älteren Adjektiv
+    „vielfältig“ (15. Jahrhundert). Dessen zweiter Teil gehört zu „falten“:
+    Etwas Vielfältiges ist wörtlich etwas vielfach Gefaltetes. Dieselbe
+    Bildung steckt in „einfältig“ und „mannigfaltig“.
   beispiele:
     - "Auf dem Markt gibt es eine erstaunliche Vielfalt an altem Gemüse."
     - "Die Vielfalt der Dialekte geht langsam verloren."
@@ -926,10 +946,11 @@ Gelegenheit:
     - "Ein günstiger Zeitpunkt oder Umstand, um etwas zu tun."
     - "Ein besonderer Anlass."
   etymologie: >-
-    Zu „gelegen“, dem Partizip von „liegen“: Gelegen ist, was zeitlich oder
-    räumlich gut passt. Die Gelegenheit ist also die günstige Lage der Dinge.
-    Das Sprichwort „Gelegenheit macht Diebe“ ist seit dem 16. Jahrhundert
-    bezeugt.
+    Zu „gelegen“, dem Partizip von „liegen“: Aus „nahe gelegen, benachbart“
+    wurde „bequem, passend“. Mhd. gelegenheit meinte noch die Art, wie etwas
+    liegt, also die Lage der Dinge; die heutige Bedeutung entwickelte sich
+    unter dem Einfluss des Adjektivs und entspricht lat. occasio, frz.
+    occasion.
   beispiele:
     - "Ich hatte noch keine Gelegenheit, mit ihr darüber zu sprechen."
     - "Diese Gelegenheit kommt so schnell nicht wieder — ergreif sie."
@@ -957,11 +978,11 @@ Haus:
     - "Ein Gebäude, in dem Menschen wohnen."
     - "Die Familie oder Gemeinschaft, die darin lebt."
   etymologie: >-
-    Ahd. und mhd. hūs, ein altes germanisches Wort (engl. house, niederl.
-    huis). Die weitere Herkunft ist nicht sicher geklärt; häufig wird eine
-    Wurzel mit der Bedeutung „bedecken, verbergen“ angenommen. Im übertragenen
-    Sinn steht „Haus“ seit alter Zeit für die Familie, etwa im „Haus
-    Habsburg“.
+    Ahd. hūs (8. Jh.), gemeingermanisch (engl. house, niederl. huis, got. hūs).
+    Schon im Althochdeutschen meint das Wort nicht nur das Gebäude, sondern
+    auch Familie, Hausgemeinschaft und Geschlecht — daher das „Haus Habsburg“.
+    Die weitere Herkunft ist unsicher; möglich ist ein Anschluss an eine Wurzel
+    „bedecken“, zu der auch Haut, Hütte, Scheune und Schuh gehören.
   beispiele:
     - "Das Haus am Ende der Straße steht seit Jahren leer."
     - "Wir sind gestern Abend spät nach Hause gekommen."
