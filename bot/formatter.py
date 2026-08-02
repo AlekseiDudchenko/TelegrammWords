@@ -25,9 +25,6 @@ def render(card: WordCard) -> str:
         prefix = f"{i}. " if len(card.bedeutungen) > 1 else ""
         lines.append(f"{prefix}{e(meaning)}")
 
-    if card.etymologie:
-        lines += ["", "🌱 <b>Herkunft</b>", e(card.etymologie)]
-
     if card.beispiele:
         lines += ["", "✍️ <b>Beispiele</b>"]
         lines += [f"• <i>{e(sentence)}</i>" for sentence in card.beispiele]

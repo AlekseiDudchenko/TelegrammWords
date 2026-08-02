@@ -19,7 +19,6 @@ VALID = {
     "ipa": "haʊ̯s",
     "niveau": "A2",
     "bedeutungen": ["Gebäude, in dem Menschen wohnen."],
-    "etymologie": "Von mittelhochdeutsch hūs.",
     "beispiele": ["Das Haus ist alt."],
     "synonyme": ["Gebäude"],
     "antonyme": [],
@@ -63,7 +62,7 @@ def test_invalid_response_is_retried_once():
 
 
 def test_two_invalid_responses_fail_loudly():
-    missing_field = {k: v for k, v in VALID.items() if k != "etymologie"}
+    missing_field = {k: v for k, v in VALID.items() if k != "bedeutungen"}
     client = FakeClient(reply("{not json"), reply(json.dumps(missing_field)))
     with pytest.raises(generator.GenerationError, match="two attempts"):
         generator.generate(client, "claude-opus-5", ENTRY)

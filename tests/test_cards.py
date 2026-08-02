@@ -15,7 +15,6 @@ MINIMAL = {
     "ipa": "haʊ̯s",
     "niveau": "A2",
     "bedeutungen": ["Ein Gebäude, in dem Menschen wohnen."],
-    "etymologie": "Ahd. hūs.",
     "beispiele": ["Das Haus steht leer."],
     "synonyme": ["Gebäude"],
     "antonyme": [],
