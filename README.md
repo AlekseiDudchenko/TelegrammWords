@@ -1,6 +1,6 @@
 # Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
-A Telegram bot that posts one German word card per day: meanings, example
+A Telegram bot that posts a German word card twice a day: meanings, example
 sentences, synonyms, antonyms and common collocations. The card itself
 is monolingual — everything the reader sees is in German.
 
@@ -14,9 +14,9 @@ to the channel, and commits `data/state.json` back to the repository.
 
 The card comes from one of two places:
 
-- **`data/cards.yml`** — 30 cards written by hand and checked into the
-  repository. These are used first, in file order, so the first 30 days run
-  without an API key and cost nothing.
+- **`data/cards.yml`** — 60 cards written by hand and checked into the
+  repository. These are used first, in file order, so the first month runs
+  without an API key and costs nothing.
 - **The Claude API** — for every word that has no stored card. The reply is
   constrained by a strict JSON schema and validated before anything is sent.
 
@@ -60,7 +60,7 @@ Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
    |---|---|---|
    | `TELEGRAM_BOT_TOKEN` | token from BotFather | yes |
    | `TELEGRAM_CHAT_ID` | `@wunderwordsde` | no |
-   | `ANTHROPIC_API_KEY` | key from console.anthropic.com | not for the first 30 days |
+   | `ANTHROPIC_API_KEY` | key from console.anthropic.com | not for the first month |
 
 `TELEGRAM_CHAT_ID` defaults to `@wunderwordsde` (see `bot/config.py`); a numeric
 ID is only needed for a private channel. `ANTHROPIC_API_KEY` is only read once
@@ -74,9 +74,16 @@ nothing is sent.
 
 ## Schedule
 
-`0 6 * * *` UTC — 08:00 Berlin time in summer, 07:00 in winter. GitHub Actions
-cron has no notion of daylight saving time and does not guarantee the exact
-minute.
+Two runs a day: `0 6 * * *` and `0 16 * * *` UTC — 08:00 and 18:00 Berlin time
+in summer, an hour earlier in winter. GitHub Actions cron has no notion of
+daylight saving time and does not guarantee the exact minute.
+
+The double-post guard counts half-days rather than days. `data/state.json`
+records the last slot posted (`"2026-08-04/pm"`), where the morning slot runs
+until noon UTC and the evening slot after it. Both cron times sit hours away
+from that boundary, so the delay Actions is known for cannot push a run into
+the wrong half — and a re-run from the Actions UI, which replays an older slot,
+stays silent.
 
 ## Adding words
 
@@ -94,6 +101,9 @@ renders every card to catch broken markup. Order here *does* matter — stored
 cards are posted top to bottom before anything is generated.
 
 Then check the result: `python -m bot.main --dry-run --word <word>`.
+
+Sixty cards are two posts a day for a month. `tests/test_cards.py` fails if the
+store drops below that.
 
 ## Language conventions
 

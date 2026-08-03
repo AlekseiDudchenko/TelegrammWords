@@ -2,9 +2,12 @@ name: Wort des Tages
 
 on:
   schedule:
-    # UTC — 08:00 Berlin time in summer, 07:00 in winter.
-    # GitHub cron is not minute-accurate; delays are normal.
+    # Two posts a day, in UTC — 08:00 and 18:00 Berlin time in summer, an hour
+    # earlier in winter. Both sit hours away from the noon boundary that
+    # separates the two slots in bot/state.py, so the delay Actions cron is
+    # known for (10–15 minutes, occasionally more) cannot merge them.
     - cron: "0 6 * * *"
+    - cron: "0 16 * * *"
   workflow_dispatch:
     inputs:
       word:
@@ -12,7 +15,7 @@ on:
         required: false
         type: string
       force:
-        description: "Post even if something was already posted today"
+        description: "Post even if this half of the day has already been served"
         required: false
         type: boolean
         default: false

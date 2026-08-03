@@ -5,16 +5,46 @@ from __future__ import annotations
 import json
 from collections.abc import Sequence
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import datetime, timezone
 from pathlib import Path
 from random import Random
 
 from .wordlist import Entry
 
+# We post twice a day, so the double-post guard counts half-days ("slots")
+# rather than days. Noon UTC splits them; both cron runs sit hours away from
+# that line, so the usual Actions delay cannot push a run into the next slot.
+SLOT_BOUNDARY_HOUR = 12
+
+
+def slot_of(moment: datetime) -> str:
+    """Name the half-day a run belongs to, e.g. '2026-08-02/am'.
+
+    The names sort chronologically as plain strings — 'am' < 'pm' — which is
+    what `already_posted` relies on.
+    """
+    moment = moment.astimezone(timezone.utc)
+    half = "am" if moment.hour < SLOT_BOUNDARY_HOUR else "pm"
+    return f"{moment.date().isoformat()}/{half}"
+
+
+def _slot_from(raw: dict) -> str | None:
+    """Read the slot, upgrading state left by the one-post-a-day version.
+
+    That version recorded a bare date and could have posted at any hour, so it
+    maps to the *second* slot of the day: the conservative direction, blocking
+    the rest of that day rather than risking a duplicate.
+    """
+    slot = raw.get("last_post_slot")
+    if slot:
+        return str(slot)
+    day = raw.get("last_post_date")
+    return f"{day}/pm" if day else None
+
 
 @dataclass
 class State:
-    last_post_date: str | None = None
+    last_post_slot: str | None = None
     cycle: int = 0
     posted: list[str] = field(default_factory=list)
 
@@ -24,7 +54,7 @@ class State:
             return cls()
         raw = json.loads(path.read_text(encoding="utf-8"))
         return cls(
-            last_post_date=raw.get("last_post_date"),
+            last_post_slot=_slot_from(raw),
             cycle=int(raw.get("cycle", 0)),
             posted=list(raw.get("posted", [])),
         )
@@ -32,7 +62,7 @@ class State:
     def save(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
-            "last_post_date": self.last_post_date,
+            "last_post_slot": self.last_post_slot,
             "cycle": self.cycle,
             "posted": self.posted,
         }
@@ -41,8 +71,13 @@ class State:
             encoding="utf-8",
         )
 
-    def already_posted_today(self, today: date) -> bool:
-        return self.last_post_date == today.isoformat()
+    def already_posted(self, slot: str) -> bool:
+        """True once this slot — or a later one — has been served.
+
+        The comparison is '<=' rather than '==' so that a job re-run from the
+        Actions UI, which replays an older slot, stays silent too.
+        """
+        return self.last_post_slot is not None and slot <= self.last_post_slot
 
     def next_word(
         self, entries: list[Entry], preferred: Sequence[str] = ()
@@ -81,7 +116,7 @@ class State:
         Random(self.cycle).shuffle(ordered)
         return ordered
 
-    def record(self, word: str, today: date) -> None:
+    def record(self, word: str, slot: str) -> None:
         if word not in self.posted:
             self.posted.append(word)
-        self.last_post_date = today.isoformat()
+        self.last_post_slot = slot
