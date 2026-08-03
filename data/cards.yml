@@ -2,7 +2,8 @@
 #
 # A word that has a card here is posted from this file — no API call, no key
 # needed. The bot works through these first, in the order they appear below,
-# and only falls back to the Claude API once they are used up.
+# and only falls back to the Claude API once they are used up. At two posts a
+# day the 60 cards cover the first month.
 #
 # The keys must match the words in words.yml exactly, and every card must
 # satisfy the WordCard schema in bot/models.py (tests/test_cards.py checks it).
@@ -822,3 +823,834 @@ Haus:
     - "nach Hause gehen"
     - "zu Hause sein"
     - "das Haus hüten"
+Reise:
+  wort: "Reise"
+  artikel: "die"
+  plural: "die Reisen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʁaɪ̯zə"
+  niveau: "A2"
+  bedeutungen:
+    - "Das Fahren oder Fliegen an einen entfernten Ort und der Aufenthalt dort."
+    - "Der Weg, den man dabei zurücklegt, samt allem, was man unterwegs erlebt."
+  beispiele:
+    - "Die Reise nach Norwegen hat sie seit Jahren geplant."
+    - "Auf der Reise haben wir mehr über uns gelernt als über das Land."
+    - "Nach zwölf Stunden Reise fielen wir sofort ins Bett."
+  synonyme:
+    - "Fahrt"
+    - "Tour"
+    - "Ausflug"
+    - "Exkursion"
+  antonyme:
+    - "Heimkehr"
+    - "Rückkehr"
+  kollokationen:
+    - "eine Reise machen"
+    - "auf Reisen sein"
+    - "gute Reise!"
+
+Rückgrat:
+  wort: "Rückgrat"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʁʏkɡʁaːt"
+  niveau: "B2"
+  bedeutungen:
+    - "Die Wirbelsäule, also die Knochenreihe, die den Rücken stützt."
+    - "Übertragen: die Festigkeit, mit der jemand zu seiner Überzeugung steht."
+  beispiele:
+    - "Ein Sturz beim Reiten hatte ihr Rückgrat verletzt."
+    - "Er hatte das Rückgrat, dem Chef offen zu widersprechen."
+    - "In dieser Frage hat die Partei kein Rückgrat gezeigt."
+  synonyme:
+    - "Wirbelsäule"
+    - "Haltung"
+    - "Charakterstärke"
+    - "Standhaftigkeit"
+  antonyme:
+    - "Feigheit"
+    - "Unterwürfigkeit"
+  kollokationen:
+    - "Rückgrat zeigen"
+    - "kein Rückgrat haben"
+    - "jemandem das Rückgrat brechen"
+
+Neugier:
+  wort: "Neugier"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈnɔɪ̯ɡiːɐ̯"
+  niveau: "B1"
+  bedeutungen:
+    - "Der Wunsch, Neues zu erfahren und zu verstehen."
+    - "Das Verlangen, Dinge zu erfahren, die einen eigentlich nichts angehen."
+  beispiele:
+    - "Ihre Neugier auf fremde Sprachen hat sie zum Studium gebracht."
+    - "Aus reiner Neugier öffnete er den Brief, der nicht für ihn bestimmt war."
+    - "Kinder lernen vor allem durch Neugier."
+  synonyme:
+    - "Wissbegier"
+    - "Interesse"
+    - "Wissensdurst"
+    - "Schaulust"
+  antonyme:
+    - "Gleichgültigkeit"
+    - "Desinteresse"
+  kollokationen:
+    - "die Neugier wecken"
+    - "vor Neugier platzen"
+    - "aus reiner Neugier"
+
+Zäsur:
+  wort: "Zäsur"
+  artikel: "die"
+  plural: "die Zäsuren"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "tsɛˈzuːɐ̯"
+  niveau: "C1"
+  bedeutungen:
+    - "Ein deutlicher Einschnitt, der eine Entwicklung in ein Vorher und ein Nachher teilt."
+    - "In der Verslehre: der Einschnitt, der einen Vers gliedert."
+  beispiele:
+    - "Das Jahr 1989 war eine Zäsur in der deutschen Geschichte."
+    - "Der Tod des Vaters bedeutete für ihn eine Zäsur."
+    - "Nach der Zäsur wechselt das Gedicht den Ton."
+  synonyme:
+    - "Einschnitt"
+    - "Wendepunkt"
+    - "Bruch"
+    - "Umbruch"
+  antonyme:
+    - "Kontinuität"
+    - "Fortdauer"
+  kollokationen:
+    - "eine Zäsur darstellen"
+    - "eine tiefe Zäsur"
+    - "eine Zäsur markieren"
+
+Wetter:
+  wort: "Wetter"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈvɛtɐ"
+  niveau: "A2"
+  bedeutungen:
+    - "Der Zustand der Luft an einem Ort: Sonne, Regen, Wind und Temperatur."
+    - "Ein heftiges Unwetter, besonders ein Gewitter — heute vor allem in Zusammensetzungen."
+  beispiele:
+    - "Bei diesem Wetter bleibe ich lieber zu Hause."
+    - "Das Wetter schlägt am Nachmittag um."
+    - "Wir hatten die ganze Woche schönes Wetter."
+  synonyme:
+    - "Witterung"
+    - "Wetterlage"
+    - "Wetterverhältnisse"
+  antonyme: []
+  kollokationen:
+    - "schönes Wetter haben"
+    - "bei jedem Wetter"
+    - "über das Wetter reden"
+
+Willkür:
+  wort: "Willkür"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈvɪlkyːɐ̯"
+  niveau: "B2"
+  bedeutungen:
+    - "Ein Handeln allein nach eigenem Gutdünken, ohne Regel und ohne Rücksicht auf andere."
+    - "Die Macht, die jemand ohne Bindung an Recht und Maß ausübt."
+  beispiele:
+    - "Die Bürger waren der Willkür des Gouverneurs schutzlos ausgeliefert."
+    - "Ohne klare Regeln öffnet man der Willkür Tür und Tor."
+    - "Er empfand die Entscheidung als reine Willkür."
+  synonyme:
+    - "Eigenmächtigkeit"
+    - "Beliebigkeit"
+    - "Gutdünken"
+    - "Despotie"
+  antonyme:
+    - "Gerechtigkeit"
+    - "Rechtsstaatlichkeit"
+    - "Gesetzmäßigkeit"
+  kollokationen:
+    - "der Willkür ausgeliefert sein"
+    - "reine Willkür"
+    - "staatliche Willkür"
+
+Vorbild:
+  wort: "Vorbild"
+  artikel: "das"
+  plural: "die Vorbilder"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfoːɐ̯bɪlt"
+  niveau: "B1"
+  bedeutungen:
+    - "Ein Mensch, an dem man sich orientiert, weil man so werden möchte."
+    - "Ein Muster, nach dem etwas gestaltet wird."
+  beispiele:
+    - "Seine Großmutter war für ihn immer ein Vorbild."
+    - "Das schwedische Modell diente als Vorbild für die Reform."
+    - "Wer andere führt, sollte mit gutem Vorbild vorangehen."
+  synonyme:
+    - "Ideal"
+    - "Muster"
+    - "Leitbild"
+    - "Idol"
+  antonyme:
+    - "Gegenbeispiel"
+    - "Negativbeispiel"
+  kollokationen:
+    - "ein Vorbild sein"
+    - "sich jemanden zum Vorbild nehmen"
+    - "mit gutem Vorbild vorangehen"
+
+Bürde:
+  wort: "Bürde"
+  artikel: "die"
+  plural: "die Bürden"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈbʏʁdə"
+  niveau: "C1"
+  bedeutungen:
+    - "Eine schwere Last, die jemand zu tragen hat — meist im übertragenen Sinn."
+  beispiele:
+    - "Die Verantwortung für die Familie war eine schwere Bürde."
+    - "Er trug die Bürde des Amtes ohne Klage."
+    - "Auch Ruhm kann eine Bürde sein."
+  synonyme:
+    - "Last"
+    - "Belastung"
+    - "Joch"
+    - "Ballast"
+  antonyme:
+    - "Erleichterung"
+    - "Entlastung"
+  kollokationen:
+    - "eine Bürde tragen"
+    - "jemandem eine Bürde auferlegen"
+    - "die Bürde der Verantwortung"
+
+Sorge:
+  wort: "Sorge"
+  artikel: "die"
+  plural: "die Sorgen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈzɔʁɡə"
+  niveau: "A2"
+  bedeutungen:
+    - "Ein bedrückendes Gefühl, dass etwas Schlimmes geschehen könnte."
+    - "Die Mühe, die man aufwendet, damit es einem anderen gut geht."
+  beispiele:
+    - "Ihre größte Sorge war das Geld für die Miete."
+    - "Mach dir keine Sorgen, ich rufe an, sobald ich da bin."
+    - "Die Sorge um die kranke Mutter bestimmte seinen Alltag."
+  synonyme:
+    - "Kummer"
+    - "Besorgnis"
+    - "Bedenken"
+    - "Unruhe"
+  antonyme:
+    - "Sorglosigkeit"
+    - "Gelassenheit"
+    - "Zuversicht"
+  kollokationen:
+    - "sich Sorgen machen"
+    - "Sorge tragen für"
+    - "aus Sorge um jemanden"
+
+Gleichgewicht:
+  wort: "Gleichgewicht"
+  artikel: "das"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈɡlaɪ̯çɡəvɪçt"
+  niveau: "B2"
+  bedeutungen:
+    - "Der Zustand, in dem entgegengesetzte Kräfte einander aufheben."
+    - "Die Fähigkeit, den Körper aufrecht zu halten und nicht zu fallen."
+    - "Übertragen: die innere Ruhe eines Menschen."
+  beispiele:
+    - "Auf dem schmalen Steg verlor sie das Gleichgewicht."
+    - "Das Gleichgewicht zwischen Arbeit und Familie ist schwer zu halten."
+    - "Ein Ökosystem im Gleichgewicht verträgt kleine Störungen."
+  synonyme:
+    - "Balance"
+    - "Ausgeglichenheit"
+    - "Ausgewogenheit"
+    - "Stabilität"
+  antonyme:
+    - "Ungleichgewicht"
+    - "Instabilität"
+  kollokationen:
+    - "das Gleichgewicht halten"
+    - "aus dem Gleichgewicht geraten"
+    - "das seelische Gleichgewicht"
+
+Einfluss:
+  wort: "Einfluss"
+  artikel: "der"
+  plural: "die Einflüsse"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈaɪ̯nflʊs"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Wirkung, die jemand oder etwas auf einen anderen ausübt."
+    - "Die Macht, Entscheidungen anderer mitzubestimmen."
+  beispiele:
+    - "Das Klima hat großen Einfluss auf die Ernte."
+    - "Sie nutzte ihren Einfluss, um das Projekt zu retten."
+    - "Unter dem Einfluss seiner Lehrerin begann er zu schreiben."
+  synonyme:
+    - "Wirkung"
+    - "Auswirkung"
+    - "Macht"
+    - "Gewicht"
+  antonyme:
+    - "Wirkungslosigkeit"
+    - "Ohnmacht"
+  kollokationen:
+    - "Einfluss nehmen auf"
+    - "unter dem Einfluss von"
+    - "an Einfluss gewinnen"
+
+Achtsamkeit:
+  wort: "Achtsamkeit"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈaxtzaːmkaɪ̯t"
+  niveau: "C1"
+  bedeutungen:
+    - "Die Haltung, den Augenblick bewusst und ohne Urteil wahrzunehmen."
+    - "Sorgfalt und Aufmerksamkeit im Umgang mit Menschen und Dingen."
+  beispiele:
+    - "Mit etwas mehr Achtsamkeit wäre der Fehler nicht passiert."
+    - "Sie übt seit Jahren Achtsamkeit im Alltag."
+    - "Der Kurs verspricht mehr Achtsamkeit und weniger Stress."
+  synonyme:
+    - "Aufmerksamkeit"
+    - "Sorgfalt"
+    - "Umsicht"
+    - "Bedachtsamkeit"
+  antonyme:
+    - "Unachtsamkeit"
+    - "Nachlässigkeit"
+    - "Zerstreutheit"
+  kollokationen:
+    - "Achtsamkeit üben"
+    - "jemandem mit Achtsamkeit begegnen"
+    - "Achtsamkeit im Alltag"
+
+Freundschaft:
+  wort: "Freundschaft"
+  artikel: "die"
+  plural: "die Freundschaften"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈfʁɔɪ̯ntʃaft"
+  niveau: "A2"
+  bedeutungen:
+    - "Die enge Verbindung zwischen Menschen, die einander mögen und vertrauen."
+  beispiele:
+    - "Aus dem gemeinsamen Studium wurde eine lange Freundschaft."
+    - "Ihre Freundschaft hat auch den Umzug in eine andere Stadt überstanden."
+    - "Diese Bemerkung hat ihn eine Freundschaft gekostet."
+  synonyme:
+    - "Verbundenheit"
+    - "Kameradschaft"
+    - "Vertrautheit"
+    - "Zuneigung"
+  antonyme:
+    - "Feindschaft"
+    - "Entfremdung"
+  kollokationen:
+    - "eine Freundschaft schließen"
+    - "eine Freundschaft pflegen"
+    - "aus alter Freundschaft"
+
+Wagnis:
+  wort: "Wagnis"
+  artikel: "das"
+  plural: "die Wagnisse"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈvaːknɪs"
+  niveau: "B2"
+  bedeutungen:
+    - "Ein Unternehmen, dessen Ausgang ungewiss ist und das scheitern kann."
+  beispiele:
+    - "Die Gründung der Firma war ein Wagnis."
+    - "Sie scheute das Wagnis nicht, noch einmal von vorn anzufangen."
+    - "Jede Ehe ist ein Wagnis."
+  synonyme:
+    - "Risiko"
+    - "Abenteuer"
+    - "Experiment"
+    - "Vabanquespiel"
+  antonyme:
+    - "Sicherheit"
+    - "Absicherung"
+  kollokationen:
+    - "ein Wagnis eingehen"
+    - "ein Wagnis scheuen"
+    - "das Wagnis lohnt sich"
+
+Widerspruch:
+  wort: "Widerspruch"
+  artikel: "der"
+  plural: "die Widersprüche"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈviːdɐʃpʁʊx"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Äußerung, dass man anderer Meinung ist."
+    - "Der Umstand, dass zwei Aussagen einander ausschließen."
+  beispiele:
+    - "Sein Vorschlag stieß auf heftigen Widerspruch."
+    - "Zwischen ihren Worten und ihrem Verhalten liegt ein Widerspruch."
+    - "Ich dulde keinen Widerspruch."
+  synonyme:
+    - "Einwand"
+    - "Protest"
+    - "Einspruch"
+    - "Gegensatz"
+  antonyme:
+    - "Zustimmung"
+    - "Übereinstimmung"
+    - "Einklang"
+  kollokationen:
+    - "Widerspruch einlegen"
+    - "auf Widerspruch stoßen"
+    - "im Widerspruch zu etwas stehen"
+
+Werdegang:
+  wort: "Werdegang"
+  artikel: "der"
+  plural: "die Werdegänge"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈveːɐ̯dəɡaŋ"
+  niveau: "C1"
+  bedeutungen:
+    - "Der Weg, den jemand beruflich und geistig genommen hat."
+    - "Die Entstehung und Entwicklung einer Sache."
+  beispiele:
+    - "Ihr Werdegang führte von der Werkstatt in den Vorstand."
+    - "Der Lebenslauf schildert seinen beruflichen Werdegang."
+    - "Der Vortrag zeichnet den Werdegang der Idee nach."
+  synonyme:
+    - "Laufbahn"
+    - "Entwicklung"
+    - "Karriere"
+    - "Lebensweg"
+  antonyme: []
+  kollokationen:
+    - "der berufliche Werdegang"
+    - "einen ungewöhnlichen Werdegang haben"
+    - "den Werdegang nachzeichnen"
+
+Ordnung:
+  wort: "Ordnung"
+  artikel: "die"
+  plural: "die Ordnungen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈɔʁdnʊŋ"
+  niveau: "A2"
+  bedeutungen:
+    - "Der Zustand, in dem jedes Ding an seinem Platz ist."
+    - "Eine Regel oder Vorschrift, nach der etwas abläuft."
+  beispiele:
+    - "In seinem Zimmer herrscht eine beneidenswerte Ordnung."
+    - "Die Kinder lernen früh, Ordnung zu halten."
+    - "Nach der neuen Ordnung dürfen Anträge nur schriftlich gestellt werden."
+  synonyme:
+    - "Struktur"
+    - "Systematik"
+    - "Regelwerk"
+    - "Anordnung"
+  antonyme:
+    - "Unordnung"
+    - "Chaos"
+    - "Durcheinander"
+  kollokationen:
+    - "Ordnung halten"
+    - "für Ordnung sorgen"
+    - "in Ordnung sein"
+
+Anmut:
+  wort: "Anmut"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈanmuːt"
+  niveau: "B2"
+  bedeutungen:
+    - "Eine Schönheit, die aus der Leichtigkeit und Natürlichkeit der Bewegung entsteht."
+  beispiele:
+    - "Sie bewegte sich mit einer Anmut, die alle im Raum bemerkten."
+    - "Die Anmut des Tanzes ließ die Anstrengung vergessen."
+    - "Über die Anmut hat Schiller einen ganzen Aufsatz geschrieben."
+  synonyme:
+    - "Grazie"
+    - "Eleganz"
+    - "Liebreiz"
+    - "Leichtigkeit"
+  antonyme:
+    - "Plumpheit"
+    - "Schwerfälligkeit"
+  kollokationen:
+    - "mit Anmut"
+    - "voller Anmut"
+    - "die Anmut einer Bewegung"
+
+Herausforderung:
+  wort: "Herausforderung"
+  artikel: "die"
+  plural: "die Herausforderungen"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "hɛˈʁaʊ̯sfɔʁdəʁʊŋ"
+  niveau: "B1"
+  bedeutungen:
+    - "Eine Aufgabe, die einem viel abverlangt und an der man wachsen kann."
+    - "Die Aufforderung an einen Gegner, sich zu messen."
+  beispiele:
+    - "Die neue Stelle ist eine große Herausforderung für sie."
+    - "Er hat die Herausforderung ohne Zögern angenommen."
+    - "Der Klimawandel stellt die Städte vor enorme Herausforderungen."
+  synonyme:
+    - "Aufgabe"
+    - "Prüfung"
+    - "Bewährungsprobe"
+    - "Anforderung"
+  antonyme:
+    - "Routine"
+    - "Kleinigkeit"
+  kollokationen:
+    - "eine Herausforderung annehmen"
+    - "vor einer Herausforderung stehen"
+    - "sich einer Herausforderung stellen"
+
+Trugschluss:
+  wort: "Trugschluss"
+  artikel: "der"
+  plural: "die Trugschlüsse"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈtʁuːkʃlʊs"
+  niveau: "C1"
+  bedeutungen:
+    - "Eine Folgerung, die richtig aussieht, aber auf einem Denkfehler beruht."
+  beispiele:
+    - "Dass teurer immer besser sei, ist ein Trugschluss."
+    - "Der Redner deckte den Trugschluss in wenigen Sätzen auf."
+    - "Ich bin lange einem Trugschluss aufgesessen."
+  synonyme:
+    - "Fehlschluss"
+    - "Denkfehler"
+    - "Irrtum"
+    - "Fehlannahme"
+  antonyme: []
+  kollokationen:
+    - "einem Trugschluss erliegen"
+    - "ein verbreiteter Trugschluss"
+    - "einen Trugschluss aufdecken"
+
+vergessen:
+  wort: "vergessen"
+  artikel: null
+  plural: null
+  stammformen: "vergessen – vergaß – hat vergessen"
+  wortart: "Verb"
+  ipa: "fɛɐ̯ˈɡɛsn̩"
+  niveau: "A2"
+  bedeutungen:
+    - "Etwas nicht mehr im Gedächtnis haben."
+    - "Versäumen, etwas zu tun oder mitzunehmen."
+  beispiele:
+    - "Ich habe seinen Namen sofort wieder vergessen."
+    - "Vergiss nicht, das Fenster zu schließen."
+    - "Diesen Tag werde ich nie vergessen."
+  synonyme:
+    - "entfallen"
+    - "verlernen"
+    - "verdrängen"
+    - "versäumen"
+  antonyme:
+    - "behalten"
+    - "sich erinnern"
+    - "merken"
+  kollokationen:
+    - "etwas völlig vergessen"
+    - "in Vergessenheit geraten"
+    - "das kannst du vergessen"
+
+hartnäckig:
+  wort: "hartnäckig"
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: "Adjektiv"
+  ipa: "ˈhaʁtnɛkɪç"
+  niveau: "B2"
+  bedeutungen:
+    - "Nicht bereit nachzugeben, auch wenn es lange dauert."
+    - "Von Dingen: sich nicht beseitigen lassend."
+  beispiele:
+    - "Sie hat sich hartnäckig geweigert, den Vertrag zu unterschreiben."
+    - "Der Husten hält sich seit Wochen hartnäckig."
+    - "Er verfolgt sein Ziel hartnäckig und ohne Lärm."
+  synonyme:
+    - "beharrlich"
+    - "unnachgiebig"
+    - "zäh"
+    - "unbeirrbar"
+  antonyme:
+    - "nachgiebig"
+    - "wankelmütig"
+  kollokationen:
+    - "sich hartnäckig halten"
+    - "hartnäckig bleiben"
+    - "ein hartnäckiges Gerücht"
+
+Umzug:
+  wort: "Umzug"
+  artikel: "der"
+  plural: "die Umzüge"
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈʊmtsuːk"
+  niveau: "B1"
+  bedeutungen:
+    - "Der Wechsel in eine andere Wohnung."
+    - "Ein feierlicher Zug durch die Straßen."
+  beispiele:
+    - "Der Umzug nach Leipzig hat drei Tage gedauert."
+    - "Beim Umzug haben uns die Nachbarn geholfen."
+    - "Der Umzug zieht am Sonntag durch die Innenstadt."
+  synonyme:
+    - "Wohnungswechsel"
+    - "Ortswechsel"
+    - "Festzug"
+    - "Parade"
+  antonyme: []
+  kollokationen:
+    - "einen Umzug planen"
+    - "beim Umzug helfen"
+    - "der Umzug steht an"
+
+schlagfertig:
+  wort: "schlagfertig"
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: "Adjektiv"
+  ipa: "ˈʃlaːkfɛʁtɪç"
+  niveau: "C1"
+  bedeutungen:
+    - "Fähig, sofort eine treffende, oft witzige Antwort zu geben."
+  beispiele:
+    - "Auf jede Frage hatte sie eine schlagfertige Antwort."
+    - "In Interviews wirkt er ruhig und zugleich schlagfertig."
+    - "So schlagfertig bin ich leider immer erst auf dem Nachhauseweg."
+  synonyme:
+    - "geistesgegenwärtig"
+    - "wortgewandt"
+    - "spritzig"
+    - "witzig"
+  antonyme:
+    - "schwerfällig"
+    - "wortkarg"
+  kollokationen:
+    - "eine schlagfertige Antwort"
+    - "schlagfertig reagieren"
+    - "schlagfertig kontern"
+
+ehrlich:
+  wort: "ehrlich"
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: "Adjektiv"
+  ipa: "ˈeːɐ̯lɪç"
+  niveau: "A2"
+  bedeutungen:
+    - "Die Wahrheit sagend und niemanden betrügend."
+    - "Echt und nicht gespielt."
+  beispiele:
+    - "Sei ehrlich: Hat dir das Stück gefallen?"
+    - "Er hat das Geld auf ehrliche Weise verdient."
+    - "Ihre Freude über das Wiedersehen war ehrlich."
+  synonyme:
+    - "aufrichtig"
+    - "redlich"
+    - "wahrhaftig"
+    - "offen"
+  antonyme:
+    - "unehrlich"
+    - "verlogen"
+    - "falsch"
+  kollokationen:
+    - "ehrlich gesagt"
+    - "ehrlich zu jemandem sein"
+    - "ehrlich währt am längsten"
+
+Ausdauer:
+  wort: "Ausdauer"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "ˈaʊ̯sdaʊ̯ɐ"
+  niveau: "B2"
+  bedeutungen:
+    - "Die Fähigkeit, eine Anstrengung über lange Zeit durchzuhalten."
+  beispiele:
+    - "Für einen Marathon braucht man vor allem Ausdauer."
+    - "Mit erstaunlicher Ausdauer arbeitete sie zehn Jahre an dem Buch."
+    - "Ihm fehlt es nicht an Talent, sondern an Ausdauer."
+  synonyme:
+    - "Durchhaltevermögen"
+    - "Beharrlichkeit"
+    - "Zähigkeit"
+    - "Kondition"
+  antonyme:
+    - "Ungeduld"
+    - "Sprunghaftigkeit"
+  kollokationen:
+    - "Ausdauer beweisen"
+    - "mit großer Ausdauer"
+    - "Kraft und Ausdauer"
+
+überzeugen:
+  wort: "überzeugen"
+  artikel: null
+  plural: null
+  stammformen: "überzeugen – überzeugte – hat überzeugt"
+  wortart: "Verb"
+  ipa: "yːbɐˈtsɔɪ̯ɡn̩"
+  niveau: "B1"
+  bedeutungen:
+    - "Jemanden durch Gründe dazu bringen, etwas für richtig zu halten."
+    - "Durch Leistung einen guten Eindruck machen."
+  beispiele:
+    - "Er konnte die Jury nicht überzeugen."
+    - "Überzeugen Sie sich selbst von der Qualität."
+    - "Die Mannschaft überzeugte erst in der zweiten Halbzeit."
+  synonyme:
+    - "gewinnen"
+    - "umstimmen"
+    - "einnehmen"
+    - "bekehren"
+  antonyme:
+    - "abschrecken"
+    - "enttäuschen"
+  kollokationen:
+    - "jemanden von etwas überzeugen"
+    - "sich selbst überzeugen"
+    - "restlos überzeugen"
+
+Vergangenheit:
+  wort: "Vergangenheit"
+  artikel: "die"
+  plural: null
+  stammformen: null
+  wortart: "Substantiv"
+  ipa: "fɛɐ̯ˈɡaŋənhaɪ̯t"
+  niveau: "B1"
+  bedeutungen:
+    - "Die Zeit, die schon vorbei ist."
+    - "In der Grammatik: die Zeitformen, die ein Geschehen als vergangen darstellen."
+  beispiele:
+    - "Über seine Vergangenheit sprach er nie."
+    - "In der Vergangenheit hat das immer funktioniert."
+    - "Das Perfekt gehört zu den Zeitformen der Vergangenheit."
+  synonyme:
+    - "Vorzeit"
+    - "Geschichte"
+    - "Historie"
+    - "das Gewesene"
+  antonyme:
+    - "Zukunft"
+    - "Gegenwart"
+  kollokationen:
+    - "der Vergangenheit angehören"
+    - "eine bewegte Vergangenheit"
+    - "mit der Vergangenheit brechen"
+
+bewältigen:
+  wort: "bewältigen"
+  artikel: null
+  plural: null
+  stammformen: "bewältigen – bewältigte – hat bewältigt"
+  wortart: "Verb"
+  ipa: "bəˈvɛltɪɡn̩"
+  niveau: "B2"
+  bedeutungen:
+    - "Eine schwierige Aufgabe zu Ende bringen."
+    - "Etwas seelisch verarbeiten und dadurch überwinden."
+  beispiele:
+    - "Das Pensum war in einer Woche nicht zu bewältigen."
+    - "Sie hat den Verlust erstaunlich gut bewältigt."
+    - "Wie bewältigt man so viel Stoff in so kurzer Zeit?"
+  synonyme:
+    - "meistern"
+    - "schaffen"
+    - "verkraften"
+    - "überwinden"
+  antonyme:
+    - "scheitern"
+    - "aufgeben"
+  kollokationen:
+    - "eine Aufgabe bewältigen"
+    - "die Vergangenheit bewältigen"
+    - "kaum zu bewältigen sein"
+
+zuverlässig:
+  wort: "zuverlässig"
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: "Adjektiv"
+  ipa: "ˈtsuːfɐlɛsɪç"
+  niveau: "B1"
+  bedeutungen:
+    - "So, dass man sich darauf verlassen kann."
+    - "Von Angaben: gesichert und richtig."
+  beispiele:
+    - "Er ist der zuverlässigste Kollege, den wir haben."
+    - "Die Zahlen stammen aus einer zuverlässigen Quelle."
+    - "Der alte Wagen läuft noch immer zuverlässig."
+  synonyme:
+    - "verlässlich"
+    - "vertrauenswürdig"
+    - "solide"
+    - "treu"
+  antonyme:
+    - "unzuverlässig"
+    - "sprunghaft"
+  kollokationen:
+    - "eine zuverlässige Quelle"
+    - "zuverlässig funktionieren"
+    - "ein zuverlässiger Partner"

@@ -1,6 +1,6 @@
 # TelegrammWords — "Wort des Tages"
 
-A Telegram bot that posts one German word card per day: meanings, examples,
+A Telegram bot that posts a German word card twice a day: meanings, examples,
 synonyms and antonyms. All explanations are in German (monolingual) —
 a deliberate choice, since the card itself then doubles as reading practice.
 
@@ -8,14 +8,14 @@ a deliberate choice, since the card itself then doubles as reading practice.
 
 | Question | Decision |
 |---|---|
-| Content | 30 cards written by hand in the repository; the Claude API takes over from day 31 |
+| Content | 60 cards written by hand in the repository; the Claude API takes over once they run out |
 | Card language | German, monolingual |
-| Scheduling | GitHub Actions cron, one run per day |
+| Scheduling | GitHub Actions cron, two runs per day |
 | Stack | Python 3.12 |
 | Storage | Files in the repository (`data/`); state is committed back |
 
-There is deliberately no database and no server: the load is one message a day,
-and anything else would be infrastructure for its own sake.
+There is deliberately no database and no server: the load is two messages a
+day, and anything else would be infrastructure for its own sake.
 
 ## How it works
 
@@ -28,7 +28,7 @@ GitHub Actions (cron)
        │   └─ generator.py → … or, if there is none, Claude API → WordCard
        ├─ formatter.py → HTML message for Telegram
        ├─ telegram.py  → sendMessage to the channel
-       └─ state.py     → record word + date in data/state.json
+       └─ state.py     → record word + slot in data/state.json
   └─ commit & push data/state.json
 ```
 
@@ -57,11 +57,11 @@ bot/
   main.py        # CLI: --dry-run, --word WORD, --force
 data/
   words.yml      # word list tagged by level (A2/B1/B2/C1)
-  cards.yml      # 30 pre-written cards, posted in file order
-  state.json     # {"last_post_date": "2026-08-02", "cycle": 0, "posted": [...]}
+  cards.yml      # 60 pre-written cards, posted in file order
+  state.json     # {"last_post_slot": "2026-08-02/pm", "cycle": 0, "posted": [...]}
 tests/
   test_formatter.py, test_state.py, test_models.py, test_wordlist.py,
-  test_cards.py, test_generator.py
+  test_cards.py, test_generator.py, test_config.py
 .github/workflows/
   daily.yml      # cron + manual dispatch
   tests.yml      # pytest on every push
@@ -119,9 +119,11 @@ Substantiv
 
 ## Reliability
 
-- **Idempotence.** `state.json` stores `last_post_date`. A second run on the
-  same day sends nothing — this covers double cron firings and manual
-  "Run workflow" clicks. `--force` overrides it.
+- **Idempotence.** `state.json` stores `last_post_slot` — the half-day last
+  served, e.g. `"2026-08-02/pm"`. A second run in the same slot sends nothing,
+  which covers double cron firings and manual "Run workflow" clicks; the guard
+  also rejects *earlier* slots, so re-running yesterday's job from the Actions
+  UI is silent too. `--force` overrides it.
 - **No repeated words.** Words are drawn from those not yet used; when the list
   is exhausted the cycle restarts with a new deterministic shuffle. Words with
   a stored card come first, in the order of `cards.yml` — including in later
@@ -141,17 +143,19 @@ Substantiv
 ## Schedule
 
 GitHub Actions cron runs in UTC and has no notion of daylight saving time.
-`0 6 * * *` is 08:00 CEST in summer and 07:00 CET in winter, plus
-`workflow_dispatch` for manual runs.
+`0 6 * * *` and `0 16 * * *` are 08:00 and 18:00 CEST in summer, an hour
+earlier in winter, plus `workflow_dispatch` for manual runs.
 
 One platform quirk worth knowing: Actions cron does not guarantee the exact
-minute — delays of 10–15 minutes under load are normal. For a word of the day
-that does not matter.
+minute — delays of 10–15 minutes under load are normal. That quirk is why the
+two slots are split at noon UTC rather than at the cron times themselves: each
+run has six hours of slack before it could be mistaken for the other one.
 
 ## Cost
 
-Nothing for the first 30 days — those cards are in the repository. After that
-one request per day, ~1500 output tokens: cents per month, in round numbers.
+Nothing for the first month — those cards are in the repository. After that two
+requests a day, ~1500 output tokens each: still cents per month, in round
+numbers.
 
 ## Deliberately out of scope for v1
 

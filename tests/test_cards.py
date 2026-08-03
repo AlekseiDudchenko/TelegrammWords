@@ -29,8 +29,9 @@ def write(tmp_path, payload):
 
 
 def test_repo_store_is_valid_and_covers_a_month():
+    # Two posts a day, so a month of cover needs sixty cards.
     stored = cards.load(STORE)
-    assert len(stored) >= 30
+    assert len(stored) >= 60
 
 
 def test_every_stored_word_is_in_the_wordlist():
