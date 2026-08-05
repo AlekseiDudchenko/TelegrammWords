@@ -28,6 +28,7 @@ bot/
   cards.py      loads the pre-written cards from data/cards.yml
   state.py      picks a word without repeats, guards against double posting
   generator.py  Claude API call + response validation
+  links.py      Reverso links: context, and conjugation for verbs
   formatter.py  WordCard -> HTML for Telegram
   telegram.py   sendMessage with retries
   main.py       CLI
@@ -104,6 +105,15 @@ Then check the result: `python -m bot.main --dry-run --word <word>`.
 
 Sixty cards are two posts a day for a month. `tests/test_cards.py` fails if the
 store drops below that.
+
+## Reverso links
+
+Every card ends with a link to the word in [Reverso
+Context](https://context.reverso.net/); verbs get a second link to their
+conjugation table. Reverso Context works on a language pair, so this is the one
+place where the card leaves German — the other half of the pair is
+`CONTEXT_LANGUAGE` in `bot/links.py` (`russian` by default; `english`,
+`french`, `spanish` … all work).
 
 ## Language conventions
 

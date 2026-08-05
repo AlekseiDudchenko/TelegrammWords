@@ -48,6 +48,29 @@ def test_model_text_is_html_escaped():
     assert "<b>Wort des Tages</b>" in out
 
 
+def test_context_link_is_always_there():
+    out = render(HAUS)
+    assert '<a href="https://context.reverso.net/translation/german-' in out
+    assert ">Kontext</a>" in out
+
+
+def test_only_verbs_get_a_conjugation_link():
+    assert "Konjugation" not in render(HAUS)
+
+    verb = HAUS.model_copy(update={"wort": "gehen", "wortart": "Verb"})
+    out = render(verb)
+    assert (
+        '<a href="https://conjugator.reverso.net/conjugation-german-verb-gehen.html">'
+        "Konjugation</a>" in out
+    )
+
+
+def test_umlauts_in_links_are_percent_encoded():
+    out = render(HAUS.model_copy(update={"wort": "üben", "wortart": "Verb"}))
+    assert "german-verb-%C3%BCben.html" in out
+    assert "/%C3%BCben\"" in out
+
+
 def test_multiple_meanings_are_numbered():
     card = HAUS.model_copy(update={"bedeutungen": ["Erste Bedeutung.", "Zweite."]})
     out = render(card)

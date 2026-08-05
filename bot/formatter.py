@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from html import escape
 
+from . import links
 from .models import WordCard
 
 
@@ -38,7 +39,22 @@ def render(card: WordCard) -> str:
     if card.kollokationen:
         lines.append(f"💬 <b>Wendungen:</b> {e('; '.join(card.kollokationen))}")
 
+    lines += ["", f"🌐 <b>Reverso:</b> {_links(card)}"]
+
     return "\n".join(lines).strip()
+
+
+def _links(card: WordCard) -> str:
+    """Reverso Context, plus the conjugation table when the word is a verb."""
+    parts = [_link(links.context_url(card), "Kontext")]
+    conjugation = links.conjugation_url(card)
+    if conjugation:
+        parts.append(_link(conjugation, "Konjugation"))
+    return " · ".join(parts)
+
+
+def _link(url: str, label: str) -> str:
+    return f'<a href="{escape(url, quote=True)}">{e(label)}</a>'
 
 
 def _headword(card: WordCard) -> str:
