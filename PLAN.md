@@ -122,7 +122,13 @@ Substantiv
 🔗 Synonyme: Gebäude, Wohnhaus, Anwesen
 ↔️ Antonyme: —
 💬 Wendungen: nach Hause gehen; das Haus hüten
+
+🌐 Reverso: Kontext · Konjugation
 ```
+
+The last line links to Reverso: the headword in Reverso Context, and for verbs
+its conjugation table as well (`bot/links.py`). Reverso Context needs a
+language pair; `CONTEXT_LANGUAGE` picks the other half of it.
 
 ## Reliability
 
