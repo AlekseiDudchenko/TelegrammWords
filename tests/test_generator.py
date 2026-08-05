@@ -20,6 +20,7 @@ VALID = {
     "niveau": "A2",
     "bedeutungen": ["Gebäude, in dem Menschen wohnen."],
     "beispiele": ["Das Haus ist alt."],
+    "beispiele_en": ["The house is old."],
     "synonyme": ["Gebäude"],
     "antonyme": [],
     "kollokationen": ["nach Hause gehen"],

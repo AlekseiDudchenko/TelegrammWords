@@ -1,4 +1,7 @@
-from bot.models import card_json_schema
+import pytest
+from pydantic import ValidationError
+
+from bot.models import WordCard, card_json_schema
 
 
 def test_schema_is_strict_everywhere():
@@ -27,3 +30,26 @@ def _assert_strict(node):
     elif isinstance(node, list):
         for item in node:
             _assert_strict(item)
+
+
+def test_translations_must_match_the_examples_one_to_one():
+    payload = dict(
+        wort="Haus",
+        artikel="das",
+        plural="die Häuser",
+        stammformen=None,
+        wortart="Substantiv",
+        ipa="haʊ̯s",
+        niveau="A2",
+        bedeutungen=["Gebäude, in dem Menschen wohnen."],
+        beispiele=["Das Haus ist alt.", "Das Haus steht leer."],
+        beispiele_en=["The house is old."],
+        synonyme=["Gebäude"],
+        antonyme=[],
+        kollokationen=["nach Hause gehen"],
+    )
+    with pytest.raises(ValidationError, match="beispiele_en"):
+        WordCard.model_validate(payload)
+
+    payload["beispiele_en"] = ["The house is old.", "The house stands empty."]
+    assert len(WordCard.model_validate(payload).beispiele_en) == 2

@@ -22,6 +22,10 @@ Fernweh:
     - "Jedes Mal, wenn ein Flugzeug über das Haus fliegt, bekomme ich Fernweh."
     - "Sein Fernweh war am Ende stärker als die Angst vor dem Alleinsein."
     - "Im November packt mich regelmäßig das Fernweh."
+  beispiele_en:
+    - "Every time a plane flies over the house, I get the urge to travel."
+    - "In the end his longing for faraway places was stronger than his fear of being alone."
+    - "Come November, the urge to travel reliably takes hold of me."
   synonyme:
     - "Reiselust"
     - "Wanderlust"
@@ -49,6 +53,10 @@ Zeitgeist:
     - "Der Film trifft den Zeitgeist der frühen Neunziger erstaunlich genau."
     - "Wer nur dem Zeitgeist folgt, wirkt schon nach wenigen Jahren altmodisch."
     - "Solche Debatten sagen mehr über den Zeitgeist als über die Sache selbst."
+  beispiele_en:
+    - "The film captures the spirit of the early nineties remarkably well."
+    - "Anyone who merely follows the zeitgeist looks old-fashioned within a few years."
+    - "Debates like this say more about the spirit of the times than about the issue itself."
   synonyme:
     - "Zeitströmung"
     - "Zeitstimmung"
@@ -75,6 +83,10 @@ Traum:
     - "Ich hatte heute Nacht einen seltsamen Traum von unserem alten Haus."
     - "Ein eigenes Café zu eröffnen war schon immer ihr Traum."
     - "Der Abend war so schön, dass er ihr später wie ein Traum vorkam."
+  beispiele_en:
+    - "Last night I had a strange dream about our old house."
+    - "Opening a café of her own had always been her dream."
+    - "The evening was so lovely that it later seemed like a dream to her."
   synonyme:
     - "Wunschtraum"
     - "Vision"
@@ -102,6 +114,10 @@ Sehnsucht:
     - "Nach zwei Jahren im Ausland wuchs seine Sehnsucht nach der eigenen Sprache."
     - "Sie sah dem Zug mit einer Sehnsucht nach, die sie sich selbst nicht erklären konnte."
     - "In seinen Briefen steht mehr Sehnsucht als Nachricht."
+  beispiele_en:
+    - "After two years abroad, his longing for his own language grew."
+    - "She watched the train go with a longing she could not explain to herself."
+    - "There is more longing than news in his letters."
   synonyme:
     - "Verlangen"
     - "Sehnen"
@@ -129,6 +145,10 @@ Schadenfreude:
     - "Er konnte seine Schadenfreude kaum verbergen, als der Nachbar im Regen stand."
     - "In ihrem Lachen lag eine leise Schadenfreude."
     - "Aus reiner Schadenfreude erzählte sie die Geschichte gleich weiter."
+  beispiele_en:
+    - "He could barely hide his glee when the neighbour was left standing in the rain."
+    - "There was a quiet malicious pleasure in her laughter."
+    - "Out of pure schadenfreude she passed the story straight on."
   synonyme:
     - "Häme"
     - "Hohn"
@@ -157,6 +177,10 @@ Mut:
     - "Es kostet Mut, vor so vielen Menschen zu sprechen."
     - "Sie fasste Mut und stellte die Frage trotzdem."
     - "Nach der dritten Absage verlor er langsam den Mut."
+  beispiele_en:
+    - "It takes courage to speak in front of so many people."
+    - "She plucked up her courage and asked the question anyway."
+    - "After the third rejection he slowly began to lose heart."
   synonyme:
     - "Tapferkeit"
     - "Courage"
@@ -185,6 +209,10 @@ Zwiespalt:
     - "Sie geriet in einen Zwiespalt zwischen Loyalität und eigener Überzeugung."
     - "Der Zwiespalt zwischen den beiden Lagern war nicht mehr zu überbrücken."
     - "Er steckte tagelang in diesem Zwiespalt und konnte sich nicht entscheiden."
+  beispiele_en:
+    - "She was torn between loyalty and her own convictions."
+    - "The rift between the two camps could no longer be bridged."
+    - "He was stuck in this dilemma for days and could not make up his mind."
   synonyme:
     - "Zerrissenheit"
     - "Dilemma"
@@ -213,6 +241,10 @@ Vorurteil:
     - "Gegen dieses Vorurteil hilft nur, die Leute persönlich kennenzulernen."
     - "Sie ging ohne Vorurteil in das Gespräch."
     - "Viele Vorurteile halten sich hartnäckig, obwohl jeder sie widerlegen könnte."
+  beispiele_en:
+    - "The only cure for this prejudice is getting to know the people yourself."
+    - "She went into the conversation without any preconceptions."
+    - "Many prejudices persist stubbornly, although anyone could disprove them."
   synonyme:
     - "Voreingenommenheit"
     - "Klischee"
@@ -241,6 +273,10 @@ Gemütlichkeit:
     - "Zwei Kerzen, und schon stellte sich eine gewisse Gemütlichkeit ein."
     - "Wir haben den Abend in aller Gemütlichkeit ausklingen lassen."
     - "Bei diesem Thema hört die Gemütlichkeit allerdings auf."
+  beispiele_en:
+    - "Two candles, and a certain cosiness had already set in."
+    - "We let the evening wind down in complete comfort."
+    - "When it comes to this subject, though, the good humour stops."
   synonyme:
     - "Behaglichkeit"
     - "Geborgenheit"
@@ -269,6 +305,10 @@ Ruhe:
     - "Nach acht Uhr kehrt in diesem Haus endlich Ruhe ein."
     - "Er bewahrte die Ruhe, obwohl alle anderen durcheinanderredeten."
     - "Lass mich bitte einen Moment in Ruhe."
+  beispiele_en:
+    - "After eight o'clock, quiet finally settles over this house."
+    - "He kept his composure even though everyone else was talking over each other."
+    - "Please leave me in peace for a moment."
   synonyme:
     - "Stille"
     - "Gelassenheit"
@@ -297,6 +337,10 @@ Sprachgefühl:
     - "Welcher Fall hier stehen muss, sagt mir mein Sprachgefühl, nicht die Grammatik."
     - "Viel zu lesen ist der beste Weg, das Sprachgefühl zu schulen."
     - "Ihr Sprachgefühl ist nach zehn Jahren in Wien fast das einer Muttersprachlerin."
+  beispiele_en:
+    - "Which case belongs here is something my feel for the language tells me, not grammar."
+    - "Reading a great deal is the best way to train your feel for a language."
+    - "After ten years in Vienna, her instinct for the language is almost that of a native speaker."
   synonyme:
     - "Sprachgespür"
     - "Sprachempfinden"
@@ -322,6 +366,10 @@ Erfahrung:
     - "Für die Stelle braucht man mehrere Jahre Erfahrung im Ausland."
     - "Ich spreche aus Erfahrung: Das dauert länger, als du denkst."
     - "Es war eine bittere Erfahrung, aber sie hat mir viel beigebracht."
+  beispiele_en:
+    - "The position requires several years of experience abroad."
+    - "I speak from experience: that takes longer than you think."
+    - "It was a bitter experience, but it taught me a lot."
   synonyme:
     - "Praxis"
     - "Routine"
@@ -349,6 +397,10 @@ Weltschmerz:
     - "Mit siebzehn und einem Band Rilke unterm Arm hatte er ordentlich Weltschmerz."
     - "Aus dem Roman spricht der Weltschmerz seiner ganzen Generation."
     - "Sonntagabends überkommt mich ein leiser Weltschmerz."
+  beispiele_en:
+    - "At seventeen, with a volume of Rilke under his arm, he had a serious case of world-weariness."
+    - "The novel speaks with the world-weariness of his whole generation."
+    - "On Sunday evenings a quiet melancholy comes over me."
   synonyme:
     - "Melancholie"
     - "Schwermut"
@@ -377,6 +429,10 @@ Gefühl:
     - "Ich hatte gleich ein gutes Gefühl bei der Sache."
     - "Vor Kälte hatte sie kein Gefühl mehr in den Zehen."
     - "Er zeigt seine Gefühle selten, aber sie sind da."
+  beispiele_en:
+    - "I had a good feeling about it right away."
+    - "The cold had left her with no feeling in her toes."
+    - "He rarely shows his feelings, but they are there."
   synonyme:
     - "Empfindung"
     - "Emotion"
@@ -405,6 +461,10 @@ Kehrseite:
     - "Die Kehrseite der Freiheit ist, dass niemand dir sagt, was richtig ist."
     - "Jeder Erfolg hat eine Kehrseite, über die selten gesprochen wird."
     - "Auf der Kehrseite der Karte stand eine Adresse."
+  beispiele_en:
+    - "The flip side of freedom is that nobody tells you what is right."
+    - "Every success has a downside that is rarely talked about."
+    - "There was an address on the back of the card."
   synonyme:
     - "Rückseite"
     - "Schattenseite"
@@ -431,6 +491,10 @@ Zufall:
     - "Wir haben uns durch reinen Zufall am Bahnhof getroffen."
     - "Dass beide denselben Namen tragen, ist kein Zufall."
     - "Bei der Prüfung wollte sie nichts dem Zufall überlassen."
+  beispiele_en:
+    - "We met at the station by pure chance."
+    - "It is no coincidence that the two of them have the same name."
+    - "She wanted to leave nothing to chance in the exam."
   synonyme:
     - "Fügung"
     - "Glücksfall"
@@ -459,6 +523,10 @@ Wehmut:
     - "Mit einer gewissen Wehmut schloss er die Tür der alten Wohnung ab."
     - "Sie denkt ohne Wehmut an diese Jahre zurück."
     - "In seiner Stimme lag Wehmut, aber kein Vorwurf."
+  beispiele_en:
+    - "With a certain wistfulness he locked the door of the old flat."
+    - "She looks back on those years without any melancholy."
+    - "There was sadness in his voice, but no reproach."
   synonyme:
     - "Melancholie"
     - "Schwermut"
@@ -485,6 +553,10 @@ Nachbar:
     - "Unser neuer Nachbar hat sich gestern kurz vorgestellt."
     - "Die Nachbarn gießen die Blumen, wenn wir im Urlaub sind."
     - "Der Nachbar von gegenüber grüßt grundsätzlich nicht."
+  beispiele_en:
+    - "Our new neighbour introduced himself briefly yesterday."
+    - "The neighbours water the plants when we are away on holiday."
+    - "The neighbour across the way never says hello on principle."
   synonyme:
     - "Anwohner"
     - "Anrainer"
@@ -509,6 +581,10 @@ Fingerspitzengefühl:
     - "Diese Verhandlung verlangt Fingerspitzengefühl, keine Lautstärke."
     - "Sie hat das Thema mit viel Fingerspitzengefühl angesprochen."
     - "Ihm fehlt jedes Fingerspitzengefühl für den richtigen Moment."
+  beispiele_en:
+    - "This negotiation calls for tact, not volume."
+    - "She raised the subject with a great deal of sensitivity."
+    - "He has no instinct at all for the right moment."
   synonyme:
     - "Feingefühl"
     - "Takt"
@@ -535,6 +611,10 @@ Vertrauen:
     - "Vertrauen aufzubauen dauert Jahre und lässt sich in einem Satz zerstören."
     - "Sie hat volles Vertrauen in ihre Kollegin."
     - "Das sage ich dir im Vertrauen."
+  beispiele_en:
+    - "Building trust takes years and can be destroyed in a single sentence."
+    - "She has complete confidence in her colleague."
+    - "I am telling you this in confidence."
   synonyme:
     - "Zutrauen"
     - "Zuversicht"
@@ -563,6 +643,10 @@ Zuversicht:
     - "Trotz der schlechten Zahlen blickt sie mit Zuversicht ins nächste Jahr."
     - "Seine Zuversicht steckte alle anderen an."
     - "Nach der dritten Absage verlor er die Zuversicht."
+  beispiele_en:
+    - "Despite the poor figures, she looks to next year with confidence."
+    - "His optimism was contagious for everyone else."
+    - "After the third rejection he lost his confidence."
   synonyme:
     - "Optimismus"
     - "Hoffnung"
@@ -592,6 +676,10 @@ Erinnerung:
     - "An den Umzug habe ich nur noch eine vage Erinnerung."
     - "Der Geruch von nassem Laub weckt bei mir sofort Erinnerungen."
     - "Zur Erinnerung an den Abend haben wir ein Foto gemacht."
+  beispiele_en:
+    - "I have only a vague memory of the move."
+    - "The smell of wet leaves instantly brings back memories for me."
+    - "We took a photo as a keepsake of the evening."
   synonyme:
     - "Andenken"
     - "Gedächtnis"
@@ -620,6 +708,10 @@ Verantwortung:
     - "Für diesen Fehler übernehme ich die Verantwortung."
     - "Mit dem Hund kam eine Verantwortung ins Haus, die er unterschätzt hatte."
     - "Am Ende trägt die Verantwortung immer die Leitung."
+  beispiele_en:
+    - "I take responsibility for this mistake."
+    - "The dog brought a responsibility into the house that he had underestimated."
+    - "In the end it is always management that bears the responsibility."
   synonyme:
     - "Pflicht"
     - "Haftung"
@@ -648,6 +740,10 @@ Verantwortung:
     - "Im Übermut sprangen sie noch im Oktober in den See."
     - "Sein Übermut hat ihn diesmal teuer zu stehen kommen lassen."
     - "Aus lauter Übermut haben die Kinder das halbe Zimmer umgeräumt."
+  beispiele_en:
+    - "In high spirits they jumped into the lake, even though it was October."
+    - "His recklessness cost him dearly this time."
+    - "Out of sheer exuberance the children rearranged half the room."
   synonyme:
     - "Ausgelassenheit"
     - "Leichtsinn"
@@ -677,6 +773,10 @@ neugierig:
     - "Ich bin neugierig, wie das Buch ausgeht."
     - "Sei nicht so neugierig, das geht dich nichts an."
     - "Ihre Fragen haben mich erst richtig neugierig gemacht."
+  beispiele_en:
+    - "I am curious to know how the book ends."
+    - "Don't be so nosy, it is none of your business."
+    - "It was her questions that really made me curious."
   synonyme:
     - "wissbegierig"
     - "interessiert"
@@ -704,6 +804,10 @@ Rücksicht:
     - "Nimm bitte Rücksicht auf die Nachbarn, es ist nach zehn."
     - "Aus Rücksicht auf ihre Mutter hat sie nichts gesagt."
     - "Er setzt seine Pläne ohne Rücksicht auf Verluste durch."
+  beispiele_en:
+    - "Please show some consideration for the neighbours, it is past ten."
+    - "Out of consideration for her mother she said nothing."
+    - "He pushes his plans through regardless of the cost."
   synonyme:
     - "Nachsicht"
     - "Takt"
@@ -731,6 +835,10 @@ Vielfalt:
     - "Auf dem Markt gibt es eine erstaunliche Vielfalt an altem Gemüse."
     - "Die Vielfalt der Dialekte geht langsam verloren."
     - "Vielfalt macht eine Stadt interessant."
+  beispiele_en:
+    - "The market has an astonishing variety of heirloom vegetables."
+    - "The diversity of dialects is slowly being lost."
+    - "Diversity is what makes a city interesting."
   synonyme:
     - "Mannigfaltigkeit"
     - "Bandbreite"
@@ -759,6 +867,10 @@ Geduld:
     - "Für dieses Rezept braucht man vor allem Geduld."
     - "Mit den Kindern hat sie eine Geduld, die ich nur bewundern kann."
     - "Nach einer Stunde am Telefon riss ihm der Geduldsfaden."
+  beispiele_en:
+    - "This recipe calls above all for patience."
+    - "She has a patience with the children that I can only admire."
+    - "After an hour on the phone he finally lost his patience."
   synonyme:
     - "Ausdauer"
     - "Langmut"
@@ -787,6 +899,10 @@ Gelegenheit:
     - "Ich hatte noch keine Gelegenheit, mit ihr darüber zu sprechen."
     - "Diese Gelegenheit kommt so schnell nicht wieder — ergreif sie."
     - "Das Kleid trägt sie nur zu besonderen Gelegenheiten."
+  beispiele_en:
+    - "I have not had the opportunity to talk to her about it yet."
+    - "An opportunity like this will not come again soon — take it."
+    - "She only wears that dress on special occasions."
   synonyme:
     - "Chance"
     - "Anlass"
@@ -813,6 +929,10 @@ Haus:
     - "Das Haus am Ende der Straße steht seit Jahren leer."
     - "Wir sind gestern Abend spät nach Hause gekommen."
     - "Im ganzen Haus roch es nach frischem Brot."
+  beispiele_en:
+    - "The house at the end of the street has stood empty for years."
+    - "We got home late last night."
+    - "The whole house smelled of fresh bread."
   synonyme:
     - "Gebäude"
     - "Wohnhaus"
@@ -838,6 +958,10 @@ Reise:
     - "Die Reise nach Norwegen hat sie seit Jahren geplant."
     - "Auf der Reise haben wir mehr über uns gelernt als über das Land."
     - "Nach zwölf Stunden Reise fielen wir sofort ins Bett."
+  beispiele_en:
+    - "She had been planning the trip to Norway for years."
+    - "On the journey we learned more about ourselves than about the country."
+    - "After twelve hours of travelling we fell straight into bed."
   synonyme:
     - "Fahrt"
     - "Tour"
@@ -866,6 +990,10 @@ Rückgrat:
     - "Ein Sturz beim Reiten hatte ihr Rückgrat verletzt."
     - "Er hatte das Rückgrat, dem Chef offen zu widersprechen."
     - "In dieser Frage hat die Partei kein Rückgrat gezeigt."
+  beispiele_en:
+    - "A fall while riding had injured her spine."
+    - "He had the backbone to contradict the boss openly."
+    - "On this question the party showed no backbone."
   synonyme:
     - "Wirbelsäule"
     - "Haltung"
@@ -894,6 +1022,10 @@ Neugier:
     - "Ihre Neugier auf fremde Sprachen hat sie zum Studium gebracht."
     - "Aus reiner Neugier öffnete er den Brief, der nicht für ihn bestimmt war."
     - "Kinder lernen vor allem durch Neugier."
+  beispiele_en:
+    - "Her curiosity about foreign languages led her to study them."
+    - "Out of sheer curiosity he opened the letter that was not meant for him."
+    - "Children learn above all through curiosity."
   synonyme:
     - "Wissbegier"
     - "Interesse"
@@ -922,6 +1054,10 @@ Zäsur:
     - "Das Jahr 1989 war eine Zäsur in der deutschen Geschichte."
     - "Der Tod des Vaters bedeutete für ihn eine Zäsur."
     - "Nach der Zäsur wechselt das Gedicht den Ton."
+  beispiele_en:
+    - "The year 1989 was a turning point in German history."
+    - "His father's death marked a decisive break in his life."
+    - "After the caesura the poem changes its tone."
   synonyme:
     - "Einschnitt"
     - "Wendepunkt"
@@ -950,6 +1086,10 @@ Wetter:
     - "Bei diesem Wetter bleibe ich lieber zu Hause."
     - "Das Wetter schlägt am Nachmittag um."
     - "Wir hatten die ganze Woche schönes Wetter."
+  beispiele_en:
+    - "In weather like this I would rather stay at home."
+    - "The weather is going to turn in the afternoon."
+    - "We had fine weather all week."
   synonyme:
     - "Witterung"
     - "Wetterlage"
@@ -975,6 +1115,10 @@ Willkür:
     - "Die Bürger waren der Willkür des Gouverneurs schutzlos ausgeliefert."
     - "Ohne klare Regeln öffnet man der Willkür Tür und Tor."
     - "Er empfand die Entscheidung als reine Willkür."
+  beispiele_en:
+    - "The citizens were left defenceless against the governor's arbitrary rule."
+    - "Without clear rules you open the door wide to arbitrary decisions."
+    - "He felt the decision was purely arbitrary."
   synonyme:
     - "Eigenmächtigkeit"
     - "Beliebigkeit"
@@ -1004,6 +1148,10 @@ Vorbild:
     - "Seine Großmutter war für ihn immer ein Vorbild."
     - "Das schwedische Modell diente als Vorbild für die Reform."
     - "Wer andere führt, sollte mit gutem Vorbild vorangehen."
+  beispiele_en:
+    - "His grandmother was always a role model to him."
+    - "The Swedish model served as the blueprint for the reform."
+    - "Anyone who leads others should set a good example."
   synonyme:
     - "Ideal"
     - "Muster"
@@ -1031,6 +1179,10 @@ Bürde:
     - "Die Verantwortung für die Familie war eine schwere Bürde."
     - "Er trug die Bürde des Amtes ohne Klage."
     - "Auch Ruhm kann eine Bürde sein."
+  beispiele_en:
+    - "Responsibility for the family was a heavy burden."
+    - "He bore the burden of office without complaint."
+    - "Fame, too, can be a burden."
   synonyme:
     - "Last"
     - "Belastung"
@@ -1059,6 +1211,10 @@ Sorge:
     - "Ihre größte Sorge war das Geld für die Miete."
     - "Mach dir keine Sorgen, ich rufe an, sobald ich da bin."
     - "Die Sorge um die kranke Mutter bestimmte seinen Alltag."
+  beispiele_en:
+    - "Her biggest worry was the money for the rent."
+    - "Don't worry, I will call as soon as I get there."
+    - "Concern for his sick mother shaped his daily life."
   synonyme:
     - "Kummer"
     - "Besorgnis"
@@ -1089,6 +1245,10 @@ Gleichgewicht:
     - "Auf dem schmalen Steg verlor sie das Gleichgewicht."
     - "Das Gleichgewicht zwischen Arbeit und Familie ist schwer zu halten."
     - "Ein Ökosystem im Gleichgewicht verträgt kleine Störungen."
+  beispiele_en:
+    - "She lost her balance on the narrow footbridge."
+    - "The balance between work and family is hard to keep."
+    - "An ecosystem in balance can take small disturbances."
   synonyme:
     - "Balance"
     - "Ausgeglichenheit"
@@ -1117,6 +1277,10 @@ Einfluss:
     - "Das Klima hat großen Einfluss auf die Ernte."
     - "Sie nutzte ihren Einfluss, um das Projekt zu retten."
     - "Unter dem Einfluss seiner Lehrerin begann er zu schreiben."
+  beispiele_en:
+    - "The climate has a great influence on the harvest."
+    - "She used her influence to save the project."
+    - "Under the influence of his teacher he began to write."
   synonyme:
     - "Wirkung"
     - "Auswirkung"
@@ -1145,6 +1309,10 @@ Achtsamkeit:
     - "Mit etwas mehr Achtsamkeit wäre der Fehler nicht passiert."
     - "Sie übt seit Jahren Achtsamkeit im Alltag."
     - "Der Kurs verspricht mehr Achtsamkeit und weniger Stress."
+  beispiele_en:
+    - "With a little more attentiveness the mistake would not have happened."
+    - "She has been practising mindfulness in everyday life for years."
+    - "The course promises more mindfulness and less stress."
   synonyme:
     - "Aufmerksamkeit"
     - "Sorgfalt"
@@ -1173,6 +1341,10 @@ Freundschaft:
     - "Aus dem gemeinsamen Studium wurde eine lange Freundschaft."
     - "Ihre Freundschaft hat auch den Umzug in eine andere Stadt überstanden."
     - "Diese Bemerkung hat ihn eine Freundschaft gekostet."
+  beispiele_en:
+    - "Studying together turned into a long friendship."
+    - "Their friendship survived even a move to another city."
+    - "That remark cost him a friendship."
   synonyme:
     - "Verbundenheit"
     - "Kameradschaft"
@@ -1200,6 +1372,10 @@ Wagnis:
     - "Die Gründung der Firma war ein Wagnis."
     - "Sie scheute das Wagnis nicht, noch einmal von vorn anzufangen."
     - "Jede Ehe ist ein Wagnis."
+  beispiele_en:
+    - "Founding the company was a gamble."
+    - "She did not shy away from the risk of starting all over again."
+    - "Every marriage is a venture into the unknown."
   synonyme:
     - "Risiko"
     - "Abenteuer"
@@ -1228,6 +1404,10 @@ Widerspruch:
     - "Sein Vorschlag stieß auf heftigen Widerspruch."
     - "Zwischen ihren Worten und ihrem Verhalten liegt ein Widerspruch."
     - "Ich dulde keinen Widerspruch."
+  beispiele_en:
+    - "His proposal met with fierce opposition."
+    - "There is a contradiction between her words and her behaviour."
+    - "I will not tolerate any argument."
   synonyme:
     - "Einwand"
     - "Protest"
@@ -1257,6 +1437,10 @@ Werdegang:
     - "Ihr Werdegang führte von der Werkstatt in den Vorstand."
     - "Der Lebenslauf schildert seinen beruflichen Werdegang."
     - "Der Vortrag zeichnet den Werdegang der Idee nach."
+  beispiele_en:
+    - "Her career took her from the workshop to the board."
+    - "The CV sets out his professional career."
+    - "The talk traces how the idea developed."
   synonyme:
     - "Laufbahn"
     - "Entwicklung"
@@ -1283,6 +1467,10 @@ Ordnung:
     - "In seinem Zimmer herrscht eine beneidenswerte Ordnung."
     - "Die Kinder lernen früh, Ordnung zu halten."
     - "Nach der neuen Ordnung dürfen Anträge nur schriftlich gestellt werden."
+  beispiele_en:
+    - "His room is kept in enviable order."
+    - "The children learn early on to keep things tidy."
+    - "Under the new rules, applications may only be made in writing."
   synonyme:
     - "Struktur"
     - "Systematik"
@@ -1311,6 +1499,10 @@ Anmut:
     - "Sie bewegte sich mit einer Anmut, die alle im Raum bemerkten."
     - "Die Anmut des Tanzes ließ die Anstrengung vergessen."
     - "Über die Anmut hat Schiller einen ganzen Aufsatz geschrieben."
+  beispiele_en:
+    - "She moved with a grace that everyone in the room noticed."
+    - "The grace of the dance made you forget the effort behind it."
+    - "Schiller wrote a whole essay on grace."
   synonyme:
     - "Grazie"
     - "Eleganz"
@@ -1339,6 +1531,10 @@ Herausforderung:
     - "Die neue Stelle ist eine große Herausforderung für sie."
     - "Er hat die Herausforderung ohne Zögern angenommen."
     - "Der Klimawandel stellt die Städte vor enorme Herausforderungen."
+  beispiele_en:
+    - "The new job is a big challenge for her."
+    - "He accepted the challenge without hesitating."
+    - "Climate change confronts cities with enormous challenges."
   synonyme:
     - "Aufgabe"
     - "Prüfung"
@@ -1366,6 +1562,10 @@ Trugschluss:
     - "Dass teurer immer besser sei, ist ein Trugschluss."
     - "Der Redner deckte den Trugschluss in wenigen Sätzen auf."
     - "Ich bin lange einem Trugschluss aufgesessen."
+  beispiele_en:
+    - "The idea that more expensive always means better is a fallacy."
+    - "The speaker exposed the fallacy in a few sentences."
+    - "I fell for a false conclusion for a long time."
   synonyme:
     - "Fehlschluss"
     - "Denkfehler"
@@ -1392,6 +1592,10 @@ vergessen:
     - "Ich habe seinen Namen sofort wieder vergessen."
     - "Vergiss nicht, das Fenster zu schließen."
     - "Diesen Tag werde ich nie vergessen."
+  beispiele_en:
+    - "I forgot his name again straight away."
+    - "Don't forget to close the window."
+    - "I will never forget this day."
   synonyme:
     - "entfallen"
     - "verlernen"
@@ -1421,6 +1625,10 @@ hartnäckig:
     - "Sie hat sich hartnäckig geweigert, den Vertrag zu unterschreiben."
     - "Der Husten hält sich seit Wochen hartnäckig."
     - "Er verfolgt sein Ziel hartnäckig und ohne Lärm."
+  beispiele_en:
+    - "She stubbornly refused to sign the contract."
+    - "The cough has been hanging on stubbornly for weeks."
+    - "He pursues his goal doggedly and without any fuss."
   synonyme:
     - "beharrlich"
     - "unnachgiebig"
@@ -1449,6 +1657,10 @@ Umzug:
     - "Der Umzug nach Leipzig hat drei Tage gedauert."
     - "Beim Umzug haben uns die Nachbarn geholfen."
     - "Der Umzug zieht am Sonntag durch die Innenstadt."
+  beispiele_en:
+    - "The move to Leipzig took three days."
+    - "The neighbours helped us with the move."
+    - "The parade goes through the city centre on Sunday."
   synonyme:
     - "Wohnungswechsel"
     - "Ortswechsel"
@@ -1474,6 +1686,10 @@ schlagfertig:
     - "Auf jede Frage hatte sie eine schlagfertige Antwort."
     - "In Interviews wirkt er ruhig und zugleich schlagfertig."
     - "So schlagfertig bin ich leider immer erst auf dem Nachhauseweg."
+  beispiele_en:
+    - "She had a quick-witted answer to every question."
+    - "In interviews he comes across as calm and quick-witted at the same time."
+    - "Sadly I only ever get that quick-witted on the way home."
   synonyme:
     - "geistesgegenwärtig"
     - "wortgewandt"
@@ -1502,6 +1718,10 @@ ehrlich:
     - "Sei ehrlich: Hat dir das Stück gefallen?"
     - "Er hat das Geld auf ehrliche Weise verdient."
     - "Ihre Freude über das Wiedersehen war ehrlich."
+  beispiele_en:
+    - "Be honest: did you like the play?"
+    - "He earned the money honestly."
+    - "Her delight at the reunion was genuine."
   synonyme:
     - "aufrichtig"
     - "redlich"
@@ -1530,6 +1750,10 @@ Ausdauer:
     - "Für einen Marathon braucht man vor allem Ausdauer."
     - "Mit erstaunlicher Ausdauer arbeitete sie zehn Jahre an dem Buch."
     - "Ihm fehlt es nicht an Talent, sondern an Ausdauer."
+  beispiele_en:
+    - "A marathon calls above all for stamina."
+    - "With astonishing perseverance she worked on the book for ten years."
+    - "What he lacks is not talent but staying power."
   synonyme:
     - "Durchhaltevermögen"
     - "Beharrlichkeit"
@@ -1558,6 +1782,10 @@ Ausdauer:
     - "Er konnte die Jury nicht überzeugen."
     - "Überzeugen Sie sich selbst von der Qualität."
     - "Die Mannschaft überzeugte erst in der zweiten Halbzeit."
+  beispiele_en:
+    - "He was unable to convince the jury."
+    - "See the quality for yourself."
+    - "The team only impressed in the second half."
   synonyme:
     - "gewinnen"
     - "umstimmen"
@@ -1586,6 +1814,10 @@ Vergangenheit:
     - "Über seine Vergangenheit sprach er nie."
     - "In der Vergangenheit hat das immer funktioniert."
     - "Das Perfekt gehört zu den Zeitformen der Vergangenheit."
+  beispiele_en:
+    - "He never spoke about his past."
+    - "In the past that always worked."
+    - "The present perfect is one of the past tenses."
   synonyme:
     - "Vorzeit"
     - "Geschichte"
@@ -1614,6 +1846,10 @@ bewältigen:
     - "Das Pensum war in einer Woche nicht zu bewältigen."
     - "Sie hat den Verlust erstaunlich gut bewältigt."
     - "Wie bewältigt man so viel Stoff in so kurzer Zeit?"
+  beispiele_en:
+    - "The workload could not be managed in a week."
+    - "She has coped with the loss remarkably well."
+    - "How do you get through so much material in such a short time?"
   synonyme:
     - "meistern"
     - "schaffen"
@@ -1642,6 +1878,10 @@ zuverlässig:
     - "Er ist der zuverlässigste Kollege, den wir haben."
     - "Die Zahlen stammen aus einer zuverlässigen Quelle."
     - "Der alte Wagen läuft noch immer zuverlässig."
+  beispiele_en:
+    - "He is the most reliable colleague we have."
+    - "The figures come from a reliable source."
+    - "The old car still runs reliably."
   synonyme:
     - "verlässlich"
     - "vertrauenswürdig"
