@@ -24,9 +24,9 @@ def card(**overrides) -> WordCard:
     return WordCard(**{**BASE, **overrides})
 
 
-def test_context_url_uses_the_configured_pair():
+def test_context_url_pairs_german_with_english():
     assert links.context_url(card()) == (
-        f"https://context.reverso.net/translation/german-{links.CONTEXT_LANGUAGE}/Haus"
+        "https://context.reverso.net/translation/german-english/Haus"
     )
 
 

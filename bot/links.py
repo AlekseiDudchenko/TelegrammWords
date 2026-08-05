@@ -13,9 +13,10 @@ from urllib.parse import quote
 
 from .models import WordCard
 
-# The other half of the Reverso Context pair. Any language Reverso supports
+# The other half of the Reverso Context pair. English matches the language the
+# hidden example translations are written in. Any language Reverso supports
 # works here: english, russian, french, spanish …
-CONTEXT_LANGUAGE = "russian"
+CONTEXT_LANGUAGE = "english"
 
 CONTEXT_BASE = "https://context.reverso.net/translation"
 CONJUGATOR_BASE = "https://conjugator.reverso.net"

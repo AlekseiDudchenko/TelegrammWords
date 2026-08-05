@@ -112,8 +112,8 @@ store drops below that.
 Every card ends with a link to the word in [Reverso
 Context](https://context.reverso.net/); verbs get a second link to their
 conjugation table. Reverso Context works on a language pair; the other half is
-`CONTEXT_LANGUAGE` in `bot/links.py` (`russian` by default; `english`,
-`french`, `spanish` … all work).
+`CONTEXT_LANGUAGE` in `bot/links.py` — `english`, to match the language of the
+hidden example translations (`russian`, `french`, `spanish` … all work too).
 
 ## Language conventions
 
