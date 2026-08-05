@@ -16,6 +16,7 @@ MINIMAL = {
     "niveau": "A2",
     "bedeutungen": ["Ein Gebäude, in dem Menschen wohnen."],
     "beispiele": ["Das Haus steht leer."],
+    "beispiele_en": ["The house stands empty."],
     "synonyme": ["Gebäude"],
     "antonyme": [],
     "kollokationen": ["nach Hause gehen"],
@@ -51,6 +52,13 @@ def test_every_stored_card_renders():
         assert word in message
         # Telegram rejects messages over 4096 characters.
         assert len(message) < 4096, word
+
+
+def test_every_stored_example_has_a_translation():
+    for word, card in cards.load(STORE).items():
+        # The schema already pairs the lists; this catches an empty one.
+        assert card.beispiele_en, f"{word}: no English translations"
+        assert all(s.strip() for s in card.beispiele_en), f"{word}: empty translation"
 
 
 def test_missing_file_is_an_empty_store(tmp_path):

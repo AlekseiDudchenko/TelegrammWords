@@ -2,20 +2,22 @@
 
 Field names stay German because they mirror German grammatical categories and
 are part of the data the bot renders. Everything the model writes into them is
-German too — the field descriptions below say so explicitly.
+German too — the field descriptions below say so explicitly. The single
+exception is `beispiele_en`, the English translations of the example sentences,
+which the card hides behind a Telegram spoiler.
 """
 
 from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 LEVELS = ("A1", "A2", "B1", "B2", "C1", "C2")
 
 
 class WordCard(BaseModel):
-    """A monolingual German word card. All values are written in German."""
+    """A German word card. Every value is German except `beispiele_en`."""
 
     wort: str = Field(description="The headword in its base form, without article.")
     artikel: str | None = Field(
@@ -47,6 +49,13 @@ class WordCard(BaseModel):
     beispiele: list[str] = Field(
         description="2 to 3 complete German example sentences containing the headword.",
     )
+    beispiele_en: list[str] = Field(
+        description=(
+            "The English translation of every sentence in 'beispiele', in the "
+            "same order and the same number. This is the only field written in "
+            "English: translate the sense, not word by word."
+        ),
+    )
     synonyme: list[str] = Field(
         description="3 to 5 German synonyms — single words or short phrases only.",
     )
@@ -59,6 +68,21 @@ class WordCard(BaseModel):
     kollokationen: list[str] = Field(
         description="2 to 3 German set phrases or typical collocations.",
     )
+
+    @model_validator(mode="after")
+    def _translations_match_the_examples(self) -> WordCard:
+        """One translation per example, or the card renders out of step.
+
+        The formatter pairs the two lists by position, so a card with the wrong
+        number of translations would silently attach the English of one
+        sentence to another.
+        """
+        if len(self.beispiele_en) != len(self.beispiele):
+            raise ValueError(
+                f"'beispiele_en' has {len(self.beispiele_en)} entries but "
+                f"'beispiele' has {len(self.beispiele)} — they must match."
+            )
+        return self
 
 
 def card_json_schema() -> dict[str, Any]:

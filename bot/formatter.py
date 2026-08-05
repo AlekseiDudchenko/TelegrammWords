@@ -1,6 +1,9 @@
 """WordCard -> Telegram message (parse_mode=HTML).
 
 The visible labels stay German: the card is meant to be read monolingually.
+The English translation of each example sits under a Telegram spoiler, so the
+reader meets the German sentence first and only uncovers the translation after
+trying it — a tap on the blurred line reveals it.
 """
 
 from __future__ import annotations
@@ -27,8 +30,8 @@ def render(card: WordCard) -> str:
         lines.append(f"{prefix}{e(meaning)}")
 
     if card.beispiele:
-        lines += ["", "✍️ <b>Beispiele</b>"]
-        lines += [f"• <i>{e(sentence)}</i>" for sentence in card.beispiele]
+        lines += ["", "✍️ <b>Beispiele</b> <i>· Übersetzung antippen</i>"]
+        lines += _examples(card)
 
     lines.append("")
     if card.synonyme:
@@ -42,6 +45,19 @@ def render(card: WordCard) -> str:
     lines += ["", f"🌐 <b>Reverso:</b> {_links(card)}"]
 
     return "\n".join(lines).strip()
+
+
+def _examples(card: WordCard) -> list[str]:
+    """Each sentence, followed by its translation under a spoiler.
+
+    Pairing by position is safe: `WordCard` rejects a card whose two lists
+    differ in length, so the translation can never slip onto the wrong sentence.
+    """
+    lines: list[str] = []
+    for sentence, translation in zip(card.beispiele, card.beispiele_en):
+        lines.append(f"• <i>{e(sentence)}</i>")
+        lines.append(f"   <tg-spoiler>{e(translation)}</tg-spoiler>")
+    return lines
 
 
 def _links(card: WordCard) -> str:

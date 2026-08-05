@@ -13,6 +13,7 @@ BASE = dict(
     niveau="A2",
     bedeutungen=["Gebäude, in dem Menschen wohnen."],
     beispiele=["Wir wohnen in einem alten Haus."],
+    beispiele_en=["We live in an old house."],
     synonyme=["Gebäude"],
     antonyme=[],
     kollokationen=["nach Hause gehen"],

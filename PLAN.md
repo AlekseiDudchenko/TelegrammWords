@@ -3,13 +3,15 @@
 A Telegram bot that posts a German word card twice a day: meanings, examples,
 synonyms and antonyms. All explanations are in German (monolingual) —
 a deliberate choice, since the card itself then doubles as reading practice.
+The one concession is the English translation of each example sentence, hidden
+under a spoiler: the reader works out the German first and only then taps.
 
 ## Decisions
 
 | Question | Decision |
 |---|---|
 | Content | 60 cards written by hand in the repository; the Claude API takes over once they run out |
-| Card language | German, monolingual |
+| Card language | German, monolingual; example sentences carry a hidden English translation |
 | Scheduling | GitHub Actions cron, two runs per day |
 | Stack | Python 3.12 |
 | Storage | Files in the repository (`data/`); state is committed back |
@@ -83,6 +85,7 @@ class WordCard(BaseModel):
     niveau: str                    # A2 | B1 | B2 | C1
     bedeutungen: list[str]         # 1–3 definitions, in German
     beispiele: list[str]           # 2–3 sentences
+    beispiele_en: list[str]        # their English translations, one per sentence
     synonyme: list[str]            # 3–5
     antonyme: list[str]            # 0–4 (many words simply have none)
     kollokationen: list[str]       # 2–3 set phrases
@@ -91,7 +94,10 @@ class WordCard(BaseModel):
 Field names are German on purpose: they mirror German grammatical categories
 and are part of the rendered card. `antonyme` deliberately allows an empty
 list — forcing the model to produce an antonym for "Haus" is a reliable way to
-get nonsense.
+get nonsense. `beispiele_en` is the only English field, and a validator ties it
+to `beispiele` one to one: the formatter pairs the two by position, so a card
+with the wrong number of translations would quietly attach the English of one
+sentence to another.
 
 ## Message format
 
@@ -108,8 +114,9 @@ Substantiv
 1. Gebäude, in dem Menschen wohnen …
 2. …
 
-✍️ Beispiele
-• …
+✍️ Beispiele · Übersetzung antippen
+• Wir wohnen in einem alten Haus.
+   ████████████████████████  ← <tg-spoiler>, revealed by a tap
 • …
 
 🔗 Synonyme: Gebäude, Wohnhaus, Anwesen
@@ -121,8 +128,7 @@ Substantiv
 
 The last line links to Reverso: the headword in Reverso Context, and for verbs
 its conjugation table as well (`bot/links.py`). Reverso Context needs a
-language pair, so this is the one spot where the card is not monolingual —
-`CONTEXT_LANGUAGE` picks the other half of the pair.
+language pair; `CONTEXT_LANGUAGE` picks the other half of it.
 
 ## Reliability
 

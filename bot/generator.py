@@ -18,8 +18,9 @@ MAX_TOKENS = 8000
 SYSTEM_PROMPT = """\
 You are a lexicographer writing monolingual word cards for learners of German.
 
-Every value you produce is written in German. Never translate into another
-language, and never mix languages inside a field.
+Every value you produce is written in German, with one exception: the field
+'beispiele_en' holds the English translations of the example sentences. Never
+mix languages inside a field.
 
 Rules:
 - Keep definitions simple: explain the headword using vocabulary below its own
@@ -27,6 +28,9 @@ Rules:
 - Synonyms and antonyms: only real, current words. Prefer fewer over
   constructed ones. If there is no meaningful antonym, return an empty list.
 - Example sentences: natural contemporary German, each containing the headword.
+- Translations: one English sentence per example, in the same order and the
+  same number. Translate into natural English that carries the sense of the
+  German sentence rather than its word order.
 """
 
 
