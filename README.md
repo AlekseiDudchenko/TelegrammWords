@@ -1,8 +1,9 @@
 # Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
 A Telegram bot that posts a German word card twice a day: meanings, example
-sentences, synonyms, antonyms and common collocations. The card itself
-is monolingual — everything the reader sees is in German.
+sentences, synonyms, antonyms and common collocations. The card is monolingual
+— everything the reader sees is in German, except the English translation of
+each example, which sits under a Telegram spoiler and is revealed by a tap.
 
 Design notes and the reasoning behind the architecture: [PLAN.md](PLAN.md).
 
@@ -111,3 +112,8 @@ Code, comments, commit messages and documentation are English. German is used
 only where it is the product itself: the words in `data/words.yml`, the labels
 in the rendered card, and the `WordCard` field names, which mirror German
 grammatical categories (`artikel`, `plural`, `stammformen`).
+
+Inside a card, English appears in exactly one field: `beispiele_en`, the
+translation of the example sentences. It needs one entry per sentence in
+`beispiele`, in the same order — `WordCard` rejects the card otherwise, since
+the formatter pairs the two lists by position.

@@ -11,6 +11,7 @@ HAUS = WordCard(
     niveau="A2",
     bedeutungen=["Gebäude, in dem Menschen wohnen."],
     beispiele=["Wir wohnen in einem alten Haus."],
+    beispiele_en=["We live in an old house."],
     synonyme=["Gebäude", "Wohnhaus"],
     antonyme=[],
     kollokationen=["nach Hause gehen"],
@@ -46,6 +47,30 @@ def test_model_text_is_html_escaped():
     assert "Zeichen &lt; und &gt; und &amp;" in out
     # The template's own tags survive.
     assert "<b>Wort des Tages</b>" in out
+
+
+def test_translation_is_hidden_behind_a_spoiler():
+    out = render(HAUS)
+    assert "• <i>Wir wohnen in einem alten Haus.</i>" in out
+    assert "<tg-spoiler>We live in an old house.</tg-spoiler>" in out
+    # The translation follows its own sentence, never precedes it.
+    assert out.index("Wir wohnen") < out.index("We live")
+
+
+def test_every_example_gets_its_own_spoiler():
+    card = HAUS.model_copy(
+        update={
+            "beispiele": ["Das Haus ist alt.", "Das Haus steht leer."],
+            "beispiele_en": ["The house is old.", "The house stands empty."],
+        }
+    )
+    assert render(card).count("<tg-spoiler>") == 2
+
+
+def test_translations_are_html_escaped():
+    card = HAUS.model_copy(update={"beispiele_en": ["Bread & butter <here>"]})
+    out = render(card)
+    assert "<tg-spoiler>Bread &amp; butter &lt;here&gt;</tg-spoiler>" in out
 
 
 def test_multiple_meanings_are_numbered():
