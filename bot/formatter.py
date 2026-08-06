@@ -43,6 +43,7 @@ def render(card: WordCard) -> str:
         lines.append(f"💬 <b>Wendungen:</b> {e('; '.join(card.kollokationen))}")
 
     lines += ["", f"🌐 <b>Reverso:</b> {_links(card)}"]
+    lines.append(f"🃏 {_link(links.drillcards_url(card), 'Auf DrillCards üben')}")
 
     return "\n".join(lines).strip()
 

@@ -1,9 +1,10 @@
-"""Reverso links for a word card.
+"""Outbound links for a word card.
 
-Two links per card: the word in Reverso Context, and — for verbs only — its
+Reverso first: the word in Reverso Context, and — for verbs only — its
 conjugation table. Reverso Context always needs a language pair, so this is the
 one place where the otherwise monolingual card points at a translation;
-`CONTEXT_LANGUAGE` decides which one.
+`CONTEXT_LANGUAGE` decides which one. Then DrillCards, where the same word can
+be drilled; that link closes every post.
 """
 
 from __future__ import annotations
@@ -21,6 +22,11 @@ CONTEXT_LANGUAGE = "english"
 CONTEXT_BASE = "https://context.reverso.net/translation"
 CONJUGATOR_BASE = "https://conjugator.reverso.net"
 
+# DrillCards keeps one page per word under its CEFR level, e.g.
+# https://drillcards.org/de/words/b2/widersprechen — level and headword both
+# lowercase.
+DRILLCARDS_BASE = "https://drillcards.org/de/words"
+
 # Letters only: 'Verb (trennbar)' and 'unregelmäßiges Verb' must both split
 # into plain words before they can be recognised.
 _WORDS = re.compile(r"[^\W\d_]+")
@@ -36,6 +42,11 @@ def conjugation_url(card: WordCard) -> str | None:
     if not is_verb(card):
         return None
     return f"{CONJUGATOR_BASE}/conjugation-german-verb-{_slug(card.wort.lower())}.html"
+
+
+def drillcards_url(card: WordCard) -> str:
+    """The word's page on DrillCards, filed under its CEFR level."""
+    return f"{DRILLCARDS_BASE}/{_slug(card.niveau.lower())}/{_slug(card.wort.lower())}"
 
 
 def is_verb(card: WordCard) -> bool:

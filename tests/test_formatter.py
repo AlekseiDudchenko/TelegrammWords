@@ -66,6 +66,14 @@ def test_only_verbs_get_a_conjugation_link():
     )
 
 
+def test_drillcards_link_closes_the_post():
+    out = render(HAUS)
+    assert out.endswith(
+        '🃏 <a href="https://drillcards.org/de/words/a2/haus">'
+        "Auf DrillCards üben</a>"
+    )
+
+
 def test_umlauts_in_links_are_percent_encoded():
     out = render(HAUS.model_copy(update={"wort": "üben", "wortart": "Verb"}))
     assert "german-verb-%C3%BCben.html" in out

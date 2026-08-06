@@ -39,6 +39,21 @@ def test_conjugation_url_is_lowercase():
     assert url == "https://conjugator.reverso.net/conjugation-german-verb-gehen.html"
 
 
+def test_drillcards_url_uses_level_and_word_in_lowercase():
+    url = links.drillcards_url(
+        card(wort="widersprechen", wortart="Verb", niveau="B2", artikel=None)
+    )
+    assert url == "https://drillcards.org/de/words/b2/widersprechen"
+
+
+def test_drillcards_url_lowercases_a_noun():
+    assert links.drillcards_url(card()) == "https://drillcards.org/de/words/a2/haus"
+
+
+def test_drillcards_url_encodes_umlauts():
+    assert links.drillcards_url(card(wort="Grüße")).endswith("/gr%C3%BC%C3%9Fe")
+
+
 def test_no_conjugation_url_for_a_noun():
     assert links.conjugation_url(card()) is None
 
