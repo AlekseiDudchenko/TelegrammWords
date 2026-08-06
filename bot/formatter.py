@@ -14,8 +14,13 @@ from . import links
 from .models import WordCard
 
 
-def render(card: WordCard) -> str:
-    """Build the message. Everything the model produced is HTML-escaped."""
+def render(card: WordCard, drillcards: str | None = None) -> str:
+    """Build the message. Everything the model produced is HTML-escaped.
+
+    `drillcards` is the word's DrillCards URL once `links.resolve_drillcards`
+    has confirmed the page exists; left out, the post simply ends without that
+    line. Rendering stays free of network calls.
+    """
     lines: list[str] = [f"🇩🇪 <b>Wort des Tages</b> · {e(card.niveau)}", ""]
 
     lines.append(f"<b>{e(_headword(card))}</b>  <code>[{e(card.ipa)}]</code>")
@@ -43,7 +48,8 @@ def render(card: WordCard) -> str:
         lines.append(f"💬 <b>Wendungen:</b> {e('; '.join(card.kollokationen))}")
 
     lines += ["", f"🌐 <b>Reverso:</b> {_links(card)}"]
-    lines.append(f"🃏 {_link(links.drillcards_url(card), 'Auf DrillCards üben')}")
+    if drillcards:
+        lines.append(f"🃏 {_link(drillcards, 'Auf DrillCards üben')}")
 
     return "\n".join(lines).strip()
 

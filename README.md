@@ -29,7 +29,7 @@ bot/
   cards.py      loads the pre-written cards from data/cards.yml
   state.py      picks a word without repeats, guards against double posting
   generator.py  Claude API call + response validation
-  links.py      Reverso links (context, conjugation for verbs) + DrillCards
+  links.py      Reverso links + DrillCards, added only if the page exists
   formatter.py  WordCard -> HTML for Telegram
   telegram.py   sendMessage with retries
   main.py       CLI
