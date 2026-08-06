@@ -4,19 +4,20 @@ Reverso first: the word in Reverso Context, and — for verbs only — its
 conjugation table. Reverso Context always needs a language pair, so this is the
 one place where the otherwise monolingual card points at a translation;
 `CONTEXT_LANGUAGE` decides which one. Then DrillCards, where the same word can
-be drilled; that link closes the post — but only once the page has been
-confirmed to exist, since not every word of the list has one.
+be drilled; that link closes the post — but only for a word DrillCards actually
+has, which is a minority of this bot's list.
 
 The Reverso URLs are built blind: they are search pages that answer for any
-input. DrillCards is a page per word, so `resolve_drillcards` is the one
-function here that goes to the network.
+input. A DrillCards card is a real page that either exists or does not, so
+`resolve_drillcards` looks the word up first — see below for why that lookup
+cannot be an HTTP status check.
 """
 
 from __future__ import annotations
 
 import logging
 import re
-from urllib.parse import quote, unquote
+from urllib.parse import quote
 
 import httpx
 
@@ -32,14 +33,28 @@ CONTEXT_LANGUAGE = "english"
 CONTEXT_BASE = "https://context.reverso.net/translation"
 CONJUGATOR_BASE = "https://conjugator.reverso.net"
 
-# DrillCards keeps one page per word under its CEFR level, e.g.
-# https://drillcards.org/de/words/b2/widersprechen — level and headword both
-# lowercase.
+# DrillCards keeps one page per word under the deck it belongs to, e.g.
+# https://drillcards.org/de/words/b2/widersprechen.
 DRILLCARDS_BASE = "https://drillcards.org/de/words"
 
-# The existence check is on the critical path of a post, so it gets one short
-# attempt: a link that cannot be confirmed in time is simply left out.
+# Whether a word has a card is answered by this file, not by requesting the
+# page. drillcards.org is a single-page app on GitHub Pages: every deep link is
+# served by 404.html, which means /de/words/b2/widersprechen comes back with
+# HTTP 404 even though the card is there. A status check would therefore drop
+# every link. The index is a real static file — it answers 200 — and maps each
+# word's slug to its deck.
+DRILLCARDS_INDEX = "https://drillcards.org/data/word-index.json"
+
+# The lookup is on the critical path of a post, so it gets one short attempt: a
+# link that cannot be confirmed in time is simply left out.
 DRILLCARDS_TIMEOUT = 10.0
+
+# The site's own slug rules (src/client/word-slug.ts). Umlauts are
+# transliterated rather than percent-encoded — 'üben' is 'ueben' — and the
+# article is not part of the word.
+_UMLAUTS = {"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}
+_ARTICLE = re.compile(r"^(der|die|das)\s+", re.IGNORECASE)
+_NOT_SLUG = re.compile(r"[^a-z0-9]+")
 
 # Letters only: 'Verb (trennbar)' and 'unregelmäßiges Verb' must both split
 # into plain words before they can be recognised.
@@ -58,44 +73,64 @@ def conjugation_url(card: WordCard) -> str | None:
     return f"{CONJUGATOR_BASE}/conjugation-german-verb-{_slug(card.wort.lower())}.html"
 
 
-def drillcards_url(card: WordCard) -> str:
-    """The word's page on DrillCards, filed under its CEFR level.
-
-    The address the word would have; whether the page is really there is
-    `resolve_drillcards`'s question.
-    """
-    return f"{DRILLCARDS_BASE}/{_slug(card.niveau.lower())}/{_slug(card.wort.lower())}"
+def drillcards_slug(card: WordCard) -> str:
+    """The headword as DrillCards spells it in a URL."""
+    text = _ARTICLE.sub("", card.wort.strip()).lower()
+    text = "".join(_UMLAUTS.get(char, char) for char in text)
+    return _NOT_SLUG.sub("-", text).strip("-")
 
 
 def resolve_drillcards(card: WordCard) -> str | None:
-    """The DrillCards URL if the page answers with 200, otherwise None.
+    """The word's DrillCards URL, or None when DrillCards does not have it.
 
-    Anything short of a confirmed page — 404, a server error, a timeout, DNS
-    trouble — means no link. A post missing one line is a much smaller problem
-    than a post carrying a dead link, so every failure resolves the same way.
+    The deck comes from the index rather than from `card.niveau`: the two
+    disagree often enough to matter — 'Haus' is A2 in this bot's list and sits
+    in the a1 deck on DrillCards — and only the deck in the index makes a URL
+    that resolves.
+
+    A failed lookup — no such word, a bad response, a timeout, DNS trouble —
+    means no link. A post missing one line is a much smaller problem than a
+    post carrying a dead link, so every failure resolves the same way.
     """
-    url = drillcards_url(card)
+    index = _word_index()
+    if index is None:
+        return None
+
+    slug = drillcards_slug(card)
+    deck = index.get(slug)
+    if not isinstance(deck, str) or not deck:
+        log.info("DrillCards has no card for '%s' — link omitted.", slug)
+        return None
+
+    return f"{DRILLCARDS_BASE}/{quote(deck, safe='')}/{quote(slug, safe='')}"
+
+
+def _word_index() -> dict[str, object] | None:
+    """The slug -> deck map DrillCards publishes, or None if it cannot be read."""
     try:
-        response = httpx.head(url, timeout=DRILLCARDS_TIMEOUT, follow_redirects=True)
-        # Some servers refuse HEAD outright; ask again properly before giving up.
-        if response.status_code in (403, 405, 501):
-            response = httpx.get(url, timeout=DRILLCARDS_TIMEOUT, follow_redirects=True)
+        response = httpx.get(
+            DRILLCARDS_INDEX, timeout=DRILLCARDS_TIMEOUT, follow_redirects=True
+        )
     except httpx.HTTPError as exc:
-        log.warning("DrillCards check for %s failed (%s) — link omitted.", url, exc)
+        log.warning("DrillCards index unreachable (%s) — link omitted.", exc)
         return None
 
     if response.status_code != 200:
-        log.info("No DrillCards page for %s (HTTP %d).", url, response.status_code)
+        log.warning(
+            "DrillCards index answered HTTP %d — link omitted.", response.status_code
+        )
         return None
 
-    # A 200 after being redirected elsewhere is the usual way a site says "no
-    # such word": unknown pages land on the index or on a search page. Only a
-    # final address still pointing at this word counts as a hit.
-    if not _points_at(response.url, card.wort):
-        log.info("DrillCards redirected %s to %s — link omitted.", url, response.url)
+    try:
+        index = response.json()
+    except ValueError as exc:
+        log.warning("DrillCards index is not valid JSON (%s) — link omitted.", exc)
         return None
 
-    return url
+    if not isinstance(index, dict):
+        log.warning("DrillCards index is not an object — link omitted.")
+        return None
+    return index
 
 
 def is_verb(card: WordCard) -> bool:
@@ -109,16 +144,6 @@ def is_verb(card: WordCard) -> bool:
         token.endswith("verb") and token != "adverb"
         for token in (w.lower() for w in _WORDS.findall(card.wortart))
     )
-
-
-def _points_at(url: httpx.URL, word: str) -> bool:
-    """True when the last path segment is still the word we asked for.
-
-    The path comes back percent-encoded, and the encoding of an umlaut is not
-    guaranteed to match ours byte for byte, so both sides are decoded first.
-    """
-    last = unquote(str(url.path)).rstrip("/").rsplit("/", 1)[-1]
-    return last.casefold() == word.strip().casefold()
 
 
 def _slug(word: str) -> str:
