@@ -80,3 +80,13 @@ jobs:
           done
           echo "::error::Could not push state — the next run may post twice."
           exit 1
+
+      # Only failures this job lived to see are reported here. A run that
+      # never got a runner is cancelled with all its steps, including this
+      # one — watchdog.yml is what notices that case.
+      - name: Report the failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ALERT_CHAT_ID: ${{ secrets.TELEGRAM_ALERT_CHAT_ID }}
+        run: python -m bot.alert "The posting run failed."

@@ -13,6 +13,11 @@ DEFAULT_DATA_DIR = REPO_ROOT / "data"
 # numeric ID is only required for private channels.
 DEFAULT_CHAT_ID = "@wunderwordsde"
 
+# Where operational alerts go. There is deliberately no default: an alert has
+# to reach a private chat, and falling back to the channel would push our
+# diagnostics to readers who only subscribed for the words.
+ALERT_CHAT_VAR = "TELEGRAM_ALERT_CHAT_ID"
+
 DEFAULT_MODEL = "claude-opus-5"
 
 
@@ -36,6 +41,7 @@ class Config:
     anthropic_api_key: str | None
     telegram_bot_token: str | None
     telegram_chat_id: str
+    telegram_alert_chat_id: str | None
     model: str
     data_dir: Path
 
@@ -57,6 +63,7 @@ class Config:
             anthropic_api_key=_env("ANTHROPIC_API_KEY"),
             telegram_bot_token=_env("TELEGRAM_BOT_TOKEN"),
             telegram_chat_id=_env("TELEGRAM_CHAT_ID") or DEFAULT_CHAT_ID,
+            telegram_alert_chat_id=_env(ALERT_CHAT_VAR),
             model=_env("ANTHROPIC_MODEL") or DEFAULT_MODEL,
             data_dir=Path(_env("WORDS_DATA_DIR") or DEFAULT_DATA_DIR),
         )

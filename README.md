@@ -62,6 +62,7 @@ Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
    |---|---|---|
    | `TELEGRAM_BOT_TOKEN` | token from BotFather | yes |
    | `TELEGRAM_CHAT_ID` | `@wunderwordsde` | no |
+   | `TELEGRAM_ALERT_CHAT_ID` | your own numeric chat ID | no, but see below |
    | `ANTHROPIC_API_KEY` | key from console.anthropic.com | not for the first month |
 
 `TELEGRAM_CHAT_ID` defaults to `@wunderwordsde` (see `bot/config.py`); a numeric
@@ -73,6 +74,36 @@ exit code 2 and posts nothing.
 To verify everything before the first scheduled run: `Actions → Wort des Tages →
 Run workflow` with `dry_run` ticked. The card is written to the job log and
 nothing is sent.
+
+## When a post does not arrive
+
+Two things watch for that, because one of them cannot see the worst case.
+
+`daily.yml` reports its own failures: a last step sends a Telegram alert
+whenever an earlier step failed — a missing API key, Telegram refusing the
+message, a state push that would not go through.
+
+That step is useless when the job never starts. A scheduled run that waits too
+long for a runner is cancelled in the queue, and every step of it, including
+the one that would have complained, is cancelled with it — this is how the
+evening post of 2026-08-06 went missing. So `watchdog.yml` runs four hours
+after each posting cron, reads the `data/state.json` committed on `main` and
+alerts when the slot due by then was never served. It knows nothing about the
+posting run and therefore does not care how it died. A missed post also turns
+the watchdog run red, so GitHub's own failure mail reaches you even if Telegram
+is the thing that is broken.
+
+Both alerts go to `TELEGRAM_ALERT_CHAT_ID`, which has no default on purpose:
+it must be a private chat, and falling back to the channel would send
+diagnostics to readers who subscribed for the words. Without the secret both
+paths degrade to a log line. To find your ID, send the bot any message from
+your own account, then open
+`https://api.telegram.org/bot<TOKEN>/getUpdates` and read `message.chat.id`.
+Telegram only lets a bot write to you after you have written to it first.
+
+Neither watcher sends the missing post — catching up stays a deliberate act:
+`Actions → Wort des Tages → Run workflow`. Within the same half-day the slot
+guard lets it through without `force`.
 
 ## Schedule
 

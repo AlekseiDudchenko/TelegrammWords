@@ -6,6 +6,7 @@ VARS = (
     "ANTHROPIC_API_KEY",
     "TELEGRAM_BOT_TOKEN",
     "TELEGRAM_CHAT_ID",
+    "TELEGRAM_ALERT_CHAT_ID",
     "ANTHROPIC_MODEL",
     "WORDS_DATA_DIR",
 )
@@ -34,6 +35,16 @@ def test_blank_variables_fall_back_to_defaults(env):
     assert config.model == DEFAULT_MODEL
     assert config.anthropic_api_key is None
     assert config.telegram_bot_token is None
+    assert config.telegram_alert_chat_id is None
+
+
+def test_the_alert_chat_never_defaults_to_the_channel(env):
+    # An alert must not reach the readers; without a private chat there is
+    # simply nowhere to send it.
+    assert Config.from_env().telegram_alert_chat_id is None
+
+    env.setenv("TELEGRAM_ALERT_CHAT_ID", " 777 ")
+    assert Config.from_env().telegram_alert_chat_id == "777"
 
 
 def test_whitespace_is_treated_as_unset(env):
