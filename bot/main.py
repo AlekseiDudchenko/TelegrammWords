@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 
 import anthropic
 
-from . import cards, formatter, generator, telegram, wordlist
+from . import cards, formatter, generator, links, telegram, wordlist
 from .config import Config, ConfigError
 from .models import WordCard
 from .state import State, slot_of
@@ -69,7 +69,7 @@ def main(argv: list[str] | None = None) -> int:
         log.info("Word: %s (%s)", entry.word, entry.level)
 
         card = _card_for(entry, stored, config)
-        message = formatter.render(card)
+        message = formatter.render(card, drillcards=links.resolve_drillcards(card))
 
         if args.dry_run:
             print(message)

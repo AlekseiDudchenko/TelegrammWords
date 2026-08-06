@@ -66,6 +66,20 @@ def test_only_verbs_get_a_conjugation_link():
     )
 
 
+def test_drillcards_link_closes_the_post():
+    out = render(HAUS, drillcards="https://drillcards.org/de/words/a2/haus")
+    assert out.endswith(
+        '🃏 <a href="https://drillcards.org/de/words/a2/haus">Auf DrillCards üben</a>'
+    )
+
+
+def test_without_a_drillcards_link_the_post_ends_with_reverso():
+    out = render(HAUS)
+    assert "DrillCards" not in out
+    assert out.rstrip().endswith("</a>")
+    assert "🌐 <b>Reverso:</b>" in out.splitlines()[-1]
+
+
 def test_umlauts_in_links_are_percent_encoded():
     out = render(HAUS.model_copy(update={"wort": "üben", "wortart": "Verb"}))
     assert "german-verb-%C3%BCben.html" in out
