@@ -3,7 +3,7 @@
 # A word that has a card here is posted from this file — no API call, no key
 # needed. The bot works through these first, in the order they appear below,
 # and only falls back to the Claude API once they are used up. At two posts a
-# day the 60 cards cover the first month.
+# day the 120 cards cover sixty days in total.
 #
 # The keys must match the words in words.yml exactly, and every card must
 # satisfy the WordCard schema in bot/models.py (tests/test_cards.py checks it).
@@ -1894,3 +1894,1487 @@ zuverlässig:
     - "eine zuverlässige Quelle"
     - "zuverlässig funktionieren"
     - "ein zuverlässiger Partner"
+
+# Sixty more reviewed cards for the next thirty days without an API key.
+
+Freizeit:
+  wort: Freizeit
+  artikel: die
+  plural: die Freizeiten
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈfʁaɪ̯t͡saɪ̯t
+  niveau: A2
+  bedeutungen:
+  - Die Zeit, in der man nicht arbeiten oder lernen muss.
+  beispiele:
+  - In meiner Freizeit lese ich gern.
+  - Am Wochenende bleibt mir endlich etwas Freizeit.
+  beispiele_en:
+  - I like reading in my free time.
+  - At the weekend I finally have some free time.
+  synonyme:
+  - freie Zeit
+  - Feierabend
+  antonyme:
+  - Arbeitszeit
+  kollokationen:
+  - Freizeit haben
+  - die Freizeit gestalten
+Gewohnheit:
+  wort: Gewohnheit
+  artikel: die
+  plural: die Gewohnheiten
+  stammformen: null
+  wortart: Substantiv
+  ipa: ɡəˈvoːnhaɪ̯t
+  niveau: A2
+  bedeutungen:
+  - Etwas, das jemand regelmäßig tut und an das er sich gewöhnt hat.
+  beispiele:
+  - Es ist meine Gewohnheit, vor dem Frühstück spazieren zu gehen.
+  - Diese Gewohnheit möchte ich ändern.
+  beispiele_en:
+  - I have a habit of going for a walk before breakfast.
+  - I want to change this habit.
+  synonyme:
+  - Routine
+  - Brauch
+  - Angewohnheit
+  antonyme: []
+  kollokationen:
+  - eine Gewohnheit ändern
+  - aus Gewohnheit handeln
+Ausflug:
+  wort: Ausflug
+  artikel: der
+  plural: die Ausflüge
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈaʊ̯sfluːk
+  niveau: A2
+  bedeutungen:
+  - Eine kurze Reise, bei der man am selben Tag zurückkommt.
+  beispiele:
+  - Wir machen am Sonntag einen Ausflug an den See.
+  - Der Ausflug mit der Klasse hat allen gefallen.
+  beispiele_en:
+  - We are taking a trip to the lake on Sunday.
+  - Everyone enjoyed the class trip.
+  synonyme:
+  - Tagestour
+  - Fahrt
+  - Exkursion
+  antonyme: []
+  kollokationen:
+  - einen Ausflug machen
+  - ein Ausflug ins Grüne
+Stimmung:
+  wort: Stimmung
+  artikel: die
+  plural: die Stimmungen
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈʃtɪmʊŋ
+  niveau: A2
+  bedeutungen:
+  - Die Gefühle einer Person zu einem bestimmten Zeitpunkt.
+  beispiele:
+  - Nach dem Gespräch war ihre Stimmung besser.
+  - Musik kann meine Stimmung schnell verändern.
+  beispiele_en:
+  - She was in a better mood after the conversation.
+  - Music can quickly change my mood.
+  synonyme:
+  - Laune
+  - Gemütslage
+  - Atmosphäre
+  antonyme: []
+  kollokationen:
+  - gute Stimmung haben
+  - die Stimmung heben
+besorgen:
+  wort: besorgen
+  artikel: null
+  plural: null
+  stammformen: besorgen – besorgte – hat besorgt
+  wortart: Verb
+  ipa: bəˈzɔʁɡn̩
+  niveau: A2
+  bedeutungen:
+  - Etwas kaufen oder organisieren, das man braucht.
+  beispiele:
+  - Kannst du bitte Brot für das Abendessen besorgen?
+  - Ich muss noch ein Geschenk für Lara besorgen.
+  beispiele_en:
+  - Could you get some bread for dinner, please?
+  - I still need to get a present for Lara.
+  synonyme:
+  - beschaffen
+  - holen
+  - organisieren
+  antonyme: []
+  kollokationen:
+  - Lebensmittel besorgen
+  - etwas für jemanden besorgen
+erlauben:
+  wort: erlauben
+  artikel: null
+  plural: null
+  stammformen: erlauben – erlaubte – hat erlaubt
+  wortart: Verb
+  ipa: ɛɐ̯ˈlaʊ̯bn̩
+  niveau: A2
+  bedeutungen:
+  - Jemandem sagen, dass er etwas tun darf.
+  beispiele:
+  - Meine Eltern erlauben mir, allein zu fahren.
+  - Ist es hier erlaubt, Fotos zu machen?
+  beispiele_en:
+  - My parents allow me to travel alone.
+  - Is taking photos allowed here?
+  synonyme:
+  - gestatten
+  - zulassen
+  - genehmigen
+  antonyme:
+  - verbieten
+  kollokationen:
+  - jemandem etwas erlauben
+  - das Parken erlauben
+versprechen:
+  wort: versprechen
+  artikel: null
+  plural: null
+  stammformen: versprechen – versprach – hat versprochen
+  wortart: Verb
+  ipa: fɛɐ̯ˈʃpʁɛçn̩
+  niveau: A2
+  bedeutungen:
+  - Fest sagen, dass man etwas tun wird.
+  beispiele:
+  - Ich kann dir versprechen, morgen pünktlich zu sein.
+  - Er hat versprochen, sich am Abend zu melden.
+  beispiele_en:
+  - I can promise you I will be on time tomorrow.
+  - He promised to get in touch in the evening.
+  synonyme:
+  - zusagen
+  - zusichern
+  - geloben
+  antonyme:
+  - Wort brechen
+  kollokationen:
+  - jemandem etwas versprechen
+  - sein Wort halten
+bemerken:
+  wort: bemerken
+  artikel: null
+  plural: null
+  stammformen: bemerken – bemerkte – hat bemerkt
+  wortart: Verb
+  ipa: bəˈmɛʁkn̩
+  niveau: A2
+  bedeutungen:
+  - Etwas sehen oder verstehen, das einem vorher nicht aufgefallen ist.
+  beispiele:
+  - Ich habe den Fehler erst zu Hause bemerkt.
+  - Hast du bemerkt, dass es draußen schneit?
+  beispiele_en:
+  - I only noticed the mistake once I got home.
+  - Did you notice that it is snowing outside?
+  synonyme:
+  - feststellen
+  - wahrnehmen
+  - entdecken
+  antonyme:
+  - übersehen
+  kollokationen:
+  - einen Fehler bemerken
+  - eine Veränderung bemerken
+verstecken:
+  wort: verstecken
+  artikel: null
+  plural: null
+  stammformen: verstecken – versteckte – hat versteckt
+  wortart: Verb
+  ipa: fɛɐ̯ˈʃtɛkn̩
+  niveau: A2
+  bedeutungen:
+  - Etwas an einen Ort legen, wo andere es nicht leicht finden.
+  beispiele:
+  - Die Kinder verstecken ihre Geschenke im Schrank.
+  - Wo hast du den Schlüssel versteckt?
+  beispiele_en:
+  - The children hide their presents in the cupboard.
+  - Where did you hide the key?
+  synonyme:
+  - verbergen
+  - versteckt halten
+  - kaschieren
+  antonyme:
+  - zeigen
+  kollokationen:
+  - sich hinter etwas verstecken
+  - etwas gut verstecken
+einladen:
+  wort: einladen
+  artikel: null
+  plural: null
+  stammformen: einladen – lud ein – hat eingeladen
+  wortart: Verb
+  ipa: ˈaɪ̯nlaːdn̩
+  niveau: A2
+  bedeutungen:
+  - Jemanden bitten, als Gast zu kommen.
+  beispiele:
+  - Ich möchte dich zum Abendessen einladen.
+  - Sie hat alle Nachbarn zur Feier eingeladen.
+  beispiele_en:
+  - I would like to invite you to dinner.
+  - She invited all the neighbours to the party.
+  synonyme:
+  - bitten
+  - zu Gast bitten
+  antonyme: []
+  kollokationen:
+  - jemanden zum Essen einladen
+  - zu einer Feier einladen
+aufräumen:
+  wort: aufräumen
+  artikel: null
+  plural: null
+  stammformen: aufräumen – räumte auf – hat aufgeräumt
+  wortart: Verb
+  ipa: ˈaʊ̯fʁɔɪ̯mən
+  niveau: A2
+  bedeutungen:
+  - Dinge an ihren Platz legen, damit ein Raum ordentlich wird.
+  beispiele:
+  - Vor dem Besuch müssen wir das Wohnzimmer aufräumen.
+  - Die Kinder räumen nach dem Spielen auf.
+  beispiele_en:
+  - We need to tidy the living room before the guests arrive.
+  - The children tidy up after playing.
+  synonyme:
+  - Ordnung schaffen
+  - sauber machen
+  - wegräumen
+  antonyme:
+  - Unordnung machen
+  kollokationen:
+  - das Zimmer aufräumen
+  - nach dem Essen aufräumen
+müde:
+  wort: müde
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈmyːdə
+  niveau: A2
+  bedeutungen:
+  - So erschöpft sein, dass man schlafen möchte.
+  beispiele:
+  - Nach der langen Fahrt war ich sehr müde.
+  - Wenn du müde bist, mach eine Pause.
+  beispiele_en:
+  - I was very tired after the long journey.
+  - If you are tired, take a break.
+  synonyme:
+  - erschöpft
+  - schläfrig
+  - abgespannt
+  antonyme:
+  - wach
+  - ausgeruht
+  kollokationen:
+  - müde werden
+  - müde aussehen
+pünktlich:
+  wort: pünktlich
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈpʏŋktlɪç
+  niveau: A2
+  bedeutungen:
+  - Genau zur vereinbarten Zeit kommen oder beginnen.
+  beispiele:
+  - Bitte sei morgen pünktlich am Bahnhof.
+  - Der Zug ist heute pünktlich angekommen.
+  beispiele_en:
+  - Please be at the station on time tomorrow.
+  - The train arrived on time today.
+  synonyme:
+  - rechtzeitig
+  - termingerecht
+  - planmäßig
+  antonyme:
+  - verspätet
+  - unzuverlässig
+  kollokationen:
+  - pünktlich kommen
+  - pünktlich anfangen
+großzügig:
+  wort: großzügig
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈɡʁoːsˌt͡syːɡɪç
+  niveau: A2
+  bedeutungen:
+  - Gern viel geben oder anderen etwas erlauben.
+  beispiele:
+  - Meine Tante ist sehr großzügig und hilft uns oft.
+  - Er gab ein großzügiges Trinkgeld.
+  beispiele_en:
+  - My aunt is very generous and often helps us.
+  - He left a generous tip.
+  synonyme:
+  - freigebig
+  - spendabel
+  - entgegenkommend
+  antonyme:
+  - geizig
+  - knauserig
+  kollokationen:
+  - ein großzügiges Angebot
+  - großzügig spenden
+langweilig:
+  wort: langweilig
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈlaŋvaɪ̯lɪç
+  niveau: A2
+  bedeutungen:
+  - So uninteressant sein, dass man sich nicht gern damit beschäftigt.
+  beispiele:
+  - Der Film war leider ziemlich langweilig.
+  - Mir wird auf langen Zugfahrten schnell langweilig.
+  beispiele_en:
+  - Unfortunately, the film was quite boring.
+  - I quickly get bored on long train rides.
+  synonyme:
+  - öde
+  - eintönig
+  - monoton
+  antonyme:
+  - spannend
+  - interessant
+  kollokationen:
+  - ein langweiliger Film
+  - langweilig werden
+Umgebung:
+  wort: Umgebung
+  artikel: die
+  plural: die Umgebungen
+  stammformen: null
+  wortart: Substantiv
+  ipa: ʊmˈɡeːbʊŋ
+  niveau: B1
+  bedeutungen:
+  - Das Gebiet um einen bestimmten Ort herum.
+  beispiele:
+  - In der Umgebung gibt es viele Wanderwege.
+  - Wir suchen eine Wohnung in ruhiger Umgebung.
+  beispiele_en:
+  - There are many hiking trails in the surrounding area.
+  - We are looking for a flat in a quiet area.
+  synonyme:
+  - Umfeld
+  - Nachbarschaft
+  - Umkreis
+  antonyme: []
+  kollokationen:
+  - die nähere Umgebung
+  - in der Umgebung wohnen
+Absicht:
+  wort: Absicht
+  artikel: die
+  plural: die Absichten
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈapzɪçt
+  niveau: B1
+  bedeutungen:
+  - Ein Ziel, das jemand bewusst erreichen möchte.
+  beispiele:
+  - Ich habe nicht die Absicht, heute länger zu bleiben.
+  - Seine Absicht war von Anfang an klar.
+  beispiele_en:
+  - I do not intend to stay longer today.
+  - His intention was clear from the start.
+  synonyme:
+  - Vorhaben
+  - Plan
+  - Vorsatz
+  antonyme: []
+  kollokationen:
+  - die Absicht haben
+  - mit voller Absicht
+Bedürfnis:
+  wort: Bedürfnis
+  artikel: das
+  plural: die Bedürfnisse
+  stammformen: null
+  wortart: Substantiv
+  ipa: bəˈdʏʁfnɪs
+  niveau: B1
+  bedeutungen:
+  - Etwas, das man braucht oder sich sehr wünscht.
+  beispiele:
+  - Nach dem Lauf hatte ich das Bedürfnis, mich auszuruhen.
+  - Kinder haben ein Bedürfnis nach Sicherheit.
+  beispiele_en:
+  - After the run, I felt the need to rest.
+  - Children need to feel safe.
+  synonyme:
+  - Bedarf
+  - Verlangen
+  - Wunsch
+  antonyme: []
+  kollokationen:
+  - ein Bedürfnis haben
+  - ein Bedürfnis nach Ruhe
+Entscheidung:
+  wort: Entscheidung
+  artikel: die
+  plural: die Entscheidungen
+  stammformen: null
+  wortart: Substantiv
+  ipa: ɛntˈʃaɪ̯dʊŋ
+  niveau: B1
+  bedeutungen:
+  - Die Wahl zwischen mehreren Möglichkeiten.
+  beispiele:
+  - Die Entscheidung fiel uns nicht leicht.
+  - Sie will ihre Entscheidung morgen bekannt geben.
+  beispiele_en:
+  - The decision was not easy for us.
+  - She wants to announce her decision tomorrow.
+  synonyme:
+  - Beschluss
+  - Wahl
+  - Entschluss
+  antonyme: []
+  kollokationen:
+  - eine Entscheidung treffen
+  - eine Entscheidung überdenken
+Missverständnis:
+  wort: Missverständnis
+  artikel: das
+  plural: die Missverständnisse
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈmɪsfɛɐ̯ʃtɛntnɪs
+  niveau: B1
+  bedeutungen:
+  - Eine Situation, in der jemand etwas anders versteht, als es gemeint war.
+  beispiele:
+  - Das war nur ein Missverständnis, keine böse Absicht.
+  - Ein kurzes Gespräch klärte das Missverständnis.
+  beispiele_en:
+  - It was only a misunderstanding, not a bad intention.
+  - A brief conversation cleared up the misunderstanding.
+  synonyme:
+  - Irrtum
+  - Fehlinterpretation
+  - Verwechslung
+  antonyme: []
+  kollokationen:
+  - ein Missverständnis klären
+  - zu Missverständnissen führen
+Anspruch:
+  wort: Anspruch
+  artikel: der
+  plural: die Ansprüche
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈanʃpʁʊx
+  niveau: B1
+  bedeutungen:
+  - Eine Erwartung oder ein Recht, das man geltend macht.
+  beispiele:
+  - Die Kundin hat Anspruch auf eine Erstattung.
+  - Der Anspruch auf Urlaub ist im Vertrag geregelt.
+  beispiele_en:
+  - The customer is entitled to a refund.
+  - The entitlement to leave is set out in the contract.
+  synonyme:
+  - Anrecht
+  - Forderung
+  - Erwartung
+  antonyme: []
+  kollokationen:
+  - Anspruch auf etwas haben
+  - hohe Ansprüche stellen
+Verhalten:
+  wort: Verhalten
+  artikel: das
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: fɛɐ̯ˈhaltn̩
+  niveau: B1
+  bedeutungen:
+  - Die Art, wie jemand in einer Situation handelt.
+  beispiele:
+  - Sein Verhalten im Gespräch war sehr freundlich.
+  - Das Verhalten der Tiere ändert sich im Winter.
+  beispiele_en:
+  - His behaviour during the conversation was very friendly.
+  - The animals' behaviour changes in winter.
+  synonyme:
+  - Benehmen
+  - Auftreten
+  - Handeln
+  antonyme: []
+  kollokationen:
+  - das eigene Verhalten ändern
+  - auffälliges Verhalten
+Nachteil:
+  wort: Nachteil
+  artikel: der
+  plural: die Nachteile
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈnaːxtaɪ̯l
+  niveau: B1
+  bedeutungen:
+  - Eine schlechte Seite oder Folge einer Sache.
+  beispiele:
+  - Ein Nachteil der Wohnung ist der Lärm.
+  - Ohne Auto zu leben muss kein Nachteil sein.
+  beispiele_en:
+  - One drawback of the flat is the noise.
+  - Living without a car does not have to be a disadvantage.
+  synonyme:
+  - Minuspunkt
+  - Schwäche
+  - Manko
+  antonyme:
+  - Vorteil
+  kollokationen:
+  - einen Nachteil haben
+  - ein klarer Nachteil
+behaupten:
+  wort: behaupten
+  artikel: null
+  plural: null
+  stammformen: behaupten – behauptete – hat behauptet
+  wortart: Verb
+  ipa: bəˈhaʊ̯ptn̩
+  niveau: B1
+  bedeutungen:
+  - Etwas als wahr darstellen, obwohl es nicht bewiesen sein muss.
+  beispiele:
+  - Er behauptet, den Brief nie bekommen zu haben.
+  - Sie behauptete, die Antwort zu kennen.
+  beispiele_en:
+  - He claims he never received the letter.
+  - She claimed to know the answer.
+  synonyme:
+  - versichern
+  - erklären
+  - geltend machen
+  antonyme: []
+  kollokationen:
+  - etwas öffentlich behaupten
+  - das Gegenteil behaupten
+vermeiden:
+  wort: vermeiden
+  artikel: null
+  plural: null
+  stammformen: vermeiden – vermied – hat vermieden
+  wortart: Verb
+  ipa: fɛɐ̯ˈmaɪ̯dn̩
+  niveau: B1
+  bedeutungen:
+  - Dafür sorgen, dass etwas nicht passiert oder man etwas nicht tut.
+  beispiele:
+  - Mit einem Plan lassen sich Fehler vermeiden.
+  - Ich versuche, unnötigen Stress zu vermeiden.
+  beispiele_en:
+  - A plan can help avoid mistakes.
+  - I try to avoid unnecessary stress.
+  synonyme:
+  - verhindern
+  - umgehen
+  - aus dem Weg gehen
+  antonyme:
+  - verursachen
+  kollokationen:
+  - Fehler vermeiden
+  - Konflikte vermeiden
+erwähnen:
+  wort: erwähnen
+  artikel: null
+  plural: null
+  stammformen: erwähnen – erwähnte – hat erwähnt
+  wortart: Verb
+  ipa: ɛɐ̯ˈvɛːnən
+  niveau: B1
+  bedeutungen:
+  - Etwas kurz sagen, ohne ausführlich darüber zu sprechen.
+  beispiele:
+  - Du hast den Termin gestern nicht erwähnt.
+  - Sie erwähnte beiläufig ihren neuen Job.
+  beispiele_en:
+  - You did not mention the appointment yesterday.
+  - She mentioned her new job in passing.
+  synonyme:
+  - ansprechen
+  - nennen
+  - anführen
+  antonyme:
+  - verschweigen
+  kollokationen:
+  - kurz erwähnen
+  - mit keinem Wort erwähnen
+verzichten:
+  wort: verzichten
+  artikel: null
+  plural: null
+  stammformen: verzichten – verzichtete – hat verzichtet
+  wortart: Verb
+  ipa: fɛɐ̯ˈt͡sɪçtn̩
+  niveau: B1
+  bedeutungen:
+  - Etwas bewusst nicht nehmen oder nicht tun, obwohl es möglich wäre.
+  beispiele:
+  - Ich möchte heute auf das Dessert verzichten.
+  - Sie verzichtet seit Jahren auf Fleisch.
+  beispiele_en:
+  - I would like to skip dessert today.
+  - She has avoided eating meat for years.
+  synonyme:
+  - entbehren
+  - weglassen
+  - aufgeben
+  antonyme: []
+  kollokationen:
+  - auf etwas verzichten
+  - freiwillig verzichten
+beobachten:
+  wort: beobachten
+  artikel: null
+  plural: null
+  stammformen: beobachten – beobachtete – hat beobachtet
+  wortart: Verb
+  ipa: bəˈoːbaxtn̩
+  niveau: B1
+  bedeutungen:
+  - Jemanden oder etwas aufmerksam ansehen, um eine Veränderung zu erkennen.
+  beispiele:
+  - Wir beobachten die Vögel vom Fenster aus.
+  - Der Arzt will die Entwicklung noch einige Tage beobachten.
+  beispiele_en:
+  - We watch the birds from the window.
+  - The doctor wants to monitor the situation for a few more days.
+  synonyme:
+  - betrachten
+  - verfolgen
+  - im Auge behalten
+  antonyme:
+  - ignorieren
+  kollokationen:
+  - genau beobachten
+  - eine Entwicklung beobachten
+anstrengend:
+  wort: anstrengend
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈanʃtʁɛŋənt
+  niveau: B1
+  bedeutungen:
+  - So schwierig oder mühsam sein, dass es viel Kraft kostet.
+  beispiele:
+  - Der Umzug war anstrengend, aber alles ist geschafft.
+  - Nach einem anstrengenden Tag schlafe ich früh ein.
+  beispiele_en:
+  - The move was exhausting, but it is all done.
+  - After a tiring day, I fall asleep early.
+  synonyme:
+  - mühsam
+  - ermüdend
+  - kräftezehrend
+  antonyme:
+  - leicht
+  - erholsam
+  kollokationen:
+  - ein anstrengender Tag
+  - körperlich anstrengend
+selbstverständlich:
+  wort: selbstverständlich
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈzɛlpstfɛɐ̯ʃtɛntlɪç
+  niveau: B1
+  bedeutungen:
+  - So normal oder klar sein, dass man es nicht erklären muss.
+  beispiele:
+  - Für sie ist es selbstverständlich, ihren Freunden zu helfen.
+  - Selbstverständlich kannst du meine Notizen benutzen.
+  beispiele_en:
+  - For her, helping her friends is a matter of course.
+  - Of course you can use my notes.
+  synonyme:
+  - natürlich
+  - offensichtlich
+  - selbstredend
+  antonyme:
+  - ungewöhnlich
+  kollokationen:
+  - etwas für selbstverständlich halten
+  - ganz selbstverständlich
+Sinnbild:
+  wort: Sinnbild
+  artikel: das
+  plural: die Sinnbilder
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈzɪnbɪlt
+  niveau: B2
+  bedeutungen:
+  - Eine Person oder Sache, die eine abstrakte Idee anschaulich verkörpert.
+  beispiele:
+  - Die Taube gilt als Sinnbild des Friedens.
+  - Dieses Foto wurde zum Sinnbild der Proteste.
+  beispiele_en:
+  - The dove is regarded as a symbol of peace.
+  - This photo became a symbol of the protests.
+  synonyme:
+  - Symbol
+  - Zeichen
+  - Verkörperung
+  antonyme: []
+  kollokationen:
+  - als Sinnbild gelten
+  - ein Sinnbild für Hoffnung
+Bedenken:
+  wort: Bedenken
+  artikel: die
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: bəˈdɛŋkn̩
+  niveau: B2
+  bedeutungen:
+  - Zweifel oder Sorgen, die gegen einen Plan sprechen.
+  beispiele:
+  - Trotz meiner Bedenken habe ich zugestimmt.
+  - Sie äußerte Bedenken wegen der hohen Kosten.
+  beispiele_en:
+  - Despite my reservations, I agreed.
+  - She expressed concerns about the high costs.
+  synonyme:
+  - Zweifel
+  - Sorgen
+  - Vorbehalte
+  antonyme:
+  - Zuversicht
+  kollokationen:
+  - Bedenken äußern
+  - Bedenken ausräumen
+Verhängnis:
+  wort: Verhängnis
+  artikel: das
+  plural: die Verhängnisse
+  stammformen: null
+  wortart: Substantiv
+  ipa: fɛɐ̯ˈhɛŋnɪs
+  niveau: B2
+  bedeutungen:
+  - Ein Ereignis oder Umstand, der schwerwiegende negative Folgen hat.
+  beispiele:
+  - Seine Unachtsamkeit wurde ihm zum Verhängnis.
+  - Der Sturm wurde dem kleinen Schiff zum Verhängnis.
+  beispiele_en:
+  - His carelessness proved to be his undoing.
+  - The storm spelled disaster for the small boat.
+  synonyme:
+  - Unglück
+  - Verderben
+  - Unheil
+  antonyme: []
+  kollokationen:
+  - jemandem zum Verhängnis werden
+  - ein tragisches Verhängnis
+Zurückhaltung:
+  wort: Zurückhaltung
+  artikel: die
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: t͡suˈʁʏkhaltʊŋ
+  niveau: B2
+  bedeutungen:
+  - Ein vorsichtiges Verhalten, bei dem man Gefühle oder Meinungen nicht sofort zeigt.
+  beispiele:
+  - Ihre Zurückhaltung wurde fälschlich als Ablehnung verstanden.
+  - Beim Kauf teurer Geräte ist Zurückhaltung ratsam.
+  beispiele_en:
+  - Her reserve was mistakenly taken as disapproval.
+  - Caution is advisable when buying expensive devices.
+  synonyme:
+  - Reserve
+  - Vorsicht
+  - Besonnenheit
+  antonyme:
+  - Übereifer
+  kollokationen:
+  - Zurückhaltung üben
+  - mit Zurückhaltung reagieren
+Streben:
+  wort: Streben
+  artikel: das
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈʃtʁeːbn̩
+  niveau: B2
+  bedeutungen:
+  - Das dauerhafte Bemühen, ein bestimmtes Ziel zu erreichen.
+  beispiele:
+  - Sein Streben nach Anerkennung bestimmte viele Entscheidungen.
+  - Das Streben nach Wissen verbindet die Gruppe.
+  beispiele_en:
+  - His pursuit of recognition shaped many decisions.
+  - The pursuit of knowledge brings the group together.
+  synonyme:
+  - Bemühen
+  - Bestreben
+  - Ehrgeiz
+  antonyme: []
+  kollokationen:
+  - das Streben nach Erfolg
+  - im Streben nach Freiheit
+Beharrlichkeit:
+  wort: Beharrlichkeit
+  artikel: die
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: bəˈhaʁlɪçkaɪ̯t
+  niveau: B2
+  bedeutungen:
+  - Die Eigenschaft, trotz Schwierigkeiten an einem Ziel festzuhalten.
+  beispiele:
+  - Mit Beharrlichkeit löste sie schließlich das Problem.
+  - Seine Beharrlichkeit beeindruckte das ganze Team.
+  beispiele_en:
+  - Through persistence, she eventually solved the problem.
+  - His perseverance impressed the entire team.
+  synonyme:
+  - Ausdauer
+  - Hartnäckigkeit
+  - Zähigkeit
+  antonyme:
+  - Wankelmut
+  kollokationen:
+  - mit Beharrlichkeit verfolgen
+  - Beharrlichkeit zeigen
+Scheitern:
+  wort: Scheitern
+  artikel: das
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈʃaɪ̯tɐn
+  niveau: B2
+  bedeutungen:
+  - Der Misserfolg eines Plans oder Vorhabens.
+  beispiele:
+  - Das Scheitern des Projekts hatte mehrere Gründe.
+  - Sie sprach offen über ihr Scheitern.
+  beispiele_en:
+  - There were several reasons why the project failed.
+  - She spoke openly about her failure.
+  synonyme:
+  - Misserfolg
+  - Fehlschlag
+  - Misslingen
+  antonyme:
+  - Erfolg
+  - Gelingen
+  kollokationen:
+  - zum Scheitern führen
+  - aus dem Scheitern lernen
+Aufwand:
+  wort: Aufwand
+  artikel: der
+  plural: die Aufwände
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈaʊ̯fˌvant
+  niveau: B2
+  bedeutungen:
+  - Die Zeit, Arbeit oder Mittel, die man für ein Ziel benötigt.
+  beispiele:
+  - Der Aufwand für die Reparatur war größer als erwartet.
+  - Mit wenig Aufwand lässt sich das Formular ausfüllen.
+  beispiele_en:
+  - The repair took more effort than expected.
+  - The form can be completed with little effort.
+  synonyme:
+  - Mühe
+  - Arbeit
+  - Einsatz
+  antonyme: []
+  kollokationen:
+  - großer Aufwand
+  - den Aufwand reduzieren
+erörtern:
+  wort: erörtern
+  artikel: null
+  plural: null
+  stammformen: erörtern – erörterte – hat erörtert
+  wortart: Verb
+  ipa: ɛɐ̯ˈʔœʁtɐn
+  niveau: B2
+  bedeutungen:
+  - Ein Thema gründlich besprechen und verschiedene Sichtweisen prüfen.
+  beispiele:
+  - Im Seminar erörtern wir die Vor- und Nachteile.
+  - Die Kommission erörterte mehrere Vorschläge.
+  beispiele_en:
+  - In the seminar, we discuss the advantages and disadvantages.
+  - The committee discussed several proposals in detail.
+  synonyme:
+  - diskutieren
+  - besprechen
+  - abwägen
+  antonyme: []
+  kollokationen:
+  - eine Frage erörtern
+  - ausführlich erörtern
+bewahren:
+  wort: bewahren
+  artikel: null
+  plural: null
+  stammformen: bewahren – bewahrte – hat bewahrt
+  wortart: Verb
+  ipa: bəˈvaːʁən
+  niveau: B2
+  bedeutungen:
+  - Etwas erhalten oder vor Verlust und Schaden schützen.
+  beispiele:
+  - Wir wollen die alten Briefe für die Familie bewahren.
+  - Auch in schwierigen Zeiten bewahrte sie die Ruhe.
+  beispiele_en:
+  - We want to preserve the old letters for the family.
+  - She kept her composure even in difficult times.
+  synonyme:
+  - erhalten
+  - schützen
+  - aufrechterhalten
+  antonyme:
+  - verlieren
+  kollokationen:
+  - die Ruhe bewahren
+  - ein Geheimnis bewahren
+hinterfragen:
+  wort: hinterfragen
+  artikel: null
+  plural: null
+  stammformen: hinterfragen – hinterfragte – hat hinterfragt
+  wortart: Verb
+  ipa: ˌhɪntɐˈfʁaːɡn̩
+  niveau: B2
+  bedeutungen:
+  - Etwas kritisch prüfen, statt es sofort zu akzeptieren.
+  beispiele:
+  - Wir sollten diese Annahme kritisch hinterfragen.
+  - Sie hinterfragte die Zahlen des Berichts.
+  beispiele_en:
+  - We should critically examine this assumption.
+  - She questioned the figures in the report.
+  synonyme:
+  - prüfen
+  - anzweifeln
+  - infrage stellen
+  antonyme:
+  - hinnehmen
+  kollokationen:
+  - eine Annahme hinterfragen
+  - kritisch hinterfragen
+abwägen:
+  wort: abwägen
+  artikel: null
+  plural: null
+  stammformen: abwägen – wog ab – hat abgewogen
+  wortart: Verb
+  ipa: ˈapvɛːɡn̩
+  niveau: B2
+  bedeutungen:
+  - Verschiedene Möglichkeiten und Folgen sorgfältig vergleichen.
+  beispiele:
+  - Vor der Entscheidung müssen wir die Risiken abwägen.
+  - Er wog die Vorteile gegen die Kosten ab.
+  beispiele_en:
+  - Before deciding, we need to weigh the risks.
+  - He weighed the benefits against the costs.
+  synonyme:
+  - überlegen
+  - prüfen
+  - gegeneinander aufrechnen
+  antonyme: []
+  kollokationen:
+  - Vor- und Nachteile abwägen
+  - sorgfältig abwägen
+vermitteln:
+  wort: vermitteln
+  artikel: null
+  plural: null
+  stammformen: vermitteln – vermittelte – hat vermittelt
+  wortart: Verb
+  ipa: fɛɐ̯ˈmɪtl̩n
+  niveau: B2
+  bedeutungen:
+  - Zwischen Menschen eine Verständigung ermöglichen oder Wissen weitergeben.
+  beispiele:
+  - Eine Kollegin konnte zwischen den Gruppen vermitteln.
+  - Der Kurs vermittelt grundlegende Kenntnisse.
+  beispiele_en:
+  - A colleague was able to mediate between the groups.
+  - The course teaches basic skills.
+  synonyme:
+  - weitergeben
+  - nahebringen
+  - schlichten
+  antonyme: []
+  kollokationen:
+  - Wissen vermitteln
+  - zwischen Parteien vermitteln
+beiläufig:
+  wort: beiläufig
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈbaɪ̯lɔɪ̯fɪç
+  niveau: B2
+  bedeutungen:
+  - Ohne besonderen Nachdruck und scheinbar nebenbei.
+  beispiele:
+  - Sie erwähnte den Umzug nur beiläufig.
+  - Die Bemerkung klang beiläufig, war aber wichtig.
+  beispiele_en:
+  - She mentioned the move only in passing.
+  - The remark sounded casual, but it mattered.
+  synonyme:
+  - nebenbei
+  - wie zufällig
+  - am Rande
+  antonyme:
+  - ausdrücklich
+  - betont
+  kollokationen:
+  - beiläufig erwähnen
+  - eine beiläufige Bemerkung
+verblüffend:
+  wort: verblüffend
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: fɛɐ̯ˈblʏfənt
+  niveau: B2
+  bedeutungen:
+  - So überraschend sein, dass man kurz sprachlos ist.
+  beispiele:
+  - Die Ähnlichkeit der beiden Bilder ist verblüffend.
+  - Ihre verblüffende Antwort brachte alle zum Lachen.
+  beispiele_en:
+  - The similarity between the two pictures is astonishing.
+  - Her surprising answer made everyone laugh.
+  synonyme:
+  - erstaunlich
+  - überraschend
+  - frappierend
+  antonyme:
+  - erwartbar
+  kollokationen:
+  - eine verblüffende Ähnlichkeit
+  - verblüffend einfach
+Vorbehalt:
+  wort: Vorbehalt
+  artikel: der
+  plural: die Vorbehalte
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈfoːɐ̯bəhalt
+  niveau: C1
+  bedeutungen:
+  - Ein Einwand oder eine Einschränkung, die Zustimmung nur teilweise erlaubt.
+  beispiele:
+  - Ich stimme dem Plan unter einem Vorbehalt zu.
+  - Sie äußerte einen Vorbehalt gegen die Methode.
+  beispiele_en:
+  - I agree to the plan with one reservation.
+  - She expressed a reservation about the method.
+  synonyme:
+  - Einwand
+  - Bedenken
+  - Einschränkung
+  antonyme:
+  - Zustimmung
+  kollokationen:
+  - unter Vorbehalt zustimmen
+  - einen Vorbehalt äußern
+Gefälle:
+  wort: Gefälle
+  artikel: das
+  plural: die Gefälle
+  stammformen: null
+  wortart: Substantiv
+  ipa: ɡəˈfɛlə
+  niveau: C1
+  bedeutungen:
+  - Ein Unterschied zwischen zwei Größen oder eine Neigung im Gelände.
+  beispiele:
+  - Das wirtschaftliche Gefälle zwischen Stadt und Land wächst.
+  - Die Straße hat ein starkes Gefälle.
+  beispiele_en:
+  - The economic gap between urban and rural areas is growing.
+  - The road has a steep downward slope.
+  synonyme:
+  - Unterschied
+  - Abstufung
+  - Hangneigung
+  antonyme:
+  - Gleichstand
+  kollokationen:
+  - ein soziales Gefälle
+  - ein starkes Gefälle
+Tragweite:
+  wort: Tragweite
+  artikel: die
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈtʁaːkvaɪ̯tə
+  niveau: C1
+  bedeutungen:
+  - Die Bedeutung und die möglichen Folgen einer Entscheidung oder Handlung.
+  beispiele:
+  - Die Tragweite der Entscheidung wurde erst später deutlich.
+  - Niemand hatte die Tragweite des Fehlers erkannt.
+  beispiele_en:
+  - The full implications of the decision became clear only later.
+  - No one had realised the extent of the mistake.
+  synonyme:
+  - Bedeutung
+  - Ausmaß
+  - Folgen
+  antonyme: []
+  kollokationen:
+  - die Tragweite erkennen
+  - von großer Tragweite sein
+Ungereimtheit:
+  wort: Ungereimtheit
+  artikel: die
+  plural: die Ungereimtheiten
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈʊŋɡəʁaɪ̯mthaɪ̯t
+  niveau: C1
+  bedeutungen:
+  - Ein Widerspruch oder eine Unstimmigkeit in einer Darstellung.
+  beispiele:
+  - In dem Bericht fiel ihr eine Ungereimtheit auf.
+  - Die Ermittler prüften mehrere Ungereimtheiten in den Aussagen.
+  beispiele_en:
+  - She noticed an inconsistency in the report.
+  - The investigators examined several inconsistencies in the statements.
+  synonyme:
+  - Unstimmigkeit
+  - Widerspruch
+  - Unklarheit
+  antonyme:
+  - Stimmigkeit
+  kollokationen:
+  - eine Ungereimtheit aufklären
+  - Ungereimtheiten entdecken
+Verquickung:
+  wort: Verquickung
+  artikel: die
+  plural: die Verquickungen
+  stammformen: null
+  wortart: Substantiv
+  ipa: fɛɐ̯ˈkvɪkʊŋ
+  niveau: C1
+  bedeutungen:
+  - Eine enge, oft problematische Verbindung verschiedener Interessen oder Vorgänge.
+  beispiele:
+  - Die Verquickung von Politik und Geschäft wurde kritisiert.
+  - Sie untersuchten die Verquickungen der beiden Firmen.
+  beispiele_en:
+  - The entanglement of politics and business was criticised.
+  - They investigated the links between the two companies.
+  synonyme:
+  - Verflechtung
+  - Vermischung
+  - Verbindung
+  antonyme:
+  - Trennung
+  kollokationen:
+  - die Verquickung von Interessen
+  - enge Verquickungen
+Beweggrund:
+  wort: Beweggrund
+  artikel: der
+  plural: die Beweggründe
+  stammformen: null
+  wortart: Substantiv
+  ipa: bəˈveːkɡʁʊnt
+  niveau: C1
+  bedeutungen:
+  - Der persönliche Grund, aus dem jemand etwas tut.
+  beispiele:
+  - Sein Beweggrund für die Kündigung blieb unklar.
+  - Sie erklärte die Beweggründe ihrer Entscheidung.
+  beispiele_en:
+  - His reason for resigning remained unclear.
+  - She explained the motives behind her decision.
+  synonyme:
+  - Motiv
+  - Antrieb
+  - Grund
+  antonyme: []
+  kollokationen:
+  - die Beweggründe erklären
+  - aus persönlichen Beweggründen
+Gepflogenheit:
+  wort: Gepflogenheit
+  artikel: die
+  plural: die Gepflogenheiten
+  stammformen: null
+  wortart: Substantiv
+  ipa: ɡəˈpfloːɡn̩haɪ̯t
+  niveau: C1
+  bedeutungen:
+  - Eine in einer Gruppe übliche und anerkannte Art zu handeln.
+  beispiele:
+  - Es ist hier Gepflogenheit, sich zuerst vorzustellen.
+  - Mit den Gepflogenheiten des Hauses war er noch nicht vertraut.
+  beispiele_en:
+  - Here it is customary to introduce yourself first.
+  - He was not yet familiar with the customs of the house.
+  synonyme:
+  - Brauch
+  - Sitte
+  - Gewohnheit
+  antonyme: []
+  kollokationen:
+  - örtliche Gepflogenheiten
+  - den Gepflogenheiten entsprechen
+Selbstzweck:
+  wort: Selbstzweck
+  artikel: der
+  plural: null
+  stammformen: null
+  wortart: Substantiv
+  ipa: ˈzɛlpstt͡svɛk
+  niveau: C1
+  bedeutungen:
+  - Etwas, das nur um seiner selbst willen getan wird und keinem weiteren Ziel dient.
+  beispiele:
+  - Technik darf in diesem Projekt kein Selbstzweck sein.
+  - Die Debatte wurde zum Selbstzweck und brachte keine Lösung.
+  beispiele_en:
+  - Technology must not become an end in itself in this project.
+  - The debate became an end in itself and produced no solution.
+  synonyme:
+  - Zweck an sich
+  - Eigenzweck
+  antonyme: []
+  kollokationen:
+  - zum Selbstzweck werden
+  - kein Selbstzweck sein
+ergründen:
+  wort: ergründen
+  artikel: null
+  plural: null
+  stammformen: ergründen – ergründete – hat ergründet
+  wortart: Verb
+  ipa: ɛɐ̯ˈɡʁʏndn̩
+  niveau: C1
+  bedeutungen:
+  - Die Ursachen oder den tieferen Sinn von etwas gründlich herausfinden.
+  beispiele:
+  - Die Forscher wollen die Ursache der Störung ergründen.
+  - Es fiel ihr schwer, seine Beweggründe zu ergründen.
+  beispiele_en:
+  - The researchers want to get to the bottom of the disruption.
+  - She found it hard to fathom his motives.
+  synonyme:
+  - erforschen
+  - durchschauen
+  - herausfinden
+  antonyme: []
+  kollokationen:
+  - die Ursachen ergründen
+  - ein Geheimnis ergründen
+beschwichtigen:
+  wort: beschwichtigen
+  artikel: null
+  plural: null
+  stammformen: beschwichtigen – beschwichtigte – hat beschwichtigt
+  wortart: Verb
+  ipa: bəˈʃvɪçtɪɡn̩
+  niveau: C1
+  bedeutungen:
+  - Eine aufgebrachte Person beruhigen oder einen Streit abschwächen.
+  beispiele:
+  - Der Sprecher versuchte, die besorgten Anwohner zu beschwichtigen.
+  - Ihre Worte konnten die aufgebrachte Menge nicht beschwichtigen.
+  beispiele_en:
+  - The spokesperson tried to reassure the worried residents.
+  - Her words could not calm the angry crowd.
+  synonyme:
+  - beruhigen
+  - besänftigen
+  - deeskalieren
+  antonyme:
+  - aufbringen
+  - anheizen
+  kollokationen:
+  - die Gemüter beschwichtigen
+  - mit Worten beschwichtigen
+aufschlüsseln:
+  wort: aufschlüsseln
+  artikel: null
+  plural: null
+  stammformen: aufschlüsseln – schlüsselte auf – hat aufgeschlüsselt
+  wortart: Verb
+  ipa: ˈaʊ̯fʃlʏsl̩n
+  niveau: C1
+  bedeutungen:
+  - Eine Gesamtsumme oder einen Sachverhalt in einzelne Bestandteile zerlegen.
+  beispiele:
+  - Bitte schlüsseln Sie die Kosten nach Bereichen auf.
+  - Der Bericht schlüsselt die Einnahmen für jedes Jahr auf.
+  beispiele_en:
+  - Please break down the costs by category.
+  - The report itemises the revenue for each year.
+  synonyme:
+  - aufgliedern
+  - unterteilen
+  - aufteilen
+  antonyme:
+  - zusammenfassen
+  kollokationen:
+  - Kosten aufschlüsseln
+  - nach Kategorien aufschlüsseln
+relativieren:
+  wort: relativieren
+  artikel: null
+  plural: null
+  stammformen: relativieren – relativierte – hat relativiert
+  wortart: Verb
+  ipa: ʁelatiˈviːʁən
+  niveau: C1
+  bedeutungen:
+  - Eine Aussage durch zusätzlichen Zusammenhang einschränken oder abschwächen.
+  beispiele:
+  - Später versuchte er, seine scharfe Kritik zu relativieren.
+  - Die neuen Zahlen relativieren den ersten Eindruck.
+  beispiele_en:
+  - Later he tried to qualify his harsh criticism.
+  - The new figures put the initial impression into perspective.
+  synonyme:
+  - einschränken
+  - abschwächen
+  - in Beziehung setzen
+  antonyme:
+  - bekräftigen
+  kollokationen:
+  - eine Aussage relativieren
+  - Ergebnisse relativieren
+verschleiern:
+  wort: verschleiern
+  artikel: null
+  plural: null
+  stammformen: verschleiern – verschleierte – hat verschleiert
+  wortart: Verb
+  ipa: fɛɐ̯ˈʃlaɪ̯ɐn
+  niveau: C1
+  bedeutungen:
+  - Einen Sachverhalt absichtlich so darstellen, dass er schwer zu erkennen ist.
+  beispiele:
+  - Die Firma wollte die tatsächlichen Kosten verschleiern.
+  - Seine Antwort verschleierte den Grund für die Verzögerung.
+  beispiele_en:
+  - The company wanted to conceal the actual costs.
+  - His answer obscured the reason for the delay.
+  synonyme:
+  - verbergen
+  - vertuschen
+  - kaschieren
+  antonyme:
+  - offenlegen
+  - enthüllen
+  kollokationen:
+  - die Wahrheit verschleiern
+  - Kosten verschleiern
+unabdingbar:
+  wort: unabdingbar
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈʊnʔapdɪŋbaːɐ̯
+  niveau: C1
+  bedeutungen:
+  - So wichtig sein, dass man nicht darauf verzichten kann.
+  beispiele:
+  - Für diese Arbeit sind genaue Daten unabdingbar.
+  - Vertrauen ist für eine Einigung unabdingbar.
+  beispiele_en:
+  - Accurate data is essential for this work.
+  - Trust is essential for reaching an agreement.
+  synonyme:
+  - unverzichtbar
+  - unerlässlich
+  - notwendig
+  antonyme:
+  - entbehrlich
+  kollokationen:
+  - unabdingbare Voraussetzung
+  - unabdingbar für den Erfolg
+stichhaltig:
+  wort: stichhaltig
+  artikel: null
+  plural: null
+  stammformen: null
+  wortart: Adjektiv
+  ipa: ˈʃtɪçhaltɪç
+  niveau: C1
+  bedeutungen:
+  - Durch gute Gründe oder Belege überzeugend sein.
+  beispiele:
+  - Für diese Behauptung fehlt ein stichhaltiger Beleg.
+  - Ihre Argumente waren stichhaltig und überzeugten die Gruppe.
+  beispiele_en:
+  - There is no solid evidence for this claim.
+  - Her arguments were sound and convinced the group.
+  synonyme:
+  - überzeugend
+  - fundiert
+  - schlüssig
+  antonyme:
+  - haltlos
+  - unbegründet
+  kollokationen:
+  - stichhaltige Argumente
+  - stichhaltig begründen
