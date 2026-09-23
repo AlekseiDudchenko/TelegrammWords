@@ -56,6 +56,8 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         config = Config.from_env()
+        entries = wordlist.load(config.words_file)
+        collocation_store = collocations.load(config.collocations_file)
         state = State.load(config.state_file)
         day = day_of(datetime.now(timezone.utc))
 
@@ -63,20 +65,21 @@ def main(argv: list[str] | None = None) -> int:
             log.info("Already posted for day %s — nothing to do.", day)
             return 0
 
-        if args.word:
-            entries = wordlist.load(config.words_file)
+        if not args.word or args.word.casefold() in {
+            phrase.casefold() for phrase in collocation_store
+        }:
+            posted_key, card = collocations.next_card(
+                collocation_store, entries, state.posted, requested=args.word
+            )
+            log.info("Collocation: %s (%s)", card.ausdruck, card.niveau)
+            message = formatter.render_collocation(card)
+        else:
             stored = cards.load(config.cards_file)
             entry = _pick_entry(args, entries, state, stored)
             log.info("Word: %s (%s)", entry.word, entry.level)
             card = _card_for(entry, stored, config)
             message = formatter.render(card, drillcards=links.resolve_drillcards(card))
             posted_key = entry.word
-        else:
-            posted_key, card = collocations.next_card(
-                collocations.load(config.collocations_file), state.posted
-            )
-            log.info("Collocation: %s (%s)", card.ausdruck, card.niveau)
-            message = formatter.render_collocation(card)
 
         if args.dry_run:
             print(message)

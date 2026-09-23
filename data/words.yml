@@ -1,6 +1,6 @@
-# Word list for "Wort des Tages", grouped by CEFR level.
-# Order here does not matter — the bot shuffles deterministically per cycle
-# (see bot/state.py). Just append new words to the right section.
+# Words and collocations grouped by CEFR level.
+# Every daily collocation must have a matching card in collocations.yml.
+# Card order, rather than the order here, determines the publishing sequence.
 
 A2:
   - Haus
@@ -33,6 +33,23 @@ A2:
   - großzügig
   - ehrlich
   - langweilig
+
+  # Collocations for the daily channel
+  - eine Pause machen
+  - Zeit haben
+  - sich Zeit nehmen
+  - einen Termin vereinbaren
+  - einen Termin absagen
+  - den Bus verpassen
+  - einkaufen gehen
+  - den Tisch decken
+  - das Zimmer aufräumen
+  - eine Frage stellen
+  - eine Antwort geben
+  - im Stau stehen
+  - zu Hause bleiben
+  - Bescheid sagen
+  - sich Sorgen machen
 
 B1:
   - Fernweh
@@ -87,6 +104,28 @@ B1:
   - erstaunlich
   - gelassen
   - beliebt
+
+  # Collocations for the daily channel
+  - eine Entscheidung treffen
+  - Verantwortung übernehmen
+  - auf jemanden Rücksicht nehmen
+  - in Frage kommen
+  - eine Rolle spielen
+  - zur Verfügung stehen
+  - einen Fehler machen
+  - einen Fehler beheben
+  - eine Lösung finden
+  - ein Ziel erreichen
+  - eine Erfahrung machen
+  - einen Eindruck hinterlassen
+  - eine Bewerbung schreiben
+  - einen Antrag stellen
+  - einen Vorschlag machen
+  - sich Mühe geben
+  - auf etwas verzichten
+  - in Kontakt bleiben
+  - den Überblick behalten
+  - etwas in Betracht ziehen
 
 B2:
   - Zeitgeist
@@ -145,6 +184,28 @@ B2:
   - ausgeprägt
   - unbeirrt
 
+  # Collocations for the daily channel
+  - eine Herausforderung meistern
+  - Bedenken äußern
+  - Bedenken ausräumen
+  - etwas in Kauf nehmen
+  - auf Widerstand stoßen
+  - unter Druck stehen
+  - eine Frist einhalten
+  - eine Frist verlängern
+  - etwas zur Sprache bringen
+  - zur Einsicht kommen
+  - im Vordergrund stehen
+  - eine Entwicklung verfolgen
+  - Schlussfolgerungen ziehen
+  - ein Risiko eingehen
+  - Verantwortung tragen
+  - einen Kompromiss eingehen
+  - eine Zusage erhalten
+  - etwas auf den Weg bringen
+  - eine Grenze ziehen
+  - etwas auf den Punkt bringen
+
 C1:
   - Sprachgefühl
   - Zwiespalt
@@ -200,3 +261,10 @@ C1:
   - fadenscheinig
   - zwanglos
   - unbedarft
+
+  # Collocations for the daily channel
+  - unter Vorbehalt zustimmen
+  - die Tragweite erkennen
+  - eine Debatte anstoßen
+  - einen Sachverhalt aufschlüsseln
+  - eine These untermauern

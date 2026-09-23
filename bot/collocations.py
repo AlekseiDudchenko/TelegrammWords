@@ -5,6 +5,8 @@ from pathlib import Path
 import yaml
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
+from .wordlist import Entry
+
 
 class CollocationError(RuntimeError):
     pass
@@ -43,7 +45,26 @@ def load(path: Path) -> dict[str, CollocationCard]:
     return result
 
 
-def next_card(store: dict[str, CollocationCard], posted: list[str]) -> tuple[str, CollocationCard]:
+def next_card(
+    store: dict[str, CollocationCard],
+    entries: list[Entry],
+    posted: list[str],
+    requested: str | None = None,
+) -> tuple[str, CollocationCard]:
+    """Select a listed phrase in card order, preserving the mixed-level rotation."""
+    levels = {entry.word: entry.level for entry in entries}
+    for phrase, card in store.items():
+        if levels.get(phrase) != card.niveau:
+            raise CollocationError(
+                f"{phrase!r} must appear in words.yml at level {card.niveau}."
+            )
+
+    if requested is not None:
+        for phrase, card in store.items():
+            if phrase.casefold() == requested.casefold():
+                return f"collocation:{phrase}", card
+        raise CollocationError(f"No stored collocation: {requested!r}.")
+
     for phrase, card in store.items():
         key = f"collocation:{phrase}"
         if key not in posted:
