@@ -1,124 +1,47 @@
-# Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
+# Kollokation des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
-A Telegram bot that posts a German word card every morning: meanings, example
-sentences, synonyms, antonyms and common collocations. The card is monolingual
-— everything the reader sees is in German, except the English translation of
-each example, which sits under a Telegram spoiler and is revealed by a tap.
+A Telegram bot that posts one German collocation every morning. Each card has a
+short German explanation, two example sentences with hidden English translations,
+and a usage note. Published word cards remain in `data/cards.yml` as an archive.
 
-Design notes and the reasoning behind the architecture: [PLAN.md](PLAN.md).
+The original word-card design is described in [PLAN.md](PLAN.md).
 
-## How it works
+## Daily posts
 
-GitHub Actions runs `python -m bot.main` on a schedule. The bot takes the next
-unused word from `data/words.yml`, renders a card as an HTML message, sends it
-to the channel, and commits `data/state.json` back to the repository.
+GitHub Actions runs `python -m bot.main` at 08:00 `Europe/Berlin`. The bot takes
+the next unposted card from `data/collocations.yml` in file order, sends the HTML
+message to Telegram, and commits the updated `data/state.json`. There are 60
+collocations, enough for 60 daily posts without an AI API key. Once all 60 are
+posted, the job fails with a clear message and sends nothing until more cards
+are added. It does not silently return to the old word list.
 
-The card comes from one of two places:
+The card includes a Reverso Context search link. A DrillCards link is optional:
+the bot does not invent one for a collocation that is not in the app.
 
-- **`data/cards.yml`** — 120 cards checked into the repository. These are used
-  first, in file order, so 120 scheduled posts can run without an API key.
-- **The Claude API** — for every word that has no stored card. The reply is
-  constrained by a strict JSON schema and validated before anything is sent.
+`last_post_date` in `data/state.json` prevents a second post on the same Berlin
+calendar day. A manual `--force` run can override this guard.
 
-```
-bot/
-  config.py     environment variables and paths
-  models.py     WordCard schema + JSON Schema for structured outputs
-  wordlist.py   loads data/words.yml
-  cards.py      loads the pre-written cards from data/cards.yml
-  state.py      picks a word without repeats, guards against double posting
-  generator.py  Claude API call + response validation
-  links.py      Reverso links + DrillCards, added only for a word it has
-  formatter.py  WordCard -> HTML for Telegram
-  telegram.py   sendMessage with retries
-  main.py       CLI
-```
+## Add a collocation
 
-## Running locally
+Append a new mapping entry to `data/collocations.yml`. Its key must exactly
+match `ausdruck`. Required fields are `ausdruck`, `niveau`, `bedeutung`, two
+`beispiele`, their two `beispiele_en` translations, and `gebrauch`. The only
+English in a card goes into `beispiele_en`; those lines appear behind Telegram
+spoilers. Entries publish in file order and must not duplicate an earlier phrase.
 
-```bash
-pip install -r requirements-dev.txt
-python -m pytest -q
+Check the file with `python -m pytest -q`, then preview the next post with
+`python -m bot.main --dry-run`. A dry run does not send or save anything.
 
-# Print the finished message without sending it. No key needed for a word
-# that has a stored card.
-python -m bot.main --dry-run --word Fernweh
+## Setup
 
-# A word outside data/cards.yml goes to the API
-export ANTHROPIC_API_KEY=sk-ant-...
-python -m bot.main --dry-run --word Trugschluss
-```
+1. Add the bot as an administrator of `@wunderwordsde` with permission to post.
+2. Add `TELEGRAM_BOT_TOKEN` under GitHub `Settings → Secrets and variables → Actions`.
+3. Optionally set `TELEGRAM_CHAT_ID`; it defaults to `@wunderwordsde`.
 
-Flags: `--dry-run`, `--word WORD`, `--level B2`, `--force`, `--verbose`.
+`ANTHROPIC_API_KEY` is not used for scheduled collocation posts. The original
+`--word WORD` option remains available for an explicit manual word post; an
+unstored word would still require that API key. `--dry-run`, `--force`, and
+`--level` also remain available for manual runs.
 
-## Setting up the live bot
-
-1. Create a bot via [@BotFather](https://t.me/BotFather) → `TELEGRAM_BOT_TOKEN`.
-2. Add the bot as an administrator of `@wunderwordsde` with permission to post.
-3. Add the secrets under `Settings → Secrets and variables → Actions`:
-
-   | Secret | Value | Required |
-   |---|---|---|
-   | `TELEGRAM_BOT_TOKEN` | token from BotFather | yes |
-   | `TELEGRAM_CHAT_ID` | `@wunderwordsde` | no |
-   | `ANTHROPIC_API_KEY` | key from console.anthropic.com | not while stored cards remain |
-
-`TELEGRAM_CHAT_ID` defaults to `@wunderwordsde` (see `bot/config.py`); a numeric
-ID is only needed for a private channel. `ANTHROPIC_API_KEY` is only read once
-the stored cards in `data/cards.yml` are used up — until then the run does not
-touch the API at all. Without the key, the first run past the store fails with
-exit code 2 and posts nothing.
-
-To verify everything before the first scheduled run: `Actions → Wort des Tages →
-Run workflow` with `dry_run` ticked. The card is written to the job log and
-nothing is sent.
-
-## Schedule
-
-One run a day at 08:00 in `Europe/Berlin`, including daylight saving time.
-GitHub Actions may delay a scheduled run; it does not guarantee the exact minute.
-
-`data/state.json` records the last Berlin calendar date posted in
-`last_post_date`. A second run on the same day (or a replay of an older job)
-does not post again unless `--force` is set. The previous `last_post_slot`
-format is read automatically when the first run under this schedule starts.
-
-## Adding words
-
-Append to the appropriate section of `data/words.yml`. Order within the file
-does not matter: the bot shuffles the list deterministically per cycle, so
-adding words neither disturbs the current rotation nor causes repeats.
-
-## Adding a pre-written card
-
-Append an entry to `data/cards.yml`, keyed by the exact word from
-`data/words.yml`. The card must fill every field of `WordCard`
-(`bot/models.py`); `python -m pytest tests/test_cards.py` validates the whole
-file, checks that each word exists in the word list at the same level, and
-renders every card to catch broken markup. Order here *does* matter — stored
-cards are posted top to bottom before anything is generated.
-
-Then check the result: `python -m bot.main --dry-run --word <word>`.
-
-The store has 120 cards: at one post a day, that covers 120 days in total.
-`tests/test_cards.py` checks that the store contains at least sixty valid cards.
-
-## Reverso links
-
-Every card ends with a link to the word in [Reverso
-Context](https://context.reverso.net/); verbs get a second link to their
-conjugation table. Reverso Context works on a language pair; the other half is
-`CONTEXT_LANGUAGE` in `bot/links.py` — `english`, to match the language of the
-hidden example translations (`russian`, `french`, `spanish` … all work too).
-
-## Language conventions
-
-Code, comments, commit messages and documentation are English. German is used
-only where it is the product itself: the words in `data/words.yml`, the labels
-in the rendered card, and the `WordCard` field names, which mirror German
-grammatical categories (`artikel`, `plural`, `stammformen`).
-
-Inside a card, English appears in exactly one field: `beispiele_en`, the
-translation of the example sentences. It needs one entry per sentence in
-`beispiele`, in the same order — `WordCard` rejects the card otherwise, since
-the formatter pairs the two lists by position.
+GitHub Actions schedules 08:00 in the `Europe/Berlin` timezone, including
+daylight saving time. GitHub may start a scheduled job a little late.

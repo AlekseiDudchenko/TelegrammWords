@@ -62,7 +62,7 @@ class State:
         """True once this day — or a later one — has been served.
 
         The comparison is '<=' rather than '==' so that a job re-run from the
-        Actions UI, which replays an older slot, stays silent too.
+        Actions UI, which replays an older run, stays silent too.
         """
         return self.last_post_date is not None and day <= self.last_post_date
 

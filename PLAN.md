@@ -1,5 +1,8 @@
 # TelegrammWords — "Wort des Tages"
 
+> Historical design notes for the original word-card bot. The current daily
+> channel publishes collocations from `data/collocations.yml`; see README.md.
+
 A Telegram bot that posts a German word card every morning: meanings, examples,
 synonyms and antonyms. All explanations are in German (monolingual) —
 a deliberate choice, since the card itself then doubles as reading practice.

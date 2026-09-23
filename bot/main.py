@@ -1,4 +1,4 @@
-"""CLI: generate one word card and post it to the channel."""
+"""CLI: post the next collocation, or an explicitly requested word."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 
 import anthropic
 
-from . import cards, formatter, generator, links, telegram, wordlist
+from . import cards, collocations, formatter, generator, links, telegram, wordlist
 from .config import Config, ConfigError
 from .models import WordCard
 from .state import State, day_of
@@ -21,7 +21,7 @@ log = logging.getLogger("bot")
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="python -m bot.main",
-        description="Post the word card of the day to the Telegram channel.",
+        description="Post the next daily collocation to the Telegram channel.",
     )
     parser.add_argument(
         "--dry-run",
@@ -31,7 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--word",
         metavar="WORD",
-        help="Use this word instead of the next one from the list.",
+        help="Post a word card manually instead of the next collocation.",
     )
     parser.add_argument(
         "--level",
@@ -56,8 +56,6 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         config = Config.from_env()
-        entries = wordlist.load(config.words_file)
-        stored = cards.load(config.cards_file)
         state = State.load(config.state_file)
         day = day_of(datetime.now(timezone.utc))
 
@@ -65,11 +63,20 @@ def main(argv: list[str] | None = None) -> int:
             log.info("Already posted for day %s — nothing to do.", day)
             return 0
 
-        entry = _pick_entry(args, entries, state, stored)
-        log.info("Word: %s (%s)", entry.word, entry.level)
-
-        card = _card_for(entry, stored, config)
-        message = formatter.render(card, drillcards=links.resolve_drillcards(card))
+        if args.word:
+            entries = wordlist.load(config.words_file)
+            stored = cards.load(config.cards_file)
+            entry = _pick_entry(args, entries, state, stored)
+            log.info("Word: %s (%s)", entry.word, entry.level)
+            card = _card_for(entry, stored, config)
+            message = formatter.render(card, drillcards=links.resolve_drillcards(card))
+            posted_key = entry.word
+        else:
+            posted_key, card = collocations.next_card(
+                collocations.load(config.collocations_file), state.posted
+            )
+            log.info("Collocation: %s (%s)", card.ausdruck, card.niveau)
+            message = formatter.render_collocation(card)
 
         if args.dry_run:
             print(message)
@@ -79,11 +86,11 @@ def main(argv: list[str] | None = None) -> int:
         message_id = telegram.send_message(token, chat_id, message)
         log.info("Sent to %s (message_id=%s).", chat_id, message_id)
 
-        state.record(entry.word, day)
+        state.record(posted_key, day)
         state.save(config.state_file)
         return 0
 
-    except (ConfigError, wordlist.WordlistError, cards.CardStoreError) as exc:
+    except (ConfigError, wordlist.WordlistError, cards.CardStoreError, collocations.CollocationError) as exc:
         log.error("%s", exc)
         return 2
     except (generator.GenerationError, telegram.TelegramError) as exc:

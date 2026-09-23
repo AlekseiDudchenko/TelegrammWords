@@ -1,4 +1,4 @@
-"""Wort des Tages — a Telegram bot posting a daily German word card."""
+"""Daily German collocations for Telegram; original word cards remain available."""
 
 __all__ = ["__version__"]
 

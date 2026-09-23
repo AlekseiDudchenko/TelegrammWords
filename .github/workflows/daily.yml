@@ -1,4 +1,4 @@
-name: Wort des Tages
+name: Kollokation des Tages
 
 on:
   schedule:
@@ -42,9 +42,8 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      # ANTHROPIC_API_KEY may be empty: words with a card in data/cards.yml are
-      # posted straight from the repository and never reach the API.
-      - name: Post the card of the day
+      # Scheduled collocations use local cards and never require an API key.
+      - name: Post the collocation of the day
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -68,7 +67,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/state.json
-          git commit -m "Wort des Tages: update state"
+          git commit -m "Kollokation des Tages: update state"
           for delay in 0 2 4 8; do
             sleep "$delay"
             git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && \

@@ -9,8 +9,10 @@ trying it — a tap on the blurred line reveals it.
 from __future__ import annotations
 
 from html import escape
+from urllib.parse import quote
 
 from . import links
+from .collocations import CollocationCard
 from .models import WordCard
 
 
@@ -52,6 +54,29 @@ def render(card: WordCard, drillcards: str | None = None) -> str:
         lines.append(f"🃏 {_link(drillcards, 'Auf DrillCards üben')}")
 
     return "\n".join(lines).strip()
+
+
+def render_collocation(card: CollocationCard, app_url: str | None = None) -> str:
+    """Render a phrase card. An app link is optional and never guessed."""
+    lines = [
+        f"🇩🇪 <b>Kollokation des Tages</b> · {e(card.niveau)}",
+        "",
+        f"<b>{e(card.ausdruck)}</b>",
+        "",
+        "📖 <b>Bedeutung</b>",
+        e(card.bedeutung),
+        "",
+        "✍️ <b>Beispiele</b> <i>· Übersetzung antippen</i>",
+    ]
+    for sentence, translation in zip(card.beispiele, card.beispiele_en):
+        lines.append(f"• <i>{e(sentence)}</i>")
+        lines.append(f"   <tg-spoiler>{e(translation)}</tg-spoiler>")
+    lines += ["", "💡 <b>Gebrauch</b>", e(card.gebrauch)]
+    context = f"{links.CONTEXT_BASE}/german-{links.CONTEXT_LANGUAGE}/{quote(card.ausdruck, safe='')}"
+    lines += ["", f"🌐 <b>Reverso:</b> {_link(context, 'Kontext')}"]
+    if app_url:
+        lines.append(f"🃏 {_link(app_url, 'Auf DrillCards üben')}")
+    return "\n".join(lines)
 
 
 def _examples(card: WordCard) -> list[str]:

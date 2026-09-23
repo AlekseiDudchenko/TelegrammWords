@@ -31,7 +31,7 @@ def write(tmp_path, payload):
 
 def test_repo_store_is_valid_and_covers_the_current_supply():
     stored = cards.load(STORE)
-    assert len(stored) >= 120
+    assert len(stored) >= 61  # Published word cards, including Freizeit.
 
 
 def test_every_stored_word_is_in_the_wordlist():

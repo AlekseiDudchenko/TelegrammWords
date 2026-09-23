@@ -48,6 +48,10 @@ class Config:
         return self.data_dir / "cards.yml"
 
     @property
+    def collocations_file(self) -> Path:
+        return self.data_dir / "collocations.yml"
+
+    @property
     def state_file(self) -> Path:
         return self.data_dir / "state.json"
 
