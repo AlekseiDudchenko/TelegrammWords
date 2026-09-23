@@ -2,8 +2,8 @@
 #
 # A word that has a card here is posted from this file — no API call, no key
 # needed. The bot works through these first, in the order they appear below,
-# and only falls back to the Claude API once they are used up. At two posts a
-# day the 120 cards cover sixty days in total.
+# and only falls back to the Claude API once they are used up. At one post a
+# day the 120 cards cover 120 days in total.
 #
 # The keys must match the words in words.yml exactly, and every card must
 # satisfy the WordCard schema in bot/models.py (tests/test_cards.py checks it).
@@ -1895,7 +1895,7 @@ zuverlässig:
     - "zuverlässig funktionieren"
     - "ein zuverlässiger Partner"
 
-# Sixty more reviewed cards for the next thirty days without an API key.
+# Sixty more reviewed cards for sixty additional daily posts without an API key.
 
 Freizeit:
   wort: Freizeit

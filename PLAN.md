@@ -1,6 +1,6 @@
 # TelegrammWords — "Wort des Tages"
 
-A Telegram bot that posts a German word card twice a day: meanings, examples,
+A Telegram bot that posts a German word card every morning: meanings, examples,
 synonyms and antonyms. All explanations are in German (monolingual) —
 a deliberate choice, since the card itself then doubles as reading practice.
 The one concession is the English translation of each example sentence, hidden
@@ -10,13 +10,13 @@ under a spoiler: the reader works out the German first and only then taps.
 
 | Question | Decision |
 |---|---|
-| Content | 60 cards written by hand in the repository; the Claude API takes over once they run out |
+| Content | 120 cards in the repository; the Claude API takes over once they run out |
 | Card language | German, monolingual; example sentences carry a hidden English translation |
-| Scheduling | GitHub Actions cron, two runs per day |
+| Scheduling | GitHub Actions cron, once a day at 08:00 Europe/Berlin |
 | Stack | Python 3.12 |
 | Storage | Files in the repository (`data/`); state is committed back |
 
-There is deliberately no database and no server: the load is two messages a
+There is deliberately no database and no server: the load is one message a
 day, and anything else would be infrastructure for its own sake.
 
 ## How it works
@@ -30,11 +30,11 @@ GitHub Actions (cron)
        │   └─ generator.py → … or, if there is none, Claude API → WordCard
        ├─ formatter.py → HTML message for Telegram
        ├─ telegram.py  → sendMessage to the channel
-       └─ state.py     → record word + slot in data/state.json
+       └─ state.py     → record word + Berlin date in data/state.json
   └─ commit & push data/state.json
 ```
 
-The store exists for two reasons. The channel's first month is its shop
+The store exists for two reasons. The channel's initial run is its shop
 window, and hand-written cards are simply better than generated ones —
 definitions and examples chosen for the word rather than for the schema. And it
 decouples going live from having an API key: the bot can start posting with
@@ -59,8 +59,8 @@ bot/
   main.py        # CLI: --dry-run, --word WORD, --force
 data/
   words.yml      # word list tagged by level (A2/B1/B2/C1)
-  cards.yml      # 60 pre-written cards, posted in file order
-  state.json     # {"last_post_slot": "2026-08-02/pm", "cycle": 0, "posted": [...]}
+  cards.yml      # 120 pre-written cards, posted in file order
+  state.json     # {"last_post_date": "2026-08-02", "cycle": 0, "posted": [...]}
 tests/
   test_formatter.py, test_state.py, test_models.py, test_wordlist.py,
   test_cards.py, test_generator.py, test_config.py
@@ -132,10 +132,10 @@ language pair; `CONTEXT_LANGUAGE` picks the other half of it.
 
 ## Reliability
 
-- **Idempotence.** `state.json` stores `last_post_slot` — the half-day last
-  served, e.g. `"2026-08-02/pm"`. A second run in the same slot sends nothing,
+- **Idempotence.** `state.json` stores `last_post_date` — the Berlin date last
+  served, e.g. `"2026-08-02"`. A second run on the same day sends nothing,
   which covers double cron firings and manual "Run workflow" clicks; the guard
-  also rejects *earlier* slots, so re-running yesterday's job from the Actions
+  also rejects *earlier* days, so re-running yesterday's job from the Actions
   UI is silent too. `--force` overrides it.
 - **No repeated words.** Words are drawn from those not yet used; when the list
   is exhausted the cycle restarts with a new deterministic shuffle. Words with
@@ -155,20 +155,17 @@ language pair; `CONTEXT_LANGUAGE` picks the other half of it.
 
 ## Schedule
 
-GitHub Actions cron runs in UTC and has no notion of daylight saving time.
-`0 6 * * *` and `0 16 * * *` are 08:00 and 18:00 CEST in summer, an hour
-earlier in winter, plus `workflow_dispatch` for manual runs.
+GitHub Actions schedules `0 8 * * *` with `timezone: Europe/Berlin`, so the
+morning post stays at 08:00 local time in both summer and winter. Manual runs
+remain available through `workflow_dispatch`.
 
-One platform quirk worth knowing: Actions cron does not guarantee the exact
-minute — delays of 10–15 minutes under load are normal. That quirk is why the
-two slots are split at noon UTC rather than at the cron times themselves: each
-run has six hours of slack before it could be mistaken for the other one.
+Actions cron does not guarantee the exact minute. The daily guard uses the
+Berlin calendar date and prevents delayed or manual runs from posting twice.
 
 ## Cost
 
-Nothing for the first month — those cards are in the repository. After that two
-requests a day, ~1500 output tokens each: still cents per month, in round
-numbers.
+No API calls while stored cards remain. After that, up to one generation
+request per day is needed.
 
 ## Deliberately out of scope for v1
 

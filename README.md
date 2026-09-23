@@ -1,6 +1,6 @@
 # Wort des Tages — [@wunderwordsde](https://t.me/wunderwordsde)
 
-A Telegram bot that posts a German word card twice a day: meanings, example
+A Telegram bot that posts a German word card every morning: meanings, example
 sentences, synonyms, antonyms and common collocations. The card is monolingual
 — everything the reader sees is in German, except the English translation of
 each example, which sits under a Telegram spoiler and is revealed by a tap.
@@ -16,7 +16,7 @@ to the channel, and commits `data/state.json` back to the repository.
 The card comes from one of two places:
 
 - **`data/cards.yml`** — 120 cards checked into the repository. These are used
-  first, in file order, so sixty days run without an API key.
+  first, in file order, so 120 scheduled posts can run without an API key.
 - **The Claude API** — for every word that has no stored card. The reply is
   constrained by a strict JSON schema and validated before anything is sent.
 
@@ -75,16 +75,13 @@ nothing is sent.
 
 ## Schedule
 
-Two runs a day: `0 6 * * *` and `0 16 * * *` UTC — 08:00 and 18:00 Berlin time
-in summer, an hour earlier in winter. GitHub Actions cron has no notion of
-daylight saving time and does not guarantee the exact minute.
+One run a day at 08:00 in `Europe/Berlin`, including daylight saving time.
+GitHub Actions may delay a scheduled run; it does not guarantee the exact minute.
 
-The double-post guard counts half-days rather than days. `data/state.json`
-records the last slot posted (`"2026-08-04/pm"`), where the morning slot runs
-until noon UTC and the evening slot after it. Both cron times sit hours away
-from that boundary, so the delay Actions is known for cannot push a run into
-the wrong half — and a re-run from the Actions UI, which replays an older slot,
-stays silent.
+`data/state.json` records the last Berlin calendar date posted in
+`last_post_date`. A second run on the same day (or a replay of an older job)
+does not post again unless `--force` is set. The previous `last_post_slot`
+format is read automatically when the first run under this schedule starts.
 
 ## Adding words
 
@@ -103,7 +100,7 @@ cards are posted top to bottom before anything is generated.
 
 Then check the result: `python -m bot.main --dry-run --word <word>`.
 
-The store has 120 cards: at two posts a day, that covers sixty days in total.
+The store has 120 cards: at one post a day, that covers 120 days in total.
 `tests/test_cards.py` checks that the store contains at least sixty valid cards.
 
 ## Reverso links

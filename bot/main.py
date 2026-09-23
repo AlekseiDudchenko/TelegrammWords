@@ -12,7 +12,7 @@ import anthropic
 from . import cards, formatter, generator, links, telegram, wordlist
 from .config import Config, ConfigError
 from .models import WordCard
-from .state import State, slot_of
+from .state import State, day_of
 from .wordlist import Entry
 
 log = logging.getLogger("bot")
@@ -41,7 +41,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--force",
         action="store_true",
-        help="Post even if this half of the day has already been served.",
+        help="Post even if this day has already been served.",
     )
     parser.add_argument("--verbose", action="store_true", help="Debug logging.")
     return parser
@@ -59,10 +59,10 @@ def main(argv: list[str] | None = None) -> int:
         entries = wordlist.load(config.words_file)
         stored = cards.load(config.cards_file)
         state = State.load(config.state_file)
-        slot = slot_of(datetime.now(timezone.utc))
+        day = day_of(datetime.now(timezone.utc))
 
-        if state.already_posted(slot) and not (args.force or args.dry_run):
-            log.info("Already posted for slot %s — nothing to do.", slot)
+        if state.already_posted(day) and not (args.force or args.dry_run):
+            log.info("Already posted for day %s — nothing to do.", day)
             return 0
 
         entry = _pick_entry(args, entries, state, stored)
@@ -79,7 +79,7 @@ def main(argv: list[str] | None = None) -> int:
         message_id = telegram.send_message(token, chat_id, message)
         log.info("Sent to %s (message_id=%s).", chat_id, message_id)
 
-        state.record(entry.word, slot)
+        state.record(entry.word, day)
         state.save(config.state_file)
         return 0
 
