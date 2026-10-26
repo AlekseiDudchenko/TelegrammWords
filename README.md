@@ -20,6 +20,13 @@ are added. It does not silently return to unused single-word entries.
 The card includes a Reverso Context search link. Collocation posts omit the
 DrillCards link; the phrase does not need to exist in the app.
 
+Right after the post, the bot replies to it with a voice message in which a
+German voice (`de-DE-KatjaNeural`) reads both examples. The recordings are made
+in advance and committed to `data/audio/`, so the daily run calls no speech
+service. Only unpublished cards have one. A missing recording only logs a
+warning, and a failed voice reply does not fail the run: the post is already
+out and the state must still be saved.
+
 `last_post_date` in `data/state.json` prevents a second post on the same Berlin
 calendar day. A manual `--force` run can override this guard.
 
@@ -31,6 +38,12 @@ match `ausdruck`. Required fields are `ausdruck`, `niveau`, `bedeutung`, two
 `beispiele`, their two `beispiele_en` translations, and `gebrauch`. The only
 English in a card goes into `beispiele_en`; those lines appear behind Telegram
 spoilers. Entries publish in file order and must not duplicate an earlier phrase.
+
+Then record its examples with `python -m bot.audio` (needs
+`pip install -r requirements-dev.txt` and `ffmpeg`). The command records every
+unpublished card that has no file yet, and deletes files no unpublished card
+uses, including the old recording of an edited example. Behind a TLS proxy, set
+`SSL_CERT_FILE`.
 
 Check the file with `python -m pytest -q`, then preview the next post with
 `python -m bot.main --dry-run`. A dry run does not send or save anything.

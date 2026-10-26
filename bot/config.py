@@ -52,6 +52,10 @@ class Config:
         return self.data_dir / "collocations.yml"
 
     @property
+    def audio_dir(self) -> Path:
+        return self.data_dir / "audio"
+
+    @property
     def state_file(self) -> Path:
         return self.data_dir / "state.json"
 
