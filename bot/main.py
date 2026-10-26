@@ -6,16 +6,19 @@ import argparse
 import logging
 import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 import anthropic
 
-from . import cards, collocations, formatter, generator, links, telegram, wordlist
+from . import audio, cards, collocations, formatter, generator, links, telegram, wordlist
 from .config import Config, ConfigError
 from .models import WordCard
 from .state import State, day_of
 from .wordlist import Entry
 
 log = logging.getLogger("bot")
+
+VOICE_CAPTION = "🔊 <i>Beispiele zum Anhören</i>"
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -73,6 +76,9 @@ def main(argv: list[str] | None = None) -> int:
             )
             log.info("Collocation: %s (%s)", card.ausdruck, card.niveau)
             message = formatter.render_collocation(card)
+            recording = audio.find(config.audio_dir, card.beispiele)
+            if recording is None:
+                log.warning("No recording for %r — run python -m bot.audio.", card.ausdruck)
         else:
             stored = cards.load(config.cards_file)
             entry = _pick_entry(args, entries, state, stored)
@@ -80,14 +86,19 @@ def main(argv: list[str] | None = None) -> int:
             card = _card_for(entry, stored, config)
             message = formatter.render(card, drillcards=links.resolve_drillcards(card))
             posted_key = entry.word
+            recording = None
 
         if args.dry_run:
             print(message)
+            if recording is not None:
+                print(f"\n[voice reply: {recording}]")
             return 0
 
         token, chat_id = config.require_telegram()
         message_id = telegram.send_message(token, chat_id, message)
         log.info("Sent to %s (message_id=%s).", chat_id, message_id)
+        if recording is not None:
+            _send_recording(token, chat_id, recording, message_id)
 
         state.record(posted_key, day)
         state.save(config.state_file)
@@ -99,6 +110,22 @@ def main(argv: list[str] | None = None) -> int:
     except (generator.GenerationError, telegram.TelegramError) as exc:
         log.error("%s", exc)
         return 1
+
+
+def _send_recording(token: str, chat_id: str, recording: Path, reply_to: int) -> None:
+    """Reply to the post with the spoken examples.
+
+    The post is already out, so a failure here must not fail the run: the
+    state would stay unsaved and the next run would post the card again.
+    """
+    try:
+        voice_id = telegram.send_voice(
+            token, chat_id, recording, reply_to=reply_to, caption=VOICE_CAPTION
+        )
+    except (telegram.TelegramError, OSError) as exc:
+        log.warning("Post sent, but the voice reply failed: %s", exc)
+    else:
+        log.info("Voice reply sent (message_id=%s).", voice_id)
 
 
 def _pick_entry(
