@@ -1,10 +1,15 @@
-"""Spoken examples: one voice message per collocation, read by a German voice.
+"""Spoken cards: one voice message per collocation.
+
+The recording reads the phrase, the label "Bedeutung" and the definition, the
+label "Beispiele" and the examples. The content is read by a female voice and
+the two labels by a male voice, so the sections are easy to tell apart.
 
 The recordings are generated ahead of time and committed under `data/audio/`,
 so the daily post depends on no speech service. Only cards not yet published
-get a recording; once a card is posted its file is no longer needed. A file is named after a hash
-of the voice and the sentences: editing an example leaves the old recording
-unmatched, and the test suite reports the card as missing its audio.
+get a recording; once a card is posted its file is no longer needed. A file is
+named after a hash of the voices and the spoken text: editing the phrase, the
+definition or an example leaves the old recording unmatched, and the test suite
+reports the card as missing its audio.
 
 Regenerate with `python -m bot.audio` (needs `edge-tts` and `ffmpeg`).
 """
@@ -31,21 +36,34 @@ from .state import State
 log = logging.getLogger(__name__)
 
 VOICE = "de-DE-KatjaNeural"
+LABEL_VOICE = "de-DE-KillianNeural"
 SUFFIX = ".ogg"
-PAUSE_SECONDS = 1.0
+PAUSE_SECONDS = 0.7
+
+Segment = tuple[str, str]  # (voice, text)
 
 
-def key(sentences: Sequence[str], voice: str = VOICE) -> str:
-    digest = hashlib.sha256("\n".join([voice, *sentences]).encode("utf-8"))
-    return digest.hexdigest()[:16]
+def segments(card: collocations.CollocationCard) -> list[Segment]:
+    return [
+        (VOICE, card.ausdruck),
+        (LABEL_VOICE, "Bedeutung"),
+        (VOICE, card.bedeutung),
+        (LABEL_VOICE, "Beispiele"),
+        *[(VOICE, example) for example in card.beispiele],
+    ]
 
 
-def path_for(audio_dir: Path, sentences: Sequence[str]) -> Path:
-    return audio_dir / f"{key(sentences)}{SUFFIX}"
+def key(parts: Sequence[Segment]) -> str:
+    text = "\n".join(f"{voice}|{sentence}" for voice, sentence in parts)
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 
 
-def find(audio_dir: Path, sentences: Sequence[str]) -> Path | None:
-    path = path_for(audio_dir, sentences)
+def path_for(audio_dir: Path, card: collocations.CollocationCard) -> Path:
+    return audio_dir / f"{key(segments(card))}{SUFFIX}"
+
+
+def find(audio_dir: Path, card: collocations.CollocationCard) -> Path | None:
+    path = path_for(audio_dir, card)
     return path if path.exists() else None
 
 
@@ -68,15 +86,15 @@ def _ssl_context() -> ssl.SSLContext:
     return ssl.create_default_context(cafile=certifi.where())
 
 
-async def _speak(sentence: str, target: Path) -> None:
+async def _speak(sentence: str, voice: str, target: Path) -> None:
     import edge_tts.communicate
 
     edge_tts.communicate._SSL_CTX = _ssl_context()
-    await edge_tts.communicate.Communicate(sentence, VOICE).save(str(target))
+    await edge_tts.communicate.Communicate(sentence, voice).save(str(target))
 
 
-def synthesize(sentences: Sequence[str], target: Path) -> None:
-    """Read each sentence, join them with a pause, encode as OGG Opus.
+def synthesize(parts_to_read: Sequence[Segment], target: Path) -> None:
+    """Read each segment in its voice, join them with a pause, encode as OGG Opus.
 
     Telegram shows OGG Opus sent with sendVoice as a voice message with a
     waveform and playback speed control.
@@ -85,9 +103,9 @@ def synthesize(sentences: Sequence[str], target: Path) -> None:
         raise RuntimeError("ffmpeg is required to encode the recordings.")
     with tempfile.TemporaryDirectory() as tmp:
         parts = []
-        for i, sentence in enumerate(sentences):
+        for i, (voice, sentence) in enumerate(parts_to_read):
             part = Path(tmp) / f"{i}.mp3"
-            asyncio.run(_speak(sentence, part))
+            asyncio.run(_speak(sentence, voice, part))
             parts.append(part)
 
         inputs: list[str] = []
@@ -118,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="python -m bot.audio",
         description=(
-            "Record examples of unpublished collocations and remove "
+            "Record unpublished collocations and remove "
             "recordings no unpublished card uses."
         ),
     )
@@ -131,7 +149,7 @@ def main(argv: list[str] | None = None) -> int:
     config = Config.from_env()
     store = collocations.load(config.collocations_file)
     wanted = {
-        path_for(config.audio_dir, card.beispiele): card
+        path_for(config.audio_dir, card): card
         for card in unpublished(store, State.load(config.state_file).posted)
     }
     existing = set(config.audio_dir.glob(f"*{SUFFIX}"))
@@ -148,7 +166,7 @@ def main(argv: list[str] | None = None) -> int:
 
     for path in missing:
         log.info("Recording %r → %s", wanted[path].ausdruck, path.name)
-        synthesize(wanted[path].beispiele, path)
+        synthesize(segments(wanted[path]), path)
     for path in unused:
         log.info("Removing unused %s", path.name)
         path.unlink()
