@@ -76,7 +76,7 @@ def main(argv: list[str] | None = None) -> int:
             )
             log.info("Collocation: %s (%s)", card.ausdruck, card.niveau)
             message = formatter.render_collocation(card)
-            recording = audio.find(config.audio_dir, card.beispiele)
+            recording = audio.find(config.audio_dir, card)
             if recording is None:
                 log.warning("No recording for %r — run python -m bot.audio.", card.ausdruck)
         else:

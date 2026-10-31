@@ -12,7 +12,7 @@ def test_every_unpublished_collocation_has_a_recording():
     missing = [
         card.ausdruck
         for card in audio.unpublished(_store(), posted)
-        if audio.find(DEFAULT_DATA_DIR / "audio", card.beispiele) is None
+        if audio.find(DEFAULT_DATA_DIR / "audio", card) is None
     ]
     assert missing == [], "run python -m bot.audio"
 
@@ -25,11 +25,28 @@ def test_published_cards_need_no_recording():
     assert len(left) == len(store) - 1
 
 
-def test_an_edited_example_no_longer_matches_its_recording():
+def test_an_edited_text_no_longer_matches_its_recording():
     card = next(iter(_store().values()))
-    edited = [card.beispiele[0] + " Heute.", *card.beispiele[1:]]
-    assert audio.key(card.beispiele) != audio.key(edited)
-    assert audio.key(card.beispiele) == audio.key(list(card.beispiele))
+    for field, value in [
+        ("beispiele", [card.beispiele[0] + " Heute.", *card.beispiele[1:]]),
+        ("bedeutung", card.bedeutung + " Heute."),
+        ("ausdruck", card.ausdruck + " heute"),
+    ]:
+        edited = card.model_copy(update={field: value})
+        assert audio.key(audio.segments(card)) != audio.key(audio.segments(edited))
+    assert audio.key(audio.segments(card)) == audio.key(audio.segments(card.model_copy()))
+
+
+def test_recording_reads_phrase_definition_and_examples_with_labels_in_own_voice():
+    card = next(iter(_store().values()))
+    parts = audio.segments(card)
+    assert [text for _, text in parts] == [
+        card.ausdruck, "Bedeutung", card.bedeutung, "Beispiele", *card.beispiele,
+    ]
+    assert {voice for voice, text in parts if text in {"Bedeutung", "Beispiele"}} == {
+        audio.LABEL_VOICE
+    }
+    assert audio.LABEL_VOICE != audio.VOICE
 
 
 def _run_send(monkeypatch, tmp_path, voice):
